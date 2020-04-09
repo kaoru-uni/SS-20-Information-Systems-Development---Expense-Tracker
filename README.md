@@ -1,5 +1,9 @@
 # Expense Tracker
 this django project will be an 'Expense Tracker'
+Project Team Member:
+Alexandra Jelea
+Kaoru Steinböck
+Gerhard Nägele
 
 # General information
 this project should be following the pep8 formatting standard, which should be
