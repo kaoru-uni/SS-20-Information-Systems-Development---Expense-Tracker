@@ -1,5 +1,5 @@
 # Expense Tracker
-this django project will be an 'Expense Tracker'
+this django project will be an 'Expense Tracker'  
 Project Team Member:  
 Alexandra Jelea  
 Kaoru Steinböck  
