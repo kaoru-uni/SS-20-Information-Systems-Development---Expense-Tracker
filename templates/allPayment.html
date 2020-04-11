@@ -1,0 +1,8 @@
+{% block Maincontent %}
+    <form action="." method="POST"> {%  csrf_token %}
+    {{ form.as_p }}
+    <input type="Submit" name="Save">
+    </form>
+
+{% endblock %}
+
