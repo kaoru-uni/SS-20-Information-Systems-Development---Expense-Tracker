@@ -57,6 +57,10 @@ from the repository.
 We are aware that a binary file or database should should not be commited.
 We are making an exception in this case.
 
+# External Packages
+[django-crispy-forms](https://github.com/django-crispy-forms/django-crispy-forms)
+
+[Bootstrap](https://getbootstrap.com/docs/4.4/getting-started/introduction/)
 
 # Sources
 the following sources have been used in general to create this project
