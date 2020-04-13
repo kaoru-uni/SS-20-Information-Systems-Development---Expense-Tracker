@@ -15,9 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from Payment.views import Payment, AmountInsert
+from payment.views import PaymentConfigView
+from payment.views import amount_insert
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('payment/', Payment.as_view()),
-    path('allPayment/', AmountInsert)
+    path('paymentview/', PaymentConfigView.as_view()),
+    path('all_payment/', amount_insert)
 ]
