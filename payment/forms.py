@@ -6,9 +6,8 @@ card_type = [
     ('cash', 'Cash'),
 ]
 
-
 class PaymentForm(forms.Form):
-    type = forms.CharField(label='What is your card type?',
-                           widget=forms.Select(choices=card_type))
-    date = forms.DateTimeField()
-    amount = forms.CharField()
+    type=forms.CharField(label='What is your card type?',
+                              widget=forms.Select(choices=card_type))
+    date=forms.DateField()
+    amount=forms.CharField()
