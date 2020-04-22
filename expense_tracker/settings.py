@@ -42,7 +42,7 @@ INSTALLED_APPS = [
 
     'budget.apps.BudgetConfig',
     'category.apps.CategoryConfig',
-    #'payment.apps.PaymentConfig',
+    'payment.apps.PaymentConfig',
 
 
 ]

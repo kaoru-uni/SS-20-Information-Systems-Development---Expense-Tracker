@@ -1,21 +1,11 @@
-<<<<<<< HEAD:templates/all_payment.html
-{% block Maincontent %}
-    <form action="../payment/templates/payment" method="POST"> {%  csrf_token %}
-    {{ form.as_p }}
-    <input type="Submit" name="Save">
-    </form>
-
-{% endblock %}
-=======
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 
 {% block content %}
-<form action="." method="POST">
+<form action="../payment/templates/all_payment" method="POST">
     {%  csrf_token %}
     {{ form | crispy }}
     <button type="submit" class="btn btn-success">Save</button>
 </form>
 
 {% endblock %}
->>>>>>> 580d0b8822608b66c4fb6e68dbabb8e4a4b86ff4:templates/allPayment.html

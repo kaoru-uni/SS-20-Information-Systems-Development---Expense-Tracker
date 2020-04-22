@@ -15,13 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-<<<<<<< HEAD
 from payment.views import PaymentConfigView
 from payment.views import amount_insert
-=======
-from payment.views import Payment, AmountInsert
+
 from . import views
->>>>>>> 580d0b8822608b66c4fb6e68dbabb8e4a4b86ff4
 
 urlpatterns = [
     path('', views.index, name='index'),
