@@ -17,12 +17,13 @@ from django.contrib import admin
 from django.urls import path
 from payment.views import PaymentConfigView
 from payment.views import amount_insert
-
+from register import views as v
 from . import views
 
 urlpatterns = [
     path('', views.index, name='index'),
     path('admin/', admin.site.urls),
-    path('paymentview/', PaymentConfigView.as_view()),
-    path('all_payment/', amount_insert)
+    path('register/', v.register, name="register"),
+    path('payment/', PaymentConfigView.as_view()),
+    path('all_payment/', amount_insert),
 ]
