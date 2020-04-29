@@ -1,5 +1,6 @@
 from django import forms
 
+
 card_type = [
     ('visa', 'Visa'),
     ('mastercard', 'Mastercard'),
@@ -16,3 +17,5 @@ class PaymentForm(forms.Form):
                            widget=forms.Select(choices=card_type))
     date = forms.DateField(widget=DateInput)
     amount = forms.DecimalField()
+
+
