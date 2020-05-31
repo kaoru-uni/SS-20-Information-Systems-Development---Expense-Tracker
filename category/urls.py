@@ -1,7 +1,6 @@
 from django.urls import path
 from . import views
-from category.views import HomeViewClass
 
 urlpatterns = [
-    path('', views.categories, name='categories'),
+    path('', views.category_index, name='category_index'),
 ]

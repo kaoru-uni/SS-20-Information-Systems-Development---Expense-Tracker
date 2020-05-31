@@ -3,5 +3,11 @@
 {% block title %}Welcome to our Expense Tracker!{% endblock %}
 
 {% block content %}
-    Welcome to our Expense Tracker!
-{% endblock %}
+    {% load static %}
+   <div>
+   <h1>Welcome to our Expense Tracker!</h1> <img src="{% static "expense_tracker\photo1.jpg" %}" class="rounded float-right" width="200" >
+   </div>
+    <img src="{% static "expense_tracker/abc2.jpg" %}" alt="Welcome to Expense Tracker" >
+    {% endblock %}
+
+

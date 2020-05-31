@@ -121,3 +121,8 @@ LOGIN_REDIRECT_URL = "/budget"
 LOGIN_REDIRECT_URL = "/"
 
 LOGIN_URL = "login"
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+    "/var/www/static/",
+]
