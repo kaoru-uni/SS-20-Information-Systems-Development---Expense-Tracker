@@ -3,11 +3,12 @@ from django.views.generic.edit import CreateView
 from django.views.generic import View, ListView
 from category.models import Category
 
+
 #https://docs.djangoproject.com/en/3.0/ref/class-based-views/generic-editing/
 class CategoryCreateView(CreateView):
         model = Category
         fields = ['name']
-        success_url = "/category/add"
+        success_url = "/category"
         template_name = "add.html"
         def form_valid(self, form):
             form_to_save = form.save(commit=False)
