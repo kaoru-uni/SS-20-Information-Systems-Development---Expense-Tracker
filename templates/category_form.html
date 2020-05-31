@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+<form method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Save">
+</form>
+
+
+{% block content %}
+    <a href="/category/add" class="btn btn-primary active" role="button" aria-pressed="true">Add Category</a>
+    <br>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Date</th>
+                <th scope="col">Creator</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for category in object_list %}
+                <tr>
+                    <td>{{ category.name }}</td>
+                    <td>{{ category.created_date | date:"Y-m-d" }}</td>
+                    <td>{{ category.user }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock content %}
