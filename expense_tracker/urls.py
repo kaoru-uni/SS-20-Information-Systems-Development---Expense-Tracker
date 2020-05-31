@@ -25,18 +25,8 @@ from category import views as category_views
 from . import views
 
 urlpatterns = [
-    path('', views.index, name='index'),
-    path('admin/', admin.site.urls),
-    path('register/', v.register, name="register"),
-    path('profile/', user_views.profile, name="profile"),
-    path('login/', auth_view.LoginView.as_view(template_name='register/login.html'), name='login'),
-    path('logout/', auth_view.LogoutView.as_view(template_name='register/logout.html'), name='logout'),
-    path('payment/', PaymentConfigView.as_view()),
-    path('all_payment/', amount_insert),
-    path('category/', category_views.CategoryView.as_view()),
-    path('', include("django.contrib.auth.urls")),
-
     path("", views.index, name="index"),
+    path("category/", category_views.CategoryView.as_view()),
     path("admin/", admin.site.urls),
     path("register/", register_view.register, name="register"),
     path("profile/", user_views.profile, name="profile"),
