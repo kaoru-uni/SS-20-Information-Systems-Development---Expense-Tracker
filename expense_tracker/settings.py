@@ -42,8 +42,7 @@ INSTALLED_APPS = [
     'category.apps.CategoryConfig',
     'payment.apps.PaymentConfig',
     'register.apps.RegisterConfig',
-    'user.apps.UserConfig',
-
+    'user_profile_setting.apps.UserProfileSettingConfig',
 ]
 
 MIDDLEWARE = [
@@ -134,3 +133,5 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
     '/var/www/static/',
 ]
+
+AUTH_PROFILE_MODULE = 'user_profile_setting.UserProfile'
