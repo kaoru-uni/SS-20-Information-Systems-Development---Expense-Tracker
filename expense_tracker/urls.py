@@ -20,8 +20,8 @@ from payment.views import PaymentConfigView
 from payment.views import amount_insert
 from user import views as user_views
 from register import views as register_view
-from register import views as v
 from category import views as category_views
+
 from . import views
 
 urlpatterns = [
@@ -43,4 +43,5 @@ urlpatterns = [
     path("payment/", PaymentConfigView.as_view()),
     path("all_payment/", amount_insert),
     path("", include("django.contrib.auth.urls")),
+    path("transaction/", include("transaction_expense.urls")),
 ]
