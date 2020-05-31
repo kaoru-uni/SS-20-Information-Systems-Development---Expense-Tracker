@@ -20,13 +20,13 @@ from payment.views import PaymentConfigView
 from payment.views import amount_insert
 from user_profile_setting import views as user_profile_views
 from register import views as register_view
-from register import views as v
 from category import views as category_views
+
 from . import views
 
 urlpatterns = [
     path("", views.index, name="index"),
-    path("category/", category_views.CategoryView.as_view()),
+    path("category/", include("category.urls")),
     path("admin/", admin.site.urls),
     path("register/", register_view.register, name="register"),
     path("profile/", user_profile_views.profile, name="profile"),
@@ -43,4 +43,5 @@ urlpatterns = [
     path("payment/", PaymentConfigView.as_view()),
     path("all_payment/", amount_insert),
     path("", include("django.contrib.auth.urls")),
+    path("transaction/", include("transaction_expense.urls")),
 ]
