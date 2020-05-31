@@ -1,0 +1,267 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>payment package &#8212; Expense Tracker 1.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="payment-package">
+<h1>payment package<a class="headerlink" href="#payment-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="payment.migrations.html">payment.migrations package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="payment.migrations.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="payment.migrations.html#module-payment.migrations.0001_initial">payment.migrations.0001_initial module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="payment.migrations.html#module-payment.migrations">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-payment.admin">
+<span id="payment-admin-module"></span><h2>payment.admin module<a class="headerlink" href="#module-payment.admin" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-payment.apps">
+<span id="payment-apps-module"></span><h2>payment.apps module<a class="headerlink" href="#module-payment.apps" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="payment.apps.PaymentConfig">
+<em class="property">class </em><code class="sig-prename descclassname">payment.apps.</code><code class="sig-name descname">PaymentConfig</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">app_name</span></em>, <em class="sig-param"><span class="n">app_module</span></em><span class="sig-paren">)</span><a class="headerlink" href="#payment.apps.PaymentConfig" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.apps.config.AppConfig</span></code></p>
+<dl class="py attribute">
+<dt id="payment.apps.PaymentConfig.name">
+<code class="sig-name descname">name</code><em class="property"> = 'payment'</em><a class="headerlink" href="#payment.apps.PaymentConfig.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-payment.forms">
+<span id="payment-forms-module"></span><h2>payment.forms module<a class="headerlink" href="#module-payment.forms" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="payment.forms.DateInput">
+<em class="property">class </em><code class="sig-prename descclassname">payment.forms.</code><code class="sig-name descname">DateInput</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">attrs</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">format</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#payment.forms.DateInput" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.forms.widgets.DateInput</span></code></p>
+<dl class="py attribute">
+<dt id="payment.forms.DateInput.input_type">
+<code class="sig-name descname">input_type</code><em class="property"> = 'date'</em><a class="headerlink" href="#payment.forms.DateInput.input_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="payment.forms.DateInput.media">
+<em class="property">property </em><code class="sig-name descname">media</code><a class="headerlink" href="#payment.forms.DateInput.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="payment.forms.PaymentForm">
+<em class="property">class </em><code class="sig-prename descclassname">payment.forms.</code><code class="sig-name descname">PaymentForm</code><span class="sig-paren">(</span><em class="sig-param">data=None</em>, <em class="sig-param">files=None</em>, <em class="sig-param">auto_id='id_%s'</em>, <em class="sig-param">prefix=None</em>, <em class="sig-param">initial=None</em>, <em class="sig-param">error_class=&lt;class 'django.forms.utils.ErrorList'&gt;</em>, <em class="sig-param">label_suffix=None</em>, <em class="sig-param">empty_permitted=False</em>, <em class="sig-param">field_order=None</em>, <em class="sig-param">use_required_attribute=None</em>, <em class="sig-param">renderer=None</em><span class="sig-paren">)</span><a class="headerlink" href="#payment.forms.PaymentForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.forms.forms.Form</span></code></p>
+<dl class="py attribute">
+<dt id="payment.forms.PaymentForm.base_fields">
+<code class="sig-name descname">base_fields</code><em class="property"> = {'amount': &lt;django.forms.fields.DecimalField object&gt;, 'date': &lt;django.forms.fields.DateField object&gt;, 'type': &lt;django.forms.fields.CharField object&gt;}</em><a class="headerlink" href="#payment.forms.PaymentForm.base_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="payment.forms.PaymentForm.declared_fields">
+<code class="sig-name descname">declared_fields</code><em class="property"> = {'amount': &lt;django.forms.fields.DecimalField object&gt;, 'date': &lt;django.forms.fields.DateField object&gt;, 'type': &lt;django.forms.fields.CharField object&gt;}</em><a class="headerlink" href="#payment.forms.PaymentForm.declared_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="payment.forms.PaymentForm.media">
+<em class="property">property </em><code class="sig-name descname">media</code><a class="headerlink" href="#payment.forms.PaymentForm.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-payment.models">
+<span id="payment-models-module"></span><h2>payment.models module<a class="headerlink" href="#module-payment.models" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="payment.models.PaymentConfig">
+<em class="property">class </em><code class="sig-prename descclassname">payment.models.</code><code class="sig-name descname">PaymentConfig</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">id</span></em>, <em class="sig-param"><span class="n">type</span></em>, <em class="sig-param"><span class="n">date</span></em>, <em class="sig-param"><span class="n">amount</span></em><span class="sig-paren">)</span><a class="headerlink" href="#payment.models.PaymentConfig" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.models.base.Model</span></code></p>
+<dl class="py exception">
+<dt id="payment.models.PaymentConfig.DoesNotExist">
+<em class="property">exception </em><code class="sig-name descname">DoesNotExist</code><a class="headerlink" href="#payment.models.PaymentConfig.DoesNotExist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt id="payment.models.PaymentConfig.MultipleObjectsReturned">
+<em class="property">exception </em><code class="sig-name descname">MultipleObjectsReturned</code><a class="headerlink" href="#payment.models.PaymentConfig.MultipleObjectsReturned" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="payment.models.PaymentConfig.add">
+<code class="sig-name descname">add</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#payment.models.PaymentConfig.add" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="payment.models.PaymentConfig.amount">
+<code class="sig-name descname">amount</code><a class="headerlink" href="#payment.models.PaymentConfig.amount" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="payment.models.PaymentConfig.date">
+<code class="sig-name descname">date</code><a class="headerlink" href="#payment.models.PaymentConfig.date" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="payment.models.PaymentConfig.get_next_by_date">
+<code class="sig-name descname">get_next_by_date</code><span class="sig-paren">(</span><em class="sig-param">*</em>, <em class="sig-param">field=&lt;django.db.models.fields.DateTimeField: date&gt;</em>, <em class="sig-param">is_next=True</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#payment.models.PaymentConfig.get_next_by_date" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="payment.models.PaymentConfig.get_previous_by_date">
+<code class="sig-name descname">get_previous_by_date</code><span class="sig-paren">(</span><em class="sig-param">*</em>, <em class="sig-param">field=&lt;django.db.models.fields.DateTimeField: date&gt;</em>, <em class="sig-param">is_next=False</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#payment.models.PaymentConfig.get_previous_by_date" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="payment.models.PaymentConfig.id">
+<code class="sig-name descname">id</code><a class="headerlink" href="#payment.models.PaymentConfig.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="payment.models.PaymentConfig.objects">
+<code class="sig-name descname">objects</code><em class="property"> = &lt;django.db.models.manager.Manager object&gt;</em><a class="headerlink" href="#payment.models.PaymentConfig.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="payment.models.PaymentConfig.type">
+<code class="sig-name descname">type</code><a class="headerlink" href="#payment.models.PaymentConfig.type" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-payment.tests">
+<span id="payment-tests-module"></span><h2>payment.tests module<a class="headerlink" href="#module-payment.tests" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-payment.views">
+<span id="payment-views-module"></span><h2>payment.views module<a class="headerlink" href="#module-payment.views" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="payment.views.PaymentConfigView">
+<em class="property">class </em><code class="sig-prename descclassname">payment.views.</code><code class="sig-name descname">PaymentConfigView</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#payment.views.PaymentConfigView" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.views.generic.base.TemplateView</span></code></p>
+<dl class="py attribute">
+<dt id="payment.views.PaymentConfigView.template_name">
+<code class="sig-name descname">template_name</code><em class="property"> = 'all_payment.html'</em><a class="headerlink" href="#payment.views.PaymentConfigView.template_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="payment.views.amount_insert">
+<code class="sig-prename descclassname">payment.views.</code><code class="sig-name descname">amount_insert</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">httprequest</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#payment.views.amount_insert" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-payment">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-payment" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Expense Tracker</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Alexandra Jelea, Kaoru Steinböck, Gerhard Nägele.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.0.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/payment.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
