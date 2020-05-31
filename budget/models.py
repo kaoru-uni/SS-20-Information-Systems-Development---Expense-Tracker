@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class Budget(models.Model):
@@ -6,9 +7,10 @@ class Budget(models.Model):
     amount = models.FloatField()
     description = models.CharField(max_length=200)
 
-    # category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    # category = models.ForeignKey('category.Category', on_delete=models.CASCADE)
-    def add(self):
-        self.save()
+    created_date = models.DateTimeField(auto_now_add=True)
+    user = models.ForeignKey("auth.User", on_delete=models.CASCADE)
+
+    def get_absolute_url(self):
+        return reverse('budget-detail', kwargs={'pk': self.pk})
 
 

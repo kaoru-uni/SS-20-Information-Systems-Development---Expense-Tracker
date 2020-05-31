@@ -15,6 +15,8 @@
                 <th scope="col">Name</th>
                 <th scope="col">Date</th>
                 <th scope="col">Creator</th>
+                <th scope="col" class="text-right">Edit</th>
+                <th scope="col">Delete</th>
             </tr>
         </thead>
         <tbody>
@@ -23,6 +25,12 @@
                     <td>{{ category.name }}</td>
                     <td>{{ category.created_date | date:"Y-m-d" }}</td>
                     <td>{{ category.user }}</td>
+                    <td class="text-right">
+                        <a href="{{ category.id  }}/edit"><i class="far fa-edit"></i></a>
+                    </td>
+                    <td>
+                        <a href="{{ category.id  }}/delete"> <i class="far fa-trash-alt"></i></a>
+                    </td>
                 </tr>
             {% endfor %}
         </tbody>
