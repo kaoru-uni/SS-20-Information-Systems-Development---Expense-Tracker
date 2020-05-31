@@ -1,15 +1,17 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
 
-<a href="{% url 'category.nameOfFunctionInViews' %}">Click here</a>
-
-{% block title %}Add a Category{% endblock %}
-{% load crispy_forms_tags %}
-
-{% block content %}
-    <form method="POST" class="form-group">
-    {% csrf_token %}
-    {{ form|crispy }}
-    <button type="Sumbit" class="btn btn-success">ADD</button>
-    </form>
+{% block page_content %}
+<h1>Categories</h1>
+<div class="row">
+{% for category in category %}
+    <div class="col-md-4">
+        <div class="card mb-2">
+            <div class="card-body">
+                <h5 class="card-title">{{ category.name }}</h5>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
 {% endblock %}
