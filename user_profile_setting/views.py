@@ -13,7 +13,12 @@ def profile(request, *args, **kwargs):
 
 
 class UserProfileSettingConfigView(TemplateView):
-    template_name = 'user_profile_detail.html'
+    template_name = "user_profile_detail.html"
+
+    def form_valid(self, form):
+        form_to_save = form.save(commit=False)
+        form_to_save.user = self.request.user
+        return super(UserProfileSettingConfigView, self).form_valid(form)
 
 
 def user_details(httprequest, *args, **kwargs):

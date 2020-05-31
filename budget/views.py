@@ -4,16 +4,17 @@ from django.views.generic import View, ListView
 from budget.models import Budget
 
 
-#https://docs.djangoproject.com/en/3.0/ref/class-based-views/generic-editing/
+# https://docs.djangoproject.com/en/3.0/ref/class-based-views/generic-editing/
 class BudgetCreateView(CreateView):
-        model = Budget
-        fields = ['name', 'amount', 'description']
-        success_url = "/budget"
-        template_name = "budget_add.html"
-        def form_valid(self, form):
-            form_to_save = form.save(commit=False)
-            form_to_save.user = self.request.user
-            return super(BudgetCreateView, self).form_valid(form)
+    model = Budget
+    fields = ['name', 'amount', 'description']
+    success_url = "/budget"
+    template_name = "budget_add.html"
+
+    def form_valid(self, form):
+        form_to_save = form.save(commit=False)
+        form_to_save.user = self.request.user
+        return super(BudgetCreateView, self).form_valid(form)
 
 
 class BudgetListView(ListView):
@@ -22,6 +23,7 @@ class BudgetListView(ListView):
 
     def get_queryset(self):
         return Budget.objects.filter(user=self.request.user)
+
 
 class BudgetDeleteView(DeleteView):
     model = Budget
