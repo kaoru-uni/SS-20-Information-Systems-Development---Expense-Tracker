@@ -20,10 +20,13 @@ from payment.views import PaymentConfigView
 from payment.views import amount_insert
 from user import views as user_views
 from register import views as register_view
+from register import views as v
+from category import views as category_views
 from . import views
 
 urlpatterns = [
     path("", views.index, name="index"),
+    path("category/", category_views.CategoryView.as_view()),
     path("admin/", admin.site.urls),
     path("register/", register_view.register, name="register"),
     path("profile/", user_views.profile, name="profile"),
