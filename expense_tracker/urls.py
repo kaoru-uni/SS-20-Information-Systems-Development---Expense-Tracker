@@ -26,7 +26,7 @@ from . import views
 
 urlpatterns = [
     path("", views.index, name="index"),
-    path("category/", category_views.CategoryView.as_view()),
+    path("category/", include("category.urls")),
     path("admin/", admin.site.urls),
     path("register/", register_view.register, name="register"),
     path("profile/", user_views.profile, name="profile"),

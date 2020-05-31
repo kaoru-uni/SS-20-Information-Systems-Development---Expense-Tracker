@@ -11,11 +11,6 @@ def category_index(request):
     }
     return render(request, 'catergories.html', context)
 
-"""
-class CategoryView(View):
-    def category(response):
-        return render(response, "category/categories.html", {})
-"""
 
 
 
