@@ -9,6 +9,7 @@
                 <th scope="col">Date</th>
                 <th scope="col">Amount</th>
                 <th scope="col">User</th>
+                <th scope="col">Payment</th>
                 <th scope="col">Family</th>
                 <th scope="col">Category</th>
                 <th scope="col" class="text-right">Edit</th>
@@ -21,6 +22,7 @@
                     <td>{{ transaction.created_date | date:"Y-m-d" }}</td>
                     <td>{{ transaction.amount }}</td>
                     <td>{{ transaction.user }}</td>
+                    <td>{{ transaction.payment }}</td>
                     <td>{{ transaction.family }}</td>
                     <td>{{ transaction.category }}</td>
                     <td class="text-right">

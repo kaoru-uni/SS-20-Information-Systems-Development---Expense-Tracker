@@ -1,6 +1,7 @@
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from .models import Transaction_Expense
 from category.models import Category
+from payment.models import Payment
 
 from django.shortcuts import Http404
 
@@ -16,7 +17,7 @@ class TransactionExpenseListView(ListView):
 # https://stackoverflow.com/questions/10382838/how-to-set-foreignkey-in-createview
 class TransactionExpenseCreateView(CreateView):
     model = Transaction_Expense
-    fields = ("amount", "family", "category")
+    fields = ("amount", "family", "category", "payment")
     success_url = "/transaction/add"
     template_name = "add_transaction.html"
 
@@ -25,6 +26,7 @@ class TransactionExpenseCreateView(CreateView):
         form.fields["category"].queryset = Category.objects.filter(
             user=self.request.user
         )
+        form.fields["payment"].queryset = Payment.objects.filter(user=self.request.user)
         return form
 
     def form_valid(self, form):
@@ -36,7 +38,7 @@ class TransactionExpenseCreateView(CreateView):
 # https://stackoverflow.com/questions/25324948/django-generic-updateview-how-to-check-credential
 class TransactionExpenseEditView(UpdateView):
     model = Transaction_Expense
-    fields = ("amount", "family", "category")
+    fields = ("amount", "family", "category", "payment")
     success_url = "/transaction"
     template_name = "add_transaction.html"
 
@@ -45,6 +47,7 @@ class TransactionExpenseEditView(UpdateView):
         form.fields["category"].queryset = Category.objects.filter(
             user=self.request.user
         )
+        form.fields["payment"].queryset = Payment.objects.filter(user=self.request.user)
         return form
 
     def get_object(self, *args, **kwargs):

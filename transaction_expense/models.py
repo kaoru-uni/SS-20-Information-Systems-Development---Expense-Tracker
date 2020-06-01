@@ -1,5 +1,6 @@
 from django.db import models
 from category.models import Category
+from payment.models import Payment
 
 """
 This model contains the transaction of an expense which is being made.
@@ -15,3 +16,4 @@ class Transaction_Expense(models.Model):
     family = models.BooleanField()
     user = models.ForeignKey("auth.User", on_delete=models.CASCADE)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True)
+    payment = models.ForeignKey(Payment, on_delete=models.CASCADE, null=True)
