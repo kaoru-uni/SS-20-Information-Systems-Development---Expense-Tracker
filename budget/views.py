@@ -13,7 +13,7 @@ def budget_pie_chart(request):
     labels = []
     data = []
 
-    query = Budget.objects.order_by('amount')
+    query = Budget.objects.filter(user=request.user).order_by('amount')
     for budget in query:
         labels.append(budget.name)
         data.append(budget.amount)
