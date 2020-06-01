@@ -1,5 +1,6 @@
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from .models import Transaction_Expense
+from category.models import Category
 
 from django.shortcuts import Http404
 
@@ -19,6 +20,13 @@ class TransactionExpenseCreateView(CreateView):
     success_url = "/transaction/add"
     template_name = "add_transaction.html"
 
+    def get_form(self, *args, **kwargs):
+        form = super(TransactionExpenseCreateView, self).get_form(*args, **kwargs)
+        form.fields["category"].queryset = Category.objects.filter(
+            user=self.request.user
+        )
+        return form
+
     def form_valid(self, form):
         form_to_save = form.save(commit=False)
         form_to_save.user = self.request.user
@@ -31,6 +39,13 @@ class TransactionExpenseEditView(UpdateView):
     fields = ("amount", "family", "category")
     success_url = "/transaction"
     template_name = "add_transaction.html"
+
+    def get_form(self, *args, **kwargs):
+        form = super(TransactionExpenseEditView, self).get_form(*args, **kwargs)
+        form.fields["category"].queryset = Category.objects.filter(
+            user=self.request.user
+        )
+        return form
 
     def get_object(self, *args, **kwargs):
         expense_found = super(TransactionExpenseEditView, self).get_object(
