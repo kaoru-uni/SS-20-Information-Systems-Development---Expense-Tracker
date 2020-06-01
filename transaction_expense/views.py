@@ -2,8 +2,7 @@ from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from .models import Transaction_Expense
 from category.models import Category
 from payment.models import Payment
-
-from django.shortcuts import Http404
+from django.shortcuts import Http404, render
 
 
 class TransactionExpenseListView(ListView):
@@ -71,3 +70,20 @@ class TransactionExpenseDeleteView(DeleteView):
 
     def get(self, request, *args, **kwargs):
         return self.post(request, *args, **kwargs)
+
+
+# https://simpleisbetterthancomplex.com/tutorial/2020/01/19/how-to-use-chart-js-with-django.html
+# https://www.chartjs.org/docs/latest/charts/bar.html
+def transaction_expense_pie_chart(request):
+    labels = []
+    data = []
+
+    query = Transaction_Expense.objects.filter(user=request.user).order_by(
+        "created_date"
+    )
+
+    for transaction in query:
+        labels.append(f"{transaction.category}, {transaction.created_date.date()}")
+        data.append(str(transaction.amount))
+
+    return render(request, "pie_chart.html", {"labels": labels, "data": data,})
