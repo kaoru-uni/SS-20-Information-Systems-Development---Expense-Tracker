@@ -2,6 +2,27 @@ from django.http import Http404
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic import View, ListView
 from budget.models import Budget
+from django.shortcuts import render
+
+
+# https://simpleisbetterthancomplex.com/tutorial/2020/01/19/how-to-use-chart-js-with-django.html
+"""
+home view ist the main view page with the chart
+"""
+def budget_pie_chart(request):
+    labels = []
+    data = []
+
+    query = Budget.objects.filter(user=request.user).order_by('amount')
+    for budget in query:
+        labels.append(budget.name)
+        data.append(budget.amount)
+
+    return render(request, 'budget_pie_chart.html', {
+        'labels' : labels,
+        'data' : data,
+
+    })
 
 
 # https://docs.djangoproject.com/en/3.0/ref/class-based-views/generic-editing/
