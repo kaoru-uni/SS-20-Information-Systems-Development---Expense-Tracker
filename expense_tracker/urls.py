@@ -16,8 +16,6 @@ Including another URLconf
 from django.contrib import admin
 from django.contrib.auth import views as auth_view
 from django.urls import path, include
-from payment.views import PaymentConfigView
-from payment.views import amount_insert
 from user_profile_setting.views import user_details
 from user_profile_setting.views import UserProfileSettingConfigView
 from register import views as register_view
@@ -30,7 +28,11 @@ urlpatterns = [
     path("budget/", include("budget.urls")),
     path("admin/", admin.site.urls),
     path("register/", register_view.register, name="register"),
-    path("profile/", UserProfileSettingConfigView.as_view(template_name="user_profile_detail.html"), name="profile"),
+    path(
+        "profile/",
+        UserProfileSettingConfigView.as_view(template_name="user_profile_detail.html"),
+        name="profile",
+    ),
     path(
         "login/",
         auth_view.LoginView.as_view(template_name="register/login.html"),
@@ -41,8 +43,7 @@ urlpatterns = [
         auth_view.LogoutView.as_view(template_name="register/logout.html"),
         name="logout",
     ),
-    path("payment/", PaymentConfigView.as_view()),
-    path("all_payment/", amount_insert),
     path("", include("django.contrib.auth.urls")),
     path("transaction/", include("transaction_expense.urls")),
+    path("payment/", include("payment.urls")),
 ]

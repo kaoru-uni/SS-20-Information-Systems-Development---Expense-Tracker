@@ -4,11 +4,18 @@ from django.db import models
 from django.db import models
 from django.contrib.auth.models import User
 
-
-class PaymentConfig(models.Model):
-    type = models.CharField(max_length=50)
+# https://docs.djangoproject.com/en/3.0/ref/models/fields/#choices
+class Payment(models.Model):
+    VISA = "VISA"
+    MASTERCARD = "MASTERCARD"
+    CASH = "CASH"
+    PAYMENT_TYPE = [
+        (CASH, "Cash"),
+        (VISA, "Visa"),
+        (MASTERCARD, "Mastercard"),
+    ]
+    type = models.CharField(max_length=50, choices=PAYMENT_TYPE, default=CASH,)
     date = models.DateTimeField()
-    amount = models.CharField(max_length=200)
-
-    def add(self):
-        self.save()
+    description = models.CharField(max_length=100, default="")
+    amount = models.DecimalField(max_digits=19, decimal_places=2)
+    user = models.ForeignKey("auth.User", on_delete=models.CASCADE)
