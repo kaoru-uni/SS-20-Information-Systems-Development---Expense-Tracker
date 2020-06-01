@@ -15,7 +15,7 @@ class TransactionExpenseListView(ListView):
 # https://stackoverflow.com/questions/10382838/how-to-set-foreignkey-in-createview
 class TransactionExpenseCreateView(CreateView):
     model = Transaction_Expense
-    fields = ("amount", "family")
+    fields = ("amount", "family", "category")
     success_url = "/transaction/add"
     template_name = "add_transaction.html"
 
@@ -28,7 +28,7 @@ class TransactionExpenseCreateView(CreateView):
 # https://stackoverflow.com/questions/25324948/django-generic-updateview-how-to-check-credential
 class TransactionExpenseEditView(UpdateView):
     model = Transaction_Expense
-    fields = ("amount", "family")
+    fields = ("amount", "family", "category")
     success_url = "/transaction"
     template_name = "add_transaction.html"
 

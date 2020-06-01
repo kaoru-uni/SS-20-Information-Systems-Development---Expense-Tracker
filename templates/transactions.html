@@ -10,6 +10,7 @@
                 <th scope="col">Amount</th>
                 <th scope="col">User</th>
                 <th scope="col">Family</th>
+                <th scope="col">Category</th>
                 <th scope="col" class="text-right">Edit</th>
                 <th scope="col">Delete</th>
             </tr>
@@ -21,6 +22,7 @@
                     <td>{{ transaction.amount }}</td>
                     <td>{{ transaction.user }}</td>
                     <td>{{ transaction.family }}</td>
+                    <td>{{ transaction.category }}</td>
                     <td class="text-right">
                         <a href="{{ transaction.id  }}/edit">
                             <i class="far fa-edit"></i>
