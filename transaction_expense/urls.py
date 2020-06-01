@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, register_converter
 from . import views
 from .views import (
     TransactionExpenseListView,

@@ -4,6 +4,7 @@ from category.models import Category
 from payment.models import Payment
 from django.shortcuts import Http404, render
 from django import forms
+from datetime import datetime
 
 
 class DateInput(forms.DateInput):
@@ -87,11 +88,24 @@ class TransactionExpenseDeleteView(DeleteView):
 
 # https://simpleisbetterthancomplex.com/tutorial/2020/01/19/how-to-use-chart-js-with-django.html
 # https://www.chartjs.org/docs/latest/charts/bar.html
-def transaction_expense_pie_chart(request):
+# https://docs.djangoproject.com/en/3.0/ref/models/querysets/#range
+def transaction_expense_pie_chart(request, start_date=None, end_date=None):
     labels = []
     data = []
 
-    query = Transaction_Expense.objects.filter(user=request.user).order_by("date")
+    start_date = request.POST.get("start_date")
+    end_date = request.POST.get("end_date")
+
+    if start_date is not None and end_date is not None:
+        formatted_start_date = datetime.strptime(start_date, "%Y-%m-%d")
+        formatted_end_date = datetime.strptime(end_date, "%Y-%m-%d")
+        query = (
+            Transaction_Expense.objects.filter(user=request.user)
+            .filter(date__range=(formatted_start_date, formatted_end_date))
+            .order_by("date")
+        )
+    else:
+        query = Transaction_Expense.objects.filter(user=request.user).order_by("date")
 
     for transaction in query:
         labels.append(f"{transaction.category}, {transaction.date.date()}")

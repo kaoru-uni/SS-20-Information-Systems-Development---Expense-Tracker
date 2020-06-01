@@ -1,6 +1,15 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    <form action="#" method="post">
+        {% csrf_token %}
+        <label for="start_date">Start date:</label>
+        <input type="text" name="start_date" id="start_date" />
+        <label for="end_date">End date:</label>
+        <input type="text" name="end_date" id="end_date" />
+        <button type="submit" class="btn btn-success">Search Date</button>
+    </form>
+
     <div id="container" style="width: 100%;">
         <canvas id="pie_chart"></canvas>
     </div>
@@ -27,7 +36,6 @@
      window.onload = function() {
          var chartdata = document.getElementById('pie_chart').getContext('2d');
          window.myPie = new Chart(chartdata, config);
-         print('chartdata: ', chartdata)
      };
 
     </script>
