@@ -38,8 +38,8 @@ class PaymentCreateView(CreateView):
 
 # https://stackoverflow.com/questions/25324948/django-generic-updateview-how-to-check-credential
 class PaymentEditView(UpdateView):
+    form_class = PaymentForm
     model = Payment
-    fields = ("type", "description", "date", "amount")
     success_url = "/payment"
     template_name = "add_payment.html"
 
