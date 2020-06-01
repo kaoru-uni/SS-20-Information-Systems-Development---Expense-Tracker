@@ -14,8 +14,9 @@
             <tr>
                 <th scope="col">Name</th>
                 <th scope="col">Amount</th>
-                <th scope="col">Date</th>
                 <th scope="col">Description</th>
+                <th scope="col">Category</th>
+                <th scope="col">Date</th>
                 <th scope="col">Creator</th>
                 <th scope="col" class="text-right">Edit</th>
                 <th scope="col">Delete</th>
@@ -27,6 +28,7 @@
                     <td>{{ budget.name }}</td>
                     <td>{{ budget.amount }}</td>
                     <td>{{ budget.description }}</td>
+                    <td>{{ budget.category }}</td>
                     <td>{{ budget.created_date | date:"Y-m-d" }}</td>
                     <td>{{ budget.user }}</td>
                     <td class="text-right">
