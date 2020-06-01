@@ -2,8 +2,20 @@ from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from .models import Transaction_Expense
 from category.models import Category
 from payment.models import Payment
+from django.shortcuts import Http404, render
+from django import forms
 
-from django.shortcuts import Http404
+
+class DateInput(forms.DateInput):
+    input_type = "date"
+
+
+# https://stackoverflow.com/questions/27321692/override-a-django-generic-class-based-view-widget
+class TransactionExpenseForm(forms.ModelForm):
+    class Meta:
+        model = Transaction_Expense
+        fields = ("date", "amount", "family", "category", "payment")
+        widgets = {"date": DateInput()}
 
 
 class TransactionExpenseListView(ListView):
@@ -16,8 +28,8 @@ class TransactionExpenseListView(ListView):
 
 # https://stackoverflow.com/questions/10382838/how-to-set-foreignkey-in-createview
 class TransactionExpenseCreateView(CreateView):
+    form_class = TransactionExpenseForm
     model = Transaction_Expense
-    fields = ("amount", "family", "category", "payment")
     success_url = "/transaction/add"
     template_name = "add_transaction.html"
 
@@ -37,8 +49,8 @@ class TransactionExpenseCreateView(CreateView):
 
 # https://stackoverflow.com/questions/25324948/django-generic-updateview-how-to-check-credential
 class TransactionExpenseEditView(UpdateView):
+    form_class = TransactionExpenseForm
     model = Transaction_Expense
-    fields = ("amount", "family", "category", "payment")
     success_url = "/transaction"
     template_name = "add_transaction.html"
 
@@ -71,3 +83,18 @@ class TransactionExpenseDeleteView(DeleteView):
 
     def get(self, request, *args, **kwargs):
         return self.post(request, *args, **kwargs)
+
+
+# https://simpleisbetterthancomplex.com/tutorial/2020/01/19/how-to-use-chart-js-with-django.html
+# https://www.chartjs.org/docs/latest/charts/bar.html
+def transaction_expense_pie_chart(request):
+    labels = []
+    data = []
+
+    query = Transaction_Expense.objects.filter(user=request.user).order_by("date")
+
+    for transaction in query:
+        labels.append(f"{transaction.category}, {transaction.date.date()}")
+        data.append(str(transaction.amount))
+
+    return render(request, "pie_chart.html", {"labels": labels, "data": data,})

@@ -2,7 +2,9 @@
 
 {% block content %}
     <a href="/transaction/add" class="btn btn-primary active" role="button" aria-pressed="true">Add Expense</a>
+    <a href="/transaction/pie_chart" class="btn btn-primary active" role="button" aria-pressed="true">Show Piechart</a>
     <br>
+
     <table class="table">
         <thead>
             <tr>
@@ -19,7 +21,7 @@
         <tbody>
             {% for transaction in object_list %}
                 <tr>
-                    <td>{{ transaction.created_date | date:"Y-m-d" }}</td>
+                    <td>{{ transaction.date | date:"Y-m-d" }}</td>
                     <td>{{ transaction.amount }}</td>
                     <td>{{ transaction.user }}</td>
                     <td>{{ transaction.payment }}</td>
