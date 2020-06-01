@@ -89,7 +89,7 @@ class TransactionExpenseDeleteView(DeleteView):
 # https://simpleisbetterthancomplex.com/tutorial/2020/01/19/how-to-use-chart-js-with-django.html
 # https://www.chartjs.org/docs/latest/charts/bar.html
 # https://docs.djangoproject.com/en/3.0/ref/models/querysets/#range
-def transaction_expense_pie_chart(request, start_date=None, end_date=None):
+def transaction_expense_pie_chart(request):
     labels = []
     data = []
 
@@ -99,6 +99,7 @@ def transaction_expense_pie_chart(request, start_date=None, end_date=None):
     if start_date is not None and end_date is not None:
         formatted_start_date = datetime.strptime(start_date, "%Y-%m-%d")
         formatted_end_date = datetime.strptime(end_date, "%Y-%m-%d")
+
         query = (
             Transaction_Expense.objects.filter(user=request.user)
             .filter(date__range=(formatted_start_date, formatted_end_date))

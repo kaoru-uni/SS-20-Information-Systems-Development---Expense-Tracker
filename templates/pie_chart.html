@@ -4,10 +4,10 @@
     <form action="#" method="post">
         {% csrf_token %}
         <label for="start_date">Start date:</label>
-        <input type="text" name="start_date" id="start_date" />
+        <input type="date" class="datepicker" id="start_date" name="start_date" />
         <label for="end_date">End date:</label>
-        <input type="text" name="end_date" id="end_date" />
-        <button type="submit" class="btn btn-success">Search Date</button>
+        <input type="date" class="datepicker" id="end_date" name="end_date" />
+        <button type="submit" class="btn btn-success btn-sm">Search Date</button>
     </form>
 
     <div id="container" style="width: 100%;">
