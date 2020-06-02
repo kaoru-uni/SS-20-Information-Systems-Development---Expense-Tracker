@@ -1,39 +1,34 @@
-{% extends "base.html" %}
-
-{% block title %}Welcome to our Expense Tracker!{% endblock %}
+{% extends 'base.html' %}
 
 {% block content %}
-  <div id="container" style="width: 75%;">
-    <canvas id="dashboard-pie-chart"></canvas>
-  </div>
+    <div id="container" style="width: 100%;">
+        <canvas id="dashboard_pie_chart"></canvas>
+    </div>
 
+    <script>
 
-  <script>
+     var config = {
+         type: 'bar',
+         data: {
+             datasets: [{
+                 data: {{ data|safe }},
+                 backgroundColor: [
+                     '#ff0000', '#fffc00', '#00ac27', '#ffdd00', '#D3D3D3', '#FFD700FF'
+                 ],
+                 label: 'Name'
+             }],
+             labels: {{ labels|safe }}
+         },
+         options: {
+             responsive: true
+         }
+     };
 
-    var config = {
-      type: 'bar',
-      data: {
-        datasets: [{
-          data: {{ data|safe }},
-          backgroundColor: [
-            '#696969', '#808080', '#A9A9A9', '#C0C0C0', '#D3D3D3'
-          ],
-          label: 'Name'
-        }],
-        labels: {{ labels|safe }}
-      },
-      options: {
-        responsive: true
-      }
-    };
+     window.onload = function() {
+         var chartdata = document.getElementById('dashboard_pie_chart').getContext('2d');
+         window.myPie = new Chart(chartdata, config);
+     };
 
-    window.onload = function() {
-     var chartdata = document.getElementById('dashboard-pie-chart').getContext('2d');
-      window.myPie = new Chart(chartdata, config);
-    };
-
-  </script>
+    </script>
 
 {% endblock %}
-
-

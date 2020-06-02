@@ -12,5 +12,5 @@ class Budget(models.Model):
     user = models.ForeignKey("auth.User", on_delete=models.CASCADE)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True)
 
-
-
+    def __str__(self):
+        return str(self.name)

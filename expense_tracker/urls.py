@@ -27,7 +27,8 @@ from dashboard import views
 from . import views
 
 urlpatterns = [
-    path("", views.index, name="index"),
+    # path("", views.index, name="index"),
+    path("", include("dashboard.urls")),
     path("category/", include("category.urls")),
     path("budget/", include("budget.urls")),
     path("admin/", admin.site.urls),
@@ -50,5 +51,4 @@ urlpatterns = [
     path("", include("django.contrib.auth.urls")),
     path("transaction/", include("transaction_expense.urls")),
     path("payment/", include("payment.urls")),
-    path("dashboard_pie_chart/", views.dashboard_pie_chart, name='dashboard-pie-chart'),
 ]
