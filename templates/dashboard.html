@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-8">
+                <div id="container" style="width: 100%;">
+                    <canvas id="dashboard_pie_chart"></canvas>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="card border-primary mb-3" style="max-width: 18rem;">
+                    <div class="card-header bg-primary text-white">TOTAL BUDGET </div>
+                    <div class="card-body text-primary">
+                        <h1 class="card-title">{{ total_budget }} CHF</h1>
+                    </div>
+                </div>
+                <div class="card border-success mb-3" style="max-width: 18rem;">
+                    <div class="card-header bg-success text-white">BUDGET LEFT {{ month }} {{ year }}</div>
+                    <div class="card-body text-success">
+                        <h1 class="card-title">{{ transactions }} CHF</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row pt-5">
+            <div class="col-8">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Date</th>
+                            <th scope="col">Amount</th>
+                            <th scope="col">User</th>
+                            <th scope="col">Payment</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Category</th>
+                            <th scope="col">
+                                <a href="../transaction/add">
+                                    <i class="far fa-plus-square"></i>
+                                </a>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for transaction in transaction_queryset %}
+                            <tr>
+                                <td>{{ transaction.date | date:"Y-m-d" }}</td>
+                                <td>{{ transaction.amount }}</td>
+                                <td>{{ transaction.user }}</td>
+                                {% if transaction.payment.type == 'CASH'%}
+                                    <td><i class="far fa-money-bill-alt"></i></td>
+                                {% elif transaction.payment.type == 'VISA' %}
+                                    <td><i class="fab fa-cc-visa"></i></td>
+                                {% elif transaction.payment.type == 'MASTERCARD' %}
+                                    <td><i class="fab fa-cc-mastercard"></i></td>
+                                {% endif %}
+                                <td>{{ transaction.description }}</td>
+                                <td>{{ transaction.category }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="col-4">
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+
+     var config = {
+         type: 'bar',
+         data: {
+             datasets: [{
+                 data: {{ data|safe }},
+                 backgroundColor: [
+                     '#ff0000', '#fffc00', '#00ac27', '#ffdd00', '#D3D3D3', '#FFD700FF'
+                 ],
+                 label: 'Name'
+             }],
+             labels: {{ labels|safe }}
+         },
+         options: {
+             responsive: true
+         }
+     };
+
+     window.onload = function() {
+         var chartdata = document.getElementById('dashboard_pie_chart').getContext('2d');
+         window.myPie = new Chart(chartdata, config);
+     };
+
+    </script>
+
+{% endblock %}

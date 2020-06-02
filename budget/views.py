@@ -22,15 +22,24 @@ budget_left is the difference between the total budget and all transactions of t
 """
 
 
-def budget_pie_chart(request):
+def budget_pie_chart_data(request):
     data = {}
     today = datetime.date.today()
-    month = today.strftime('%B')
-    year = today.strftime('%Y')
-    total_budget = Budget.objects.filter(user=request.user).aggregate(Sum("amount"))['amount__sum']
-    total_transactions = Transaction_Expense.objects.filter(user=request.user).filter(date__year=today.year,date__month=today.month).aggregate(Sum("amount"))['amount__sum'] or 0.00
+    month = today.strftime("%B")
+    year = today.strftime("%Y")
+    total_budget = Budget.objects.filter(user=request.user).aggregate(Sum("amount"))[
+        "amount__sum"
+    ]
+    total_transactions = (
+        Transaction_Expense.objects.filter(user=request.user)
+        .filter(date__year=today.year, date__month=today.month)
+        .aggregate(Sum("amount"))["amount__sum"]
+        or 0.00
+    )
     budget_left = decimal.Decimal(total_budget) - total_transactions
-    queryset = Budget.objects.filter(user=request.user).values("amount", "category_id", "name")
+    queryset = Budget.objects.filter(user=request.user).values(
+        "amount", "category_id", "name"
+    )
     for budget in queryset:
         name = budget["name"]
 
@@ -44,14 +53,18 @@ def budget_pie_chart(request):
         return_labels.append(key)
         return_data.append(value)
 
-    return render(request, 'budget_pie_chart.html', {
+    return {
         "labels": return_labels,
         "data": return_data,
-        "total_budget" : total_budget,
-        "transactions" : budget_left,
-        "month" : month,
-        "year" : year,
-    })
+        "total_budget": total_budget,
+        "transactions": budget_left,
+        "month": month,
+        "year": year,
+    }
+
+
+def budget_pie_chart(request):
+    return render(request, "budget_pie_chart.html", budget_pie_chart_data(request))
 
 
 # https://docs.djangoproject.com/en/3.0/ref/class-based-views/generic-editing/
@@ -72,7 +85,6 @@ class BudgetCreateView(CreateView):
         form_to_save = form.save(commit=False)
         form_to_save.user = self.request.user
         return super(BudgetCreateView, self).form_valid(form)
-
 
 
 class BudgetListView(ListView):
@@ -110,9 +122,7 @@ class BudgetEditView(UpdateView):
         return form
 
     def get_object(self, *args, **kwargs):
-        budget_found = super(BudgetEditView, self).get_object(
-            *args, **kwargs
-        )
+        budget_found = super(BudgetEditView, self).get_object(*args, **kwargs)
         if not budget_found.user == self.request.user:
             raise Http404
         return budget_found
