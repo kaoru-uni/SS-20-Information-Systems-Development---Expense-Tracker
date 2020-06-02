@@ -1,38 +1,31 @@
 from django.shortcuts import render
 from django.views.generic import ListView
-
-from dashboard.models import Category
+from django.db.models import Count
+from budget.models import Budget
 from django.views.generic.edit import CreateView
 
 
-# Create your views here.
-
-
 def dashboard_pie_chart(request):
-    labels = []
-    data = []
+    data = {}
 
-    queryset = Category.objects.filter(user=request.user).values('name').annotate(budget_sum=Sum('amount')).order_by(
-        '-amount')
-    for category in queryset:
-        labels.append(category['name'])
-        data.append(category['amount'])
+    queryset = Budget.objects.filter(user=request.user).values(
+        "name", "category", "amount"
+    )
 
-    return render(request, 'pie_chart.html', {
-        'labels': labels,
-        'data': data,
-    })
+    for budget in queryset:
+        name = budget["name"]
 
+        if name not in data:
+            data[name] = budget["amount"]
+        else:
+            data[name] += budget["amount"]
 
-class DashboardCreateView(CreateView):
-    model = Category
-    fields = ("name", "amount")
-    success_url = "/dashboard"
-    template_name = "pie_chart1.html"
+    return_labels = []
+    return_data = []
+    for key, value in data.items():
+        return_labels.append(key)
+        return_data.append(value)
 
-    class DashboardListView(ListView):
-        model = Category
-        template_name = "pie_chart1.html"
-
-        def get_queryset(self):
-            return Category.objects.filter(user=self.request.user)
+    return render(
+        request, "pie_chart1.html", {"labels": return_labels, "data": return_data,}
+    )
