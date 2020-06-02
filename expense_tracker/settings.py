@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'register.apps.RegisterConfig',
     'transaction_expense.apps.TransactionExpenseConfig',
     'user_profile_setting.apps.UserProfileSettingConfig',
+    'dashboard.apps.DashboardConfig',
+
 ]
 
 MIDDLEWARE = [

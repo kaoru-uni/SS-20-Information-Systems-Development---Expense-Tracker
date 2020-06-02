@@ -17,7 +17,8 @@ def budget_pie_chart(request):
     labels = []
     data = []
 
-    query = Budget.objects.filter(user=request.user).values('name').annotate(budget_sum=Sum('amount')).order_by('-amount')
+    query = Budget.objects.filter(user=request.user).values('name').annotate(budget_sum=Sum('amount')).order_by(
+        '-amount')
     for entry in query:
         labels.append(entry['name'])
         data.append(entry['amount'])
@@ -47,7 +48,6 @@ class BudgetCreateView(CreateView):
         form_to_save = form.save(commit=False)
         form_to_save.user = self.request.user
         return super(BudgetCreateView, self).form_valid(form)
-
 
 
 class BudgetListView(ListView):

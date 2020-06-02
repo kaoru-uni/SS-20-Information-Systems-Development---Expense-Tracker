@@ -4,6 +4,7 @@ from django.db import models
 from django.db import models
 from django.contrib.auth.models import User
 
+
 # https://docs.djangoproject.com/en/3.0/ref/models/fields/#choices
 class Payment(models.Model):
     VISA = "VISA"
@@ -14,7 +15,7 @@ class Payment(models.Model):
         (VISA, "Visa"),
         (MASTERCARD, "Mastercard"),
     ]
-    type = models.CharField(max_length=50, choices=PAYMENT_TYPE, default=CASH,)
+    type = models.CharField(max_length=50, choices=PAYMENT_TYPE, default=CASH, )
     date = models.DateTimeField()
     description = models.CharField(max_length=100, default="")
     amount = models.DecimalField(max_digits=19, decimal_places=2)
