@@ -64,7 +64,7 @@ def budget_pie_chart_data(request):
 
 
 def budget_pie_chart(request):
-    return render(request, "budget_pie_chart.html", budget_pie_chart_data(request))
+    return render(request, "budget/budget_pie_chart.html", budget_pie_chart_data(request))
 
 
 # https://docs.djangoproject.com/en/3.0/ref/class-based-views/generic-editing/
@@ -72,7 +72,7 @@ class BudgetCreateView(CreateView):
     model = Budget
     fields = ("name", "amount", "description", "category")
     success_url = "/budget"
-    template_name = "budget_add.html"
+    template_name = "budget/budget_add.html"
 
     def get_form(self, *args, **kwargs):
         form = super(BudgetCreateView, self).get_form(*args, **kwargs)
@@ -89,7 +89,7 @@ class BudgetCreateView(CreateView):
 
 class BudgetListView(ListView):
     model = Budget
-    template_name = "budget.html"
+    template_name = "budget/budget.html"
 
     def get_queryset(self):
         return Budget.objects.filter(user=self.request.user)
@@ -112,7 +112,7 @@ class BudgetEditView(UpdateView):
     model = Budget
     fields = ("name", "amount", "description", "category")
     success_url = "/budget"
-    template_name = "budget_add.html"
+    template_name = "budget/budget_add.html"
 
     def get_form(self, *args, **kwargs):
         form = super(BudgetEditView, self).get_form(*args, **kwargs)

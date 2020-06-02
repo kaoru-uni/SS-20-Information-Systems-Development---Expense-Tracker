@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+{% block content %}
+
+    <div class="wrapper">
+        <header class="header">Header</header>
+        <article class="main">
+            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum
+                tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas
+                semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+        </article>
+        <aside class="aside aside-1">Aside 1</aside>
+        <aside class="aside aside-2">Aside 2</aside>
+        <footer class="footer">Footer</footer>
+    </div>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="card-columns">
+                    <div class="card border-primary mb-2" style="max-width: 18rem;">
+                        <div class="card-header bg-primary text-white">TOTAL BUDGET</div>
+                        <div class="card-body text-primary">
+                            <h1 class="card-title">{{ total_budget }} CHF</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                {% if transactions >= 0 %}
+                    <div class="card border-success mb-2" style="max-width: 18rem;">
+                    <div class="card-header bg-success text-white">BUDGET LEFT {{ month }} {{ year }}</div>
+                    <div class="card-body text-success">
+                {% elif transactions < 0 %}
+                    <div class="card border-danger mb-2" style="max-width: 18rem;">
+                    <div class="card-header bg-danger text-white">BUDGET LEFT {{ month }} {{ year }}</div>
+                    <div class="card-body text-danger">
+                {% endif %}
+                <h1 class="card-title">{{ transactions }} CHF</h1>
+                </div>
+                </div>
+                </div>
+                </div>
+            </div>
+
+            <div id="container" style="width: 100%;">
+                <canvas id="budget_pie_chart"></canvas>
+            </div>
+
+            <script>
+                var config = {
+                    type: 'pie',
+                    data: {
+                        datasets: [{
+                            data: {{ data|safe }},
+                            backgroundColor: [
+                                '#ff0000', '#fffc00', '#00ac27', '#ffdd00', '#D3D3D3', '#FFD700FF'
+                            ],
+                            label: 'Budget'
+                        }],
+                        labels: {{ labels|safe }}
+                    },
+                    options: {
+                        responsive: true
+                    }
+                };
+                window.onload = function () {
+                    var chartdata = document.getElementById('budget_pie_chart').getContext('2d');
+                    window.myPie = new Chart(chartdata, config);
+                };
+            </script>
+{% endblock %}
