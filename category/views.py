@@ -10,7 +10,7 @@ class CategoryCreateView(CreateView):
         model = Category
         fields = ['name']
         success_url = "/category"
-        template_name = "add.html"
+        template_name = "category/category_add.html"
         def form_valid(self, form):
             form_to_save = form.save(commit=False)
             form_to_save.user = self.request.user
@@ -19,7 +19,7 @@ class CategoryCreateView(CreateView):
 
 class CategoryListView(ListView):
     model = Category
-    template_name = "category.html"
+    template_name = "category/category.html"
 
     def get_queryset(self):
         return Category.objects.filter(user=self.request.user)
@@ -41,7 +41,7 @@ class CategoryEditView(UpdateView):
     model = Category
     fields = ("name",)
     success_url = "/category"
-    template_name = "add.html"
+    template_name = "category/category_add.html"
 
     def get_object(self, *args, **kwargs):
         category_found = super(CategoryEditView, self).get_object(
