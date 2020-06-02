@@ -26,6 +26,8 @@ def budget_pie_chart(request):
     labels = []
     data = []
     today = datetime.date.today()
+    month = today.strftime('%B')
+    year = today.strftime('%Y')
     total_budget = Budget.objects.filter(user=request.user).aggregate(Sum("amount"))['amount__sum'] or 0.00
     total_transactions = Transaction_Expense.objects.filter(user=request.user).filter(date__year=today.year,date__month=today.month).aggregate(Sum("amount"))['amount__sum'] or 0.00
     query = Budget.objects.filter(user=request.user).values('name','amount').annotate(budget_sum=Sum('amount')).order_by('-amount')
@@ -35,10 +37,12 @@ def budget_pie_chart(request):
         data.append(entry['amount'])
 
     return render(request, 'budget_pie_chart.html', {
-        'labels': labels,
-        'data': data,
-        'total_budget' : total_budget,
+        "labels": labels,
+        "data": data,
+        "total_budget" : total_budget,
         "transactions" : budget_left,
+        "month" : month,
+        "year" : year,
     })
 
 
