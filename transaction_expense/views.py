@@ -112,4 +112,4 @@ def transaction_expense_pie_chart(request):
         labels.append(f"{transaction.category}, {transaction.date.date()}")
         data.append(str(transaction.amount))
 
-    return render(request, "pie_chart.html", {"labels": labels, "data": data,})
+    return render(request, "pie_chart.html", {"labels": labels, "data": data, })
