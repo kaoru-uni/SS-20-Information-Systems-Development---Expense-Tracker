@@ -20,7 +20,7 @@ class DateInput(forms.DateInput):
 class PaymentForm(forms.ModelForm):
     class Meta:
         model = Payment
-        fields = ("type", "description", "date", "amount")
+        fields = ("type", "description", "date")
         widgets = {"date": DateInput()}
 
 

@@ -15,7 +15,7 @@ class DateInput(forms.DateInput):
 class TransactionExpenseForm(forms.ModelForm):
     class Meta:
         model = Transaction_Expense
-        fields = ("date", "amount", "family", "category", "payment")
+        fields = ("date", "amount", "description", "category", "payment")
         widgets = {"date": DateInput()}
 
 

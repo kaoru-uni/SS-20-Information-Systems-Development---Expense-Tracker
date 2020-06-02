@@ -12,7 +12,7 @@ A transaction can be made by a family member.
 class Transaction_Expense(models.Model):
     date = models.DateTimeField()
     amount = models.DecimalField(max_digits=19, decimal_places=2)
-    family = models.BooleanField()
+    description = models.CharField(max_length=200, default="")
     user = models.ForeignKey("auth.User", on_delete=models.CASCADE)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True)
     payment = models.ForeignKey(Payment, on_delete=models.CASCADE, null=True)
