@@ -8,5 +8,5 @@ urlpatterns = [
     path("budget_add/", BudgetCreateView.as_view(), name="add_budget"),
     path("<int:pk>/budgetedit", BudgetEditView.as_view(), name="edit_budget"),
     path("<int:pk>/budgetdelete", BudgetDeleteView.as_view()),
-    path("", views.budget_pie_chart, name="budget-pie-chart"),
+    path("", views.budget_pie_chart_data, name="budget-pie-chart"),
 ]
