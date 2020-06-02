@@ -23,29 +23,35 @@ budget_left is the difference between the total budget and all transactions of t
 
 
 def budget_pie_chart(request):
-    labels = []
-    data = []
+    data = {}
     today = datetime.date.today()
     month = today.strftime('%B')
     year = today.strftime('%Y')
-    total_budget = Budget.objects.filter(user=request.user).aggregate(Sum("amount"))['amount__sum'] or 0.00
+    total_budget = Budget.objects.filter(user=request.user).aggregate(Sum("amount"))['amount__sum']
     total_transactions = Transaction_Expense.objects.filter(user=request.user).filter(date__year=today.year,date__month=today.month).aggregate(Sum("amount"))['amount__sum'] or 0.00
     budget_left = decimal.Decimal(total_budget) - total_transactions
-    query = Budget.objects.filter(user=request.user).values("amount", "category_id").annotate(
-        dcount=Count("category_id")).order_by("amount")
-    for entry in query:
-        labels.append(entry['category_id'])
-        data.append(entry['amount'])
+    queryset = Budget.objects.filter(user=request.user).values("amount", "category_id", "name")
+    for budget in queryset:
+        name = budget["name"]
+
+        if name not in data:
+            data[name] = budget["amount"]
+        else:
+            data[name] += budget["amount"]
+    return_labels = []
+    return_data = []
+    for key, value in data.items():
+        return_labels.append(key)
+        return_data.append(value)
 
     return render(request, 'budget_pie_chart.html', {
-        "labels": labels,
-        "data": data,
+        "labels": return_labels,
+        "data": return_data,
         "total_budget" : total_budget,
         "transactions" : budget_left,
         "month" : month,
         "year" : year,
     })
-
 
 
 # https://docs.djangoproject.com/en/3.0/ref/class-based-views/generic-editing/
