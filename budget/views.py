@@ -1,23 +1,35 @@
+from typing import Any, Union
+
 from django.db.models import Sum
 from django.http import Http404
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic import View, ListView
 from budget.models import Budget
+from transaction_expense.models import Transaction_Expense
 from django.shortcuts import render
 from category.models import Category
+import datetime
+import decimal
 
 """
-home view ist the main view page with the chart
 https://simpleisbetterthancomplex.com/tutorial/2020/01/19/how-to-use-chart-js-with-django.html
 https://stackoverflow.com/questions/47501469/django-filtering-by-user/47502441
+https://stackoverflow.com/questions/19138609/django-aggreagtion-sum-return-value-only/37751814
+https://docs.djangoproject.com/en/3.0/ref/models/querysets/#month
+https://stackoverflow.com/questions/1416830/django-actual-month-in-queryset
+total_budget sums up all budget of a user. 
+budget_left is the difference between the total budget and all transactions of the current month. 
 """
 
 
 def budget_pie_chart(request):
     labels = []
     data = []
-
-    query = Budget.objects.filter(user=request.user).values('name').annotate(budget_sum=Sum('amount')).order_by('-amount')
+    today = datetime.date.today()
+    total_budget = Budget.objects.filter(user=request.user).aggregate(Sum("amount"))['amount__sum'] or 0.00
+    total_transactions = Transaction_Expense.objects.filter(user=request.user).filter(date__year=today.year,date__month=today.month).aggregate(Sum("amount"))['amount__sum'] or 0.00
+    query = Budget.objects.filter(user=request.user).values('name','amount').annotate(budget_sum=Sum('amount')).order_by('-amount')
+    budget_left = decimal.Decimal(total_budget) - total_transactions
     for entry in query:
         labels.append(entry['name'])
         data.append(entry['amount'])
@@ -25,8 +37,10 @@ def budget_pie_chart(request):
     return render(request, 'budget_pie_chart.html', {
         'labels': labels,
         'data': data,
-
+        'total_budget' : total_budget,
+        "transactions" : budget_left,
     })
+
 
 
 # https://docs.djangoproject.com/en/3.0/ref/class-based-views/generic-editing/

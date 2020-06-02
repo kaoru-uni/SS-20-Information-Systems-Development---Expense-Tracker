@@ -1,9 +1,29 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <div id="container" style="width: 75%;">
+
+<div class="card-columns">
+    <div class="card border-primary mb-3" style="max-width: 18rem;">
+      <div class="card-header bg-primary text-white">TOTAL BUDGET </div>
+      <div class="card-body text-primary">
+        <h1 class="card-title">{{ total_budget }} CHF</h1>
+      </div>
+    </div>
+    <div class="card border-success mb-3" style="max-width: 18rem;">
+      <div class="card-header bg-success text-white">BUDGET LEFT THIS MONTH</div>
+      <div class="card-body text-success">
+        <h1 class="card-title">{{ transactions }} CHF</h1>
+      </div>
+    </div>
+</div>
+
+
+
+  <div id="container" style="width: 100%;">
     <canvas id="budget_pie_chart"></canvas>
   </div>
+
+
 
   <script>
 
@@ -30,5 +50,8 @@
     };
 
   </script>
+
+
+
 
 {% endblock %}
