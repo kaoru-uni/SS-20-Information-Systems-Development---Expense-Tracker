@@ -20,11 +20,12 @@ budget_left is the difference between the total budget and all transactions of t
 """
 
 
-def budget_pie_chart_data(request):
+def budget_pie_chart(request):
     data = {}
     today = datetime.date.today()
     month = today.strftime("%B")
     year = today.strftime("%Y")
+    budget_data = Budget.objects.filter(user=request.user)
     total_budget = Budget.objects.filter(user=request.user).aggregate(Sum("amount"))[
         "amount__sum"
     ]
@@ -54,18 +55,23 @@ def budget_pie_chart_data(request):
         return_labels.append(key)
         return_data.append(value)
 
-    return {
+    return render(
+        request,
+        "budget/budget.html",
+        {
         "labels": return_labels,
         "data": return_data,
         "total_budget": total_budget,
         "transactions": budget_left,
         "month": month,
         "year": year,
-    }
+        "budget_data" : budget_data,
+        },
+    )
 
 
-def budget_pie_chart(request):
-    return render(request, "budget/budget_pie_chart.html", budget_pie_chart_data(request))
+def budget(request):
+    return render(request, "budget/budget.html", budget_pie_chart(request))
 
 
 # https://docs.djangoproject.com/en/3.0/ref/class-based-views/generic-editing/
@@ -86,14 +92,6 @@ class BudgetCreateView(CreateView):
         form_to_save = form.save(commit=False)
         form_to_save.user = self.request.user
         return super(BudgetCreateView, self).form_valid(form)
-
-
-class BudgetListView(ListView):
-    model = Budget
-    template_name = "budget/budget.html"
-
-    def get_queryset(self):
-        return Budget.objects.filter(user=self.request.user)
 
 
 class BudgetDeleteView(DeleteView):
