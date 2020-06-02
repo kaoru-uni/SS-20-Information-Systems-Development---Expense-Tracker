@@ -70,15 +70,21 @@
 
     <script>
 
+     // https://www.chartjs.org/docs/latest/?h=backgroundcolor
      var config = {
          type: 'bar',
          data: {
              datasets: [{
                  data: {{ data|safe }},
                  backgroundColor: [
-                     '#ff0000', '#fffc00', '#00ac27', '#ffdd00', '#D3D3D3', '#FFD700FF'
+                     'rgba(255, 99, 132, 0.2)',
+                     'rgba(54, 162, 235, 0.2)',
+                     'rgba(255, 206, 86, 0.2)',
+                     'rgba(75, 192, 192, 0.2)',
+                     'rgba(153, 102, 255, 0.2)',
+                     'rgba(255, 159, 64, 0.2)'
                  ],
-                 label: 'Name'
+                 label: 'This months expenses'
              }],
              labels: {{ labels|safe }}
          },

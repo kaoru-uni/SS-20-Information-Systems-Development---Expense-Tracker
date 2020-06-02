@@ -5,42 +5,45 @@ from budget.models import Budget
 from transaction_expense.models import Transaction_Expense
 from django.views.generic.edit import CreateView
 from budget.views import budget_pie_chart_data
+import datetime
+from calendar import monthrange
 
-
+# https://docs.djangoproject.com/en/3.0/ref/models/querysets/#month
+# https://stackoverflow.com/questions/4938429/how-do-we-determine-the-number-of-days-for-a-given-month-in-python
 def dashboard_pie_chart(request):
-    data = {}
-
-    queryset = Budget.objects.filter(user=request.user).values(
-        "name", "category", "amount"
-    )
-
-    for budget in queryset:
-        name = budget["name"]
-
-        if name not in data:
-            data[name] = budget["amount"]
-        else:
-            data[name] += budget["amount"]
-
-    return_labels = []
-    return_data = []
-    for key, value in data.items():
-        return_labels.append(key)
-        return_data.append(value)
-
     budget_data = budget_pie_chart_data(request)
 
+    today = datetime.date.today()
     transaction_queryset = Transaction_Expense.objects.filter(
-        user=request.user
-    ).order_by("-date")[:5]
-    print("transaction_queryset: ", transaction_queryset)
+        user=request.user, date__iso_year=today.year, date__month=today.month
+    ).order_by("-date")
+
+    this_month_in_days = monthrange(today.year, today.month)
+
+    data = {}
+    for item in transaction_queryset:
+        if item.date.day not in data:
+            data[item.date.day] = item.amount
+        else:
+            data[item.date.day] += item.amount
+
+    transaction_days_label = []
+    transaction_days_data = []
+
+    for day in range(1, this_month_in_days[1] + 1):
+        if day in data:
+            transaction_days_label.append(day)
+            transaction_days_data.append(str(data[day]))
+        else:
+            transaction_days_label.append(day)
+            transaction_days_data.append(str(0))
 
     return render(
         request,
         "dashboard.html",
         {
-            "labels": return_labels,
-            "data": return_data,
+            "labels": transaction_days_label,
+            "data": transaction_days_data,
             "total_budget": budget_data["total_budget"],
             "transactions": budget_data["transactions"],
             "year": budget_data["year"],
