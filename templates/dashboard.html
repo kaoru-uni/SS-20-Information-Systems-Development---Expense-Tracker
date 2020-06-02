@@ -15,12 +15,21 @@
                         <h1 class="card-title">{{ total_budget }} CHF</h1>
                     </div>
                 </div>
-                <div class="card border-success mb-3" style="max-width: 18rem;">
-                    <div class="card-header bg-success text-white">BUDGET LEFT {{ month }} {{ year }}</div>
-                    <div class="card-body text-success">
-                        <h1 class="card-title">{{ transactions }} CHF</h1>
+                {% if transactions >= 0 %}
+                    <div class="card border-success mb-3" style="max-width: 18rem;">
+                        <div class="card-header bg-success text-white">BUDGET LEFT {{ month }} {{ year }}</div>
+                        <div class="card-body text-success">
+                            <h1 class="card-title">{{ transactions }} CHF</h1>
+                        </div>
                     </div>
-                </div>
+                {% elif transactions < 0 %}
+                    <div class="card border-danger mb-3" style="max-width: 18rem;">
+                        <div class="card-header bg-danger text-white">BUDGET LEFT {{ month }} {{ year }}</div>
+                        <div class="card-body text-danger">
+                            <h1 class="card-title">{{ transactions }} CHF</h1>
+                        </div>
+                    </div>
+                {% endif %}
             </div>
         </div>
         <div class="row pt-5">
