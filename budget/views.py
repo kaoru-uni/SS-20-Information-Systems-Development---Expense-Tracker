@@ -1,3 +1,4 @@
+from django.db.models import Sum
 from django.http import Http404
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic import View, ListView
@@ -16,10 +17,10 @@ def budget_pie_chart(request):
     labels = []
     data = []
 
-    query = Budget.objects.filter(user=request.user).order_by('amount')
-    for budget in query:
-        labels.append(budget.name)
-        data.append(budget.amount)
+    query = Budget.objects.filter(user=request.user).values('name').annotate(budget_sum=Sum('amount')).order_by('-amount')
+    for entry in query:
+        labels.append(entry['name'])
+        data.append(entry['amount'])
 
     return render(request, 'budget_pie_chart.html', {
         'labels': labels,
