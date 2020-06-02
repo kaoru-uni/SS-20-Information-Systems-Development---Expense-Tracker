@@ -67,6 +67,8 @@ We are making an exception in this case.
 
 [Bootstrap](https://getbootstrap.com/docs/4.4/getting-started/introduction/)
 
+[Chart.js](https://www.chartjs.org/docs/latest/)
+
 [Font Awesome](https://fontawesome.com)
 
 # Sources
