@@ -24,7 +24,7 @@ class TransactionExpenseListView(ListView):
     template_name = "transactions.html"
 
     def get_queryset(self):
-        return Transaction_Expense.objects.filter(user=self.request.user)
+        return Transaction_Expense.objects.filter(user=self.request.user).order_by("-date")
 
 
 # https://stackoverflow.com/questions/10382838/how-to-set-foreignkey-in-createview
