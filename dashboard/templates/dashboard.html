@@ -33,7 +33,7 @@
             </div>
         </div>
         <div class="row pt-5">
-            <div class="col-md-8 table-responsive">
+            <div class="col-md-12 table-responsive">
                 <table class="table">
                     <thead>
                         <tr>
@@ -45,7 +45,7 @@
                             <th scope="col">Category</th>
                             <th scope="col">
                                 <a href="../transaction/add">
-                                    <i class="far fa-plus-square"></i>
+                                    <i class="far fa-plus-square" style="color:#03ab30;"></i>
                                 </a>
                             </th>
                         </tr>
@@ -54,7 +54,7 @@
                         {% for transaction in transaction_queryset %}
                             <tr>
                                 <td>{{ transaction.date | date:"Y-m-d" }}</td>
-                                <td>{{ transaction.amount }}</td>
+                                <td>{{ transaction.amount }} CHF</td>
                                 <td>{{ transaction.user }}</td>
                                 {% if transaction.payment.type == 'CASH'%}
                                     <td><i class="far fa-money-bill-alt"></i></td>
