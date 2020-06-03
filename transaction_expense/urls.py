@@ -6,14 +6,27 @@ from .views import (
     TransactionExpenseEditView,
     TransactionExpenseDeleteView,
 )
+from django.contrib.auth.decorators import login_required
+
+# https://stackoverflow.com/questions/28555260/django-login-required-for-class-views
 
 
 urlpatterns = [
-    path("", TransactionExpenseListView.as_view(), name="transactions"),
-    path("add/", TransactionExpenseCreateView.as_view(), name="add_transaction"),
+    path("", login_required(TransactionExpenseListView.as_view()), name="transactions"),
     path(
-        "<int:pk>/edit", TransactionExpenseEditView.as_view(), name="edit_transaction"
+        "add/",
+        login_required(TransactionExpenseCreateView.as_view()),
+        name="add_transaction",
     ),
-    path("<int:pk>/delete", TransactionExpenseDeleteView.as_view()),
-    path("pie_chart/", views.transaction_expense_pie_chart, name="pie-chart"),
+    path(
+        "<int:pk>/edit",
+        login_required(TransactionExpenseEditView.as_view()),
+        name="edit_transaction",
+    ),
+    path("<int:pk>/delete", login_required(TransactionExpenseDeleteView.as_view())),
+    path(
+        "pie_chart/",
+        login_required(views.transaction_expense_pie_chart),
+        name="pie-chart",
+    ),
 ]

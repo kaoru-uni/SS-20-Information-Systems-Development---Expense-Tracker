@@ -11,6 +11,7 @@
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <script src="https://kit.fontawesome.com/b1f3d5ece6.js" crossorigin="anonymous"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         {% load static %}
 
@@ -22,8 +23,8 @@
         <title>Expense Tracker - Team: Alexandra, Kaoru, Gerhard</title>
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-            <a class="navbar-brand" href="#">
+        <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+            <a class="navbar-brand" href="/">
                 <img src="/static/expense_tracker/logo_small.png" alt="">
                 EXPENSIO
             </a>
@@ -32,7 +33,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-item nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-item nav-link" href="/dashboard">Dashboard</a>
                     <a class="nav-item nav-link" href="/transaction">Transactions</a>
                     <a class="nav-item nav-link" href="/budget">Budget</a>
                     <a class="nav-item nav-link" href="/category">Category</a>
@@ -61,4 +62,19 @@
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     </body>
+
+
+<div class="footer-dark navbar fixed-bottom navbar-dark bg-dark">
+    <footer class="footer">
+      <div class="container">
+        <span class="text-white">
+            <p class="copyright">EXPENSIO ©2020</p>
+        </span>
+      </div>
+    </footer>
+</div>
+
+
+
+
 </html>

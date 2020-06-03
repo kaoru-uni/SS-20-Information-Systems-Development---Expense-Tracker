@@ -2,43 +2,50 @@
 
 {% block content %}
     <a href="/payment/add" class="btn btn-primary active" role="button" aria-pressed="true">Add Payment method</a>
-    <br>
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">Card type</th>
-                <th scope="col">Description</th>
-                <th scope="col">Date</th>
-                <th scope="col" class="text-right">Edit</th>
-                <th scope="col">Delete</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for payment in object_list %}
-                <tr>
-                    {% if payment.type == 'CASH'%}
-                        <td><i class="far fa-money-bill-alt"></i></td>
-                    {% elif payment.type == 'VISA' %}
-                        <td><i class="fab fa-cc-visa"></i></td>
-                    {% elif payment.type == 'MASTERCARD' %}
-                        <td><i class="fab fa-cc-mastercard"></i></td>
-                    {% endif %}
-                    <td>{{ payment.description }}</td>
-                    <td>{{ payment.date | date:"Y-m-d" }}</td>
-                    <td class="text-right">
-                        <a href="{{ payment.id  }}/edit">
-                            <i class="far fa-edit"></i>
-                        </a>
-                    </td>
-                    <td>
-                        <a href="{{ payment.id  }}/delete">
-                            <i class="far fa-trash-alt"></i>
-                        </a>
-                    </td>
+    <div class="row pt-5">
+        <div class="table-responsive">
 
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Card type</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Date</th>
+                        <th scope="col" class="text-right">Edit</th>
+                        <th scope="col">Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for payment in object_list %}
+                        <tr>
+                            {% if payment.type == 'CASH'%}
+                                <td><i class="far fa-money-bill-alt"></i></td>
+                            {% elif payment.type == 'VISA' %}
+                                <td><i class="fab fa-cc-visa"></i></td>
+                            {% elif payment.type == 'MASTERCARD' %}
+                                <td><i class="fab fa-cc-mastercard"></i></td>
+                            {% elif payment.type == 'BANK' %}
+                                <td><i class="fas fa-university"></i></td>
+                            {% elif payment.type == 'CRYPTO' %}
+                                <td><i class="fab fa-bitcoin"></i></td>
+                            {% endif %}
+                            <td>{{ payment.description }}</td>
+                            <td>{{ payment.date | date:"Y-m-d" }}</td>
+                            <td class="text-right">
+                                <a href="{{ payment.id  }}/edit">
+                                    <i class="far fa-edit"></i>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="{{ payment.id  }}/delete">
+                                    <i class="far fa-trash-alt"></i>
+                                </a>
+                            </td>
 
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 {% endblock content %}

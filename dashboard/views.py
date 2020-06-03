@@ -51,3 +51,4 @@ def dashboard_pie_chart(request):
             "transaction_queryset": transaction_queryset,
         },
     )
+

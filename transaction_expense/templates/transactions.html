@@ -3,50 +3,58 @@
 {% block content %}
     <a href="/transaction/add" class="btn btn-primary active" role="button" aria-pressed="true">Add Expense</a>
     <a href="/transaction/pie_chart" class="btn btn-primary active" role="button" aria-pressed="true">Show Barchart</a>
-    <br>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">Date</th>
-                <th scope="col">Amount</th>
-                <th scope="col">User</th>
-                <th scope="col">Payment</th>
-                <th scope="col">Description</th>
-                <th scope="col">Category</th>
-                <th scope="col" class="text-right">Edit</th>
-                <th scope="col">Delete</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for transaction in object_list %}
-                <tr>
-                    <td>{{ transaction.date | date:"Y-m-d" }}</td>
-                    <td>{{ transaction.amount }}</td>
-                    <td>{{ transaction.user }}</td>
-                    {% if transaction.payment.type == 'CASH'%}
-                        <td><i class="far fa-money-bill-alt"></i></td>
-                    {% elif transaction.payment.type == 'VISA' %}
-                        <td><i class="fab fa-cc-visa"></i></td>
-                    {% elif transaction.payment.type == 'MASTERCARD' %}
-                        <td><i class="fab fa-cc-mastercard"></i></td>
-                    {% endif %}
-                    <td>{{ transaction.description }}</td>
-                    <td>{{ transaction.category }}</td>
-                    <td class="text-right">
-                        <a href="{{ transaction.id  }}/edit">
-                            <i class="far fa-edit"></i>
-                        </a>
-                    </td>
-                    <td>
-                        <a href="{{ transaction.id  }}/delete">
-                            <i class="far fa-trash-alt"></i>
-                        </a>
-                    </td>
+    <div class="row pt-5">
+        <div class="table-responsive">
 
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Date</th>
+                        <th scope="col">Amount</th>
+                        <th scope="col">User</th>
+                        <th scope="col">Payment</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Category</th>
+                        <th scope="col" class="text-right">Edit</th>
+                        <th scope="col">Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for transaction in object_list %}
+                        <tr>
+                            <td>{{ transaction.date | date:"Y-m-d" }}</td>
+                            <td>{{ transaction.amount }}</td>
+                            <td>{{ transaction.user }}</td>
+                            {% if transaction.payment.type == 'CASH'%}
+                                <td><i class="far fa-money-bill-alt"></i></td>
+                            {% elif transaction.payment.type == 'VISA' %}
+                                <td><i class="fab fa-cc-visa"></i></td>
+                            {% elif transaction.payment.type == 'MASTERCARD' %}
+                                <td><i class="fab fa-cc-mastercard"></i></td>
+                            {% elif transaction.payment.type == 'BANK' %}
+                                <td><i class="fas fa-university"></i></td>
+                            {% elif transaction.payment.type == 'CRYPTO' %}
+                                <td><i class="fab fa-bitcoin"></i></td>
+                            {% endif %}
+                            <td>{{ transaction.description }}</td>
+                            <td>{{ transaction.category }}</td>
+                            <td class="text-right">
+                                <a href="{{ transaction.id  }}/edit">
+                                    <i class="far fa-edit"></i>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="{{ transaction.id  }}/delete">
+                                    <i class="far fa-trash-alt"></i>
+                                </a>
+                            </td>
+
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 
 {% endblock content %}

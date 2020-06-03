@@ -5,7 +5,7 @@
 
 <div class="container">
          <div class="row">
-            <div class="col-6">
+            <div class="col-md-6">
                 <div class="card border-primary mb-3" style="max-width: 18rem;">
                     <div class="card-header bg-primary text-white">TOTAL BUDGET {{ month }} {{ year }}</div>
                     <div class="card-body text-primary">
@@ -13,7 +13,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-6">
+            <div class="col-md-6">
                 {% if transactions >= 0 %}
                     <div class="card border-success mb-3" style="max-width: 18rem;">
                         <div class="card-header bg-success text-white">BUDGET LEFT {{ month }} {{ year }}</div>
@@ -32,7 +32,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-12">
+            <div class="col-md-12">
                 <div class="card">
                    <div class="card-body">
                       <canvas id="budget_pie_chart"></canvas>
@@ -42,7 +42,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-10">
+            <div class="col-md-10">
                  <div id="container" style="width: 100%;">
                         <br><br>
                         <h1>Budget for {{ month }} {{ year }} </h1>
@@ -52,87 +52,91 @@
                  <div id="container" style="width: 100%;">
                         <br><br>
                         <a href="/budget/budget_add" class="btn btn-primary active" role="button" aria-pressed="true">Add Budget</a>
-                </div>
+                 </div>
             </div>
         </div>
 
 </div>
 
+<div class="row pt-5">
+    <div class="table-responsive">
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Amount</th>
-                <th scope="col">Description</th>
-                <th scope="col">Category</th>
-                <th scope="col">Date</th>
-                <th scope="col">Creator</th>
-                <th scope="col" class="text-right">Edit</th>
-                <th scope="col">Delete</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for budget in budget_data_all %}
+        <table class="table">
+            <thead>
                 <tr>
-                    <td>{{ budget.name }}</td>
-                    <td>{{ budget.amount }} CHF</td>
-                    <td>{{ budget.description }}</td>
-                    <td>{{ budget.category }}</td>
-                    <td>{{ budget.created_date | date:"Y-m-d" }}</td>
-                    <td>{{ budget.user }}</td>
-                    <td class="text-right">
-                        <a href="{{ budget.id  }}/budgetedit"><i class="far fa-edit"></i></a>
-                    </td>
-                    <td>
-                        <a href="{{ budget.id  }}/budgetdelete"> <i class="far fa-trash-alt"></i></a>
-                    </td>
+                    <th scope="col">Name</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Creator</th>
+                    <th scope="col" class="text-right">Edit</th>
+                    <th scope="col">Delete</th>
                 </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                {% for budget in budget_data_all %}
+                    <tr>
+                        <td>{{ budget.name }}</td>
+                        <td>{{ budget.amount }} CHF</td>
+                        <td>{{ budget.description }}</td>
+                        <td>{{ budget.category }}</td>
+                        <td>{{ budget.created_date | date:"Y-m-d" }}</td>
+                        <td>{{ budget.user }}</td>
+                        <td class="text-right">
+                            <a href="{{ budget.id  }}/budgetedit"><i class="far fa-edit"></i></a>
+                        </td>
+                        <td>
+                            <a href="{{ budget.id  }}/budgetdelete"> <i class="far fa-trash-alt"></i></a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
 
 
-            <script>
-                var config = {
-                    type: 'pie',
-                    data: {
-                        datasets: [{
-                            data: {{ data|safe }},
-                             backgroundColor: [
-                                 "rgba(255, 99, 132, 0.2)",
-                                 "rgba(54, 162, 235, 0.2)",
-                                 "rgba(255, 206, 86, 0.2)",
-                                 "rgba(75, 192, 192, 0.2)",
-                                 "rgba(153, 102, 255, 0.2)",
-                                 "rgba(255,0,40,0.45)",
-                                 "rgba(158,158,158,0.2)",
-                                 "rgba(255,166,48,0.39)",
-                                 "rgba(70,183,255,0.48)"
-                             ],
-                            borderColor: [
-                                 "rgba(255, 99, 132, 1)",
-                                 "rgba(54, 162, 235, 1)",
-                                 "rgba(255, 206, 86, 1)",
-                                 "rgba(75, 192, 192, 1)",
-                                 "rgba(153, 102, 255, 1)",
-                                 "rgba(255,0,40,0.87)",
-                                 "rgba(40,40,40,0.43)",
-                                 "rgb(255,166,48)",
-                                 "rgb(70,183,255)"
-                            ],
-                            borderWidth: 1,
-                            label: 'Budget'
-                        }],
-                        labels: {{ labels|safe }}
-                    },
-                    options: {
-                        responsive: true
-                    }
-                };
-                window.onload = function () {
-                    var chartdata = document.getElementById('budget_pie_chart').getContext('2d');
-                    window.myPie = new Chart(chartdata, config);
-                };
-            </script>
+        <script>
+         var config = {
+             type: 'pie',
+             data: {
+                 datasets: [{
+                     data: {{ data|safe }},
+                     backgroundColor: [
+                         "rgba(255, 99, 132, 0.2)",
+                         "rgba(54, 162, 235, 0.2)",
+                         "rgba(255, 206, 86, 0.2)",
+                         "rgba(75, 192, 192, 0.2)",
+                         "rgba(153, 102, 255, 0.2)",
+                         "rgba(255,0,40,0.45)",
+                         "rgba(158,158,158,0.2)",
+                         "rgba(255,166,48,0.39)",
+                         "rgba(70,183,255,0.48)"
+                     ],
+                     borderColor: [
+                         "rgba(255, 99, 132, 1)",
+                         "rgba(54, 162, 235, 1)",
+                         "rgba(255, 206, 86, 1)",
+                         "rgba(75, 192, 192, 1)",
+                         "rgba(153, 102, 255, 1)",
+                         "rgba(255,0,40,0.87)",
+                         "rgba(40,40,40,0.43)",
+                         "rgb(255,166,48)",
+                         "rgb(70,183,255)"
+                     ],
+                     borderWidth: 1,
+                     label: 'Budget'
+                 }],
+                 labels: {{ labels|safe }}
+             },
+             options: {
+                 responsive: true
+             }
+         };
+         window.onload = function () {
+             var chartdata = document.getElementById('budget_pie_chart').getContext('2d');
+             window.myPie = new Chart(chartdata, config);
+         };
+        </script>
 {% endblock %}
