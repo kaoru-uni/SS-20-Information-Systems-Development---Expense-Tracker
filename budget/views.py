@@ -25,7 +25,7 @@ def budget_pie_chart_data(request):
     today = datetime.date.today()
     month = today.strftime("%B")
     year = today.strftime("%Y")
-    budget_data_all = Budget.objects.filter(user=request.user)
+    budget_data_all = Budget.objects.filter(user=request.user).order_by('name')
     total_budget = Budget.objects.filter(user=request.user).aggregate(Sum("amount"))[
         "amount__sum"
     ]
@@ -105,12 +105,60 @@ def budget_pie_chart_data_dash(request):
     return {
             "labels": return_labels,
             "data": return_data,
+            "total_budget": total_budget,
+            "transactions": budget_left,
+            "month": month,
+            "year": year,
+    }
+
+"""
+Let the user select a Budget Category and shows the budget for that category
+"""
+
+def budget_category(request):
+    data = {}
+    today = datetime.date.today()
+    month = today.strftime("%B")
+    year = today.strftime("%Y")
+    total_budget = Budget.objects.filter(user=request.user).aggregate(Sum("amount"))[
+        "amount__sum"
+    ]
+    total_transactions = (
+            Transaction_Expense.objects.filter(user=request.user)
+            .filter(date__year=today.year, date__month=today.month)
+            .aggregate(Sum("amount"))["amount__sum"]
+            or 0.00
+    )
+    if total_budget is not None:
+        budget_left = decimal.Decimal(total_budget) - total_transactions
+    else:
+        budget_left = 0
+    queryset = Budget.objects.filter(user=request.user).values(
+        "amount", "category_id", "name"
+    )
+    for budget in queryset:
+        name = budget["name"]
+        if name not in data:
+            data[name] = budget["amount"]
+        else:
+            data[name] += budget["amount"]
+    return_labels = []
+    return_data = []
+    for key, value in data.items():
+        return_labels.append(key)
+        return_data.append(value)
+    return {
+            "labels": return_labels,
+            "data": return_data,
             #"data_category": data_category,
             "total_budget": total_budget,
             "transactions": budget_left,
             "month": month,
             "year": year,
     }
+
+
+
 
 # https://docs.djangoproject.com/en/3.0/ref/class-based-views/generic-editing/
 class BudgetCreateView(CreateView):
