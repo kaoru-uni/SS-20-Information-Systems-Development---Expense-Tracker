@@ -8,6 +8,8 @@ The view of the register app.
 """
 
 
+# https://www.youtube.com/watch?v=z4lfVsb_7MA - for creating the registration
+
 def register(response):
     if response.method == "POST":
         form = RegisterForm(response.POST)
