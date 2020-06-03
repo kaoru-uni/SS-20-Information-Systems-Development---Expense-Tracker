@@ -105,6 +105,7 @@ def budget_pie_chart_data_dash(request):
     return {
             "labels": return_labels,
             "data": return_data,
+            #"data_category": data_category,
             "total_budget": total_budget,
             "transactions": budget_left,
             "month": month,
