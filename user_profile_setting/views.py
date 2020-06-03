@@ -1,7 +1,9 @@
 from django.shortcuts import render
-import csv
+import csv, io
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
+
+from dashboard.models import Transaction
 from .forms import UserProfileForm
 from django.views.generic import TemplateView
 from transaction_expense.models import Transaction_Expense
@@ -110,3 +112,30 @@ def export_payment_csv(request):
     response["Content-Disposition"] = 'attachment; filename="payment.csv"'
 
     return response
+
+
+def transaction_upload(request):
+    template = "user_profile_detail.html"
+    prompt = {
+        'order': 'Date, Amount, User, Payment, Description, Category'
+    }
+
+    if request.method == "GET":
+        return render(request, template, prompt)
+
+    csv_file = request.FILES['file']
+
+    data_set = csv_file.read().decode('UTF-8')
+    io_string = io.StringIO(data_set)
+    next(io_string)
+    for column in csv.reader(io_string, delimiter=',', quotechar="|"):
+        _, created = Transaction.objects.update_or_create(
+            date=column[0],
+            amount=column[1],
+            user=column[2],
+            payment=column[3],
+            description=column[4],
+            category=column[5]
+        )
+    context = {}
+    return render(request, template, context)
