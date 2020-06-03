@@ -1,5 +1,3 @@
-from typing import Any, Union
-
 from django.db.models import Sum, Count
 from django.http import Http404
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
@@ -27,6 +25,7 @@ def budget_pie_chart_data(request):
     today = datetime.date.today()
     month = today.strftime("%B")
     year = today.strftime("%Y")
+    budget_data_all = Budget.objects.filter(user=request.user)
     total_budget = Budget.objects.filter(user=request.user).aggregate(Sum("amount"))[
         "amount__sum"
     ]
@@ -56,19 +55,62 @@ def budget_pie_chart_data(request):
         return_labels.append(key)
         return_data.append(value)
 
-    return {
+    return render(
+        request,
+        "budget/budget.html",
+        {
         "labels": return_labels,
         "data": return_data,
         "total_budget": total_budget,
         "transactions": budget_left,
         "month": month,
         "year": year,
+        "budget_data_all" : budget_data_all,
+        },
+    )
+
+
+def budget_pie_chart_data_dash(request):
+    data = {}
+    today = datetime.date.today()
+    month = today.strftime("%B")
+    year = today.strftime("%Y")
+    total_budget = Budget.objects.filter(user=request.user).aggregate(Sum("amount"))[
+        "amount__sum"
+    ]
+    total_transactions = (
+            Transaction_Expense.objects.filter(user=request.user)
+            .filter(date__year=today.year, date__month=today.month)
+            .aggregate(Sum("amount"))["amount__sum"]
+            or 0.00
+    )
+    if total_budget is not None:
+        budget_left = decimal.Decimal(total_budget) - total_transactions
+    else:
+        budget_left = 0
+    queryset = Budget.objects.filter(user=request.user).values(
+        "amount", "category_id", "name"
+    )
+    for budget in queryset:
+        name = budget["name"]
+        if name not in data:
+            data[name] = budget["amount"]
+        else:
+            data[name] += budget["amount"]
+    return_labels = []
+    return_data = []
+    for key, value in data.items():
+        return_labels.append(key)
+        return_data.append(value)
+    return {
+            "labels": return_labels,
+            "data": return_data,
+            #"data_category": data_category,
+            "total_budget": total_budget,
+            "transactions": budget_left,
+            "month": month,
+            "year": year,
     }
-
-
-def budget_pie_chart(request):
-    return render(request, "budget/budget_pie_chart.html", budget_pie_chart_data(request))
-
 
 # https://docs.djangoproject.com/en/3.0/ref/class-based-views/generic-editing/
 class BudgetCreateView(CreateView):
@@ -88,14 +130,6 @@ class BudgetCreateView(CreateView):
         form_to_save = form.save(commit=False)
         form_to_save.user = self.request.user
         return super(BudgetCreateView, self).form_valid(form)
-
-
-class BudgetListView(ListView):
-    model = Budget
-    template_name = "budget/budget.html"
-
-    def get_queryset(self):
-        return Budget.objects.filter(user=self.request.user)
 
 
 class BudgetDeleteView(DeleteView):
@@ -129,3 +163,4 @@ class BudgetEditView(UpdateView):
         if not budget_found.user == self.request.user:
             raise Http404
         return budget_found
+

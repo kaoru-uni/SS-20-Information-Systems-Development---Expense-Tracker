@@ -4,14 +4,14 @@ from django.db.models import Count
 from budget.models import Budget
 from transaction_expense.models import Transaction_Expense
 from django.views.generic.edit import CreateView
-from budget.views import budget_pie_chart_data
+from budget.views import budget_pie_chart_data_dash
 import datetime
 from calendar import monthrange
 
 # https://docs.djangoproject.com/en/3.0/ref/models/querysets/#month
 # https://stackoverflow.com/questions/4938429/how-do-we-determine-the-number-of-days-for-a-given-month-in-python
 def dashboard_pie_chart(request):
-    budget_data = budget_pie_chart_data(request)
+    budget_data = budget_pie_chart_data_dash(request)
 
     today = datetime.date.today()
     transaction_queryset = Transaction_Expense.objects.filter(

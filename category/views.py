@@ -22,7 +22,7 @@ class CategoryListView(ListView):
     template_name = "category/category.html"
 
     def get_queryset(self):
-        return Category.objects.filter(user=self.request.user)
+        return Category.objects.filter(user=self.request.user).order_by('name')
 
 class CategoryDeleteView(DeleteView):
     model = Category
