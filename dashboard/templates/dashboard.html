@@ -62,6 +62,10 @@
                                     <td><i class="fab fa-cc-visa"></i></td>
                                 {% elif transaction.payment.type == 'MASTERCARD' %}
                                     <td><i class="fab fa-cc-mastercard"></i></td>
+                                {% elif transaction.payment.type == 'BANK' %}
+                                    <td><i class="fas fa-university"></i></td>
+                                {% elif transaction.payment.type == 'CRYPTO' %}
+                                    <td><i class="fab fa-bitcoin"></i></td>
                                 {% endif %}
                                 <td>{{ transaction.description }}</td>
                                 <td>{{ transaction.category }}</td>

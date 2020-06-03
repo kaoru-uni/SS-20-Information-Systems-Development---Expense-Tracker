@@ -22,6 +22,10 @@
                         <td><i class="fab fa-cc-visa"></i></td>
                     {% elif payment.type == 'MASTERCARD' %}
                         <td><i class="fab fa-cc-mastercard"></i></td>
+                    {% elif payment.type == 'BANK' %}
+                        <td><i class="fas fa-university"></i></td>
+                    {% elif payment.type == 'CRYPTO' %}
+                        <td><i class="fab fa-bitcoin"></i></td>
                     {% endif %}
                     <td>{{ payment.description }}</td>
                     <td>{{ payment.date | date:"Y-m-d" }}</td>

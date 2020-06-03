@@ -9,11 +9,15 @@ from django.contrib.auth.models import User
 class Payment(models.Model):
     VISA = "VISA"
     MASTERCARD = "MASTERCARD"
+    BANK = "BANK"
+    CRYPTO = "CRYPTO"
     CASH = "CASH"
     PAYMENT_TYPE = [
         (CASH, "Cash"),
         (VISA, "Visa"),
         (MASTERCARD, "Mastercard"),
+        (BANK, "Bank"),
+        (CRYPTO, "Crypto"),
     ]
     type = models.CharField(max_length=50, choices=PAYMENT_TYPE, default=CASH,)
     date = models.DateTimeField()
