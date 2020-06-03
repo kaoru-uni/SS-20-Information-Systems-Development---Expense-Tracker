@@ -5,9 +5,10 @@ from django.contrib.auth.decorators import login_required
 from .forms import UserProfileForm
 from django.views.generic import TemplateView
 from transaction_expense.models import Transaction_Expense
-
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+# https://docs.djangoproject.com/en/3.0/topics/auth/default/#the-login-required-decorator
 
 
 @login_required
@@ -24,6 +25,7 @@ class UserProfileSettingConfigView(TemplateView):
         return super(UserProfileSettingConfigView, self).form_valid(form)
 
 
+@login_required
 def user_details(httprequest, *args, **kwargs):
     user_profile_details = UserProfileForm()
     context = {"form": user_profile_details()}
@@ -32,6 +34,7 @@ def user_details(httprequest, *args, **kwargs):
 
 # https://docs.djangoproject.com/en/3.0/howto/outputting-csv/
 # https://studygyaan.com/django/how-to-export-csv-file-with-django
+@login_required
 def export_csv(request):
     # Create the HttpResponse object with the appropriate CSV header.
     response = HttpResponse(content_type="text/csv")

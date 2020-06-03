@@ -5,11 +5,15 @@ from .views import (
     PaymentEditView,
     PaymentDeleteView,
 )
+from django.contrib.auth.decorators import login_required
+
+# https://stackoverflow.com/questions/28555260/django-login-required-for-class-views
+
 
 
 urlpatterns = [
-    path("", PaymentListView.as_view(), name="payment"),
-    path("add/", PaymentCreateView.as_view(), name="add_payment"),
-    path("<int:pk>/edit", PaymentEditView.as_view(), name="edit_payment"),
-    path("<int:pk>/delete", PaymentDeleteView.as_view()),
+    path("", login_required(PaymentListView.as_view()), name="payment"),
+    path("add/", login_required(PaymentCreateView.as_view()), name="add_payment"),
+    path("<int:pk>/edit", login_required(PaymentEditView.as_view()), name="edit_payment"),
+    path("<int:pk>/delete", login_required(PaymentDeleteView.as_view())),
 ]
