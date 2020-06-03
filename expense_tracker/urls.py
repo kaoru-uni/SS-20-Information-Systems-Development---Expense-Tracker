@@ -28,7 +28,6 @@ from dashboard import views
 from . import views
 
 urlpatterns = [
-    # path("", views.index, name="index"),
     path("", views.welcome, name="welcome"),
     path("dashboard/", include("dashboard.urls")),
     path("category/", include("category.urls")),
