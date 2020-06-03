@@ -26,22 +26,34 @@ class UserProfileSettingConfigView(TemplateView):
 
 def user_details(httprequest, *args, **kwargs):
     user_profile_details = UserProfileForm()
-    context = {
-        "form": user_profile_details()
-    }
+    context = {"form": user_profile_details()}
     return render(httprequest, "user_profile_detail.html", context)
 
 
+# https://docs.djangoproject.com/en/3.0/howto/outputting-csv/
+# https://studygyaan.com/django/how-to-export-csv-file-with-django
 def export_csv(request):
-    if request.GET.get('sort-btn'):
-        # Create the HttpResponse object with the appropriate CSV header.
-        response = HttpResponse(content_type='text/csv')
+    # Create the HttpResponse object with the appropriate CSV header.
+    response = HttpResponse(content_type="text/csv")
 
     writer = csv.writer(response)
-    writer.writerow(['Date', 'Amount', 'User', 'Payment', 'Description', 'Category', ])
-    for Transaction_Expense in Transaction_Expense.objects.all().values_list('date', 'amount', 'user', 'payment',
-                                                                             'description', 'category'):
-        writer.writerow(Transaction_Expense)
-    response['Content-Disposition'] = 'attachment; filename="transaction.csv"'
+    writer.writerow(
+        ["Date", "Amount", "User", "Payment", "Description", "Category",]
+    )
+    querydata = Transaction_Expense.objects.filter(user=request.user)
+    for item in querydata:
+        writer.writerow(
+            [
+                item.date,
+                item.amount,
+                item.user,
+                item.payment,
+                item.description,
+                item.category,
+            ]
+        )
+
+    # writer.writerow(Transaction_Expense)
+    response["Content-Disposition"] = 'attachment; filename="transaction.csv"'
 
     return response

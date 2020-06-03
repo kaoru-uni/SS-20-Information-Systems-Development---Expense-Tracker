@@ -3,9 +3,9 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-    <form action="../templates/user_profile_detail" method="POST">
-    {%  csrf_token %}
+    <form action="{% url 'export_csv' %}" method="POST">
+        {%  csrf_token %}
 
-    <button type="submit" class="btn btn-success" id="sort-btn">Export transactions</button>
+        <button type="submit" class="btn btn-success" id="sort-btn">Export transactions</button>
     </form>
 {% endblock %}

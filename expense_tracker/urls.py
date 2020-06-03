@@ -35,11 +35,6 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("register/", register_view.register, name="register"),
     path(
-        "profile/",
-        UserProfileSettingConfigView.as_view(template_name="user_profile_detail.html"),
-        name="profile",
-    ),
-    path(
         "login/",
         auth_view.LoginView.as_view(template_name="register/login.html"),
         name="login",
@@ -52,5 +47,5 @@ urlpatterns = [
     path("", include("django.contrib.auth.urls")),
     path("transaction/", include("transaction_expense.urls")),
     path("payment/", include("payment.urls")),
-    path("download-csv/", export_csv),
+    path("profile/", include("user_profile_setting.urls")),
 ]
