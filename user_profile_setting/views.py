@@ -135,7 +135,7 @@ def transaction_upload(request):
     csv_data = csv.reader(data_set.split("\n"), delimiter=",", quotechar='"')
     next(csv_data)
     for column in csv_data:
-        if len(column) is not 0:
+        if len(column) != 0:
             # print('column: ', column)
             csv_date = parse_datetime(column[0])
             csv_amount = column[1]

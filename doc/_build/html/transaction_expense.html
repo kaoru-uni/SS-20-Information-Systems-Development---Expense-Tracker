@@ -48,8 +48,8 @@
 <div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="transaction-expense-admin-module">
-<h2>transaction_expense.admin module<a class="headerlink" href="#transaction-expense-admin-module" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-transaction_expense.admin">
+<span id="transaction-expense-admin-module"></span><h2>transaction_expense.admin module<a class="headerlink" href="#module-transaction_expense.admin" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="module-transaction_expense.apps">
 <span id="transaction-expense-apps-module"></span><h2>transaction_expense.apps module<a class="headerlink" href="#module-transaction_expense.apps" title="Permalink to this headline">¶</a></h2>
@@ -65,14 +65,403 @@
 </dd></dl>
 
 </div>
-<div class="section" id="transaction-expense-models-module">
-<h2>transaction_expense.models module<a class="headerlink" href="#transaction-expense-models-module" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-transaction_expense.models">
+<span id="transaction-expense-models-module"></span><h2>transaction_expense.models module<a class="headerlink" href="#module-transaction_expense.models" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="transaction_expense.models.Transaction_Expense">
+<em class="property">class </em><code class="sig-prename descclassname">transaction_expense.models.</code><code class="sig-name descname">Transaction_Expense</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#transaction_expense.models.Transaction_Expense" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.models.base.Model</span></code></p>
+<div class="line-block">
+<div class="line">This model contains the transaction of an expense which is being made.</div>
+<div class="line">date: The date can be set by the user.</div>
+<div class="line">amount: Amount of the value which was paid.</div>
+<div class="line">description: A description to remember what was paid.</div>
+<div class="line">user: The user will be automatically set by django.</div>
+<div class="line">category: Choose from the user created categories.</div>
+<div class="line">payment: Choose from the user created payment methods.</div>
+</div>
+<dl class="py exception">
+<dt id="transaction_expense.models.Transaction_Expense.DoesNotExist">
+<em class="property">exception </em><code class="sig-name descname">DoesNotExist</code><a class="headerlink" href="#transaction_expense.models.Transaction_Expense.DoesNotExist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt id="transaction_expense.models.Transaction_Expense.MultipleObjectsReturned">
+<em class="property">exception </em><code class="sig-name descname">MultipleObjectsReturned</code><a class="headerlink" href="#transaction_expense.models.Transaction_Expense.MultipleObjectsReturned" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="transaction_expense.models.Transaction_Expense.amount">
+<code class="sig-name descname">amount</code><a class="headerlink" href="#transaction_expense.models.Transaction_Expense.amount" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="transaction_expense.models.Transaction_Expense.category">
+<code class="sig-name descname">category</code><a class="headerlink" href="#transaction_expense.models.Transaction_Expense.category" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accessor to the related object on the forward side of a many-to-one or
+one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Child.parent</span></code> is a <code class="docutils literal notranslate"><span class="pre">ForwardManyToOneDescriptor</span></code> instance.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="transaction_expense.models.Transaction_Expense.category_id">
+<code class="sig-name descname">category_id</code><a class="headerlink" href="#transaction_expense.models.Transaction_Expense.category_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="transaction_expense.models.Transaction_Expense.date">
+<code class="sig-name descname">date</code><a class="headerlink" href="#transaction_expense.models.Transaction_Expense.date" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="transaction_expense.models.Transaction_Expense.description">
+<code class="sig-name descname">description</code><a class="headerlink" href="#transaction_expense.models.Transaction_Expense.description" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="transaction_expense.models.Transaction_Expense.get_next_by_date">
+<code class="sig-name descname">get_next_by_date</code><span class="sig-paren">(</span><em class="sig-param">*</em>, <em class="sig-param">field=&lt;django.db.models.fields.DateTimeField: date&gt;</em>, <em class="sig-param">is_next=True</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#transaction_expense.models.Transaction_Expense.get_next_by_date" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="transaction_expense.models.Transaction_Expense.get_previous_by_date">
+<code class="sig-name descname">get_previous_by_date</code><span class="sig-paren">(</span><em class="sig-param">*</em>, <em class="sig-param">field=&lt;django.db.models.fields.DateTimeField: date&gt;</em>, <em class="sig-param">is_next=False</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#transaction_expense.models.Transaction_Expense.get_previous_by_date" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="transaction_expense.models.Transaction_Expense.id">
+<code class="sig-name descname">id</code><a class="headerlink" href="#transaction_expense.models.Transaction_Expense.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="transaction_expense.models.Transaction_Expense.objects">
+<code class="sig-name descname">objects</code><em class="property"> = &lt;django.db.models.manager.Manager object&gt;</em><a class="headerlink" href="#transaction_expense.models.Transaction_Expense.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="transaction_expense.models.Transaction_Expense.payment">
+<code class="sig-name descname">payment</code><a class="headerlink" href="#transaction_expense.models.Transaction_Expense.payment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accessor to the related object on the forward side of a many-to-one or
+one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Child.parent</span></code> is a <code class="docutils literal notranslate"><span class="pre">ForwardManyToOneDescriptor</span></code> instance.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="transaction_expense.models.Transaction_Expense.payment_id">
+<code class="sig-name descname">payment_id</code><a class="headerlink" href="#transaction_expense.models.Transaction_Expense.payment_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="transaction_expense.models.Transaction_Expense.user">
+<code class="sig-name descname">user</code><a class="headerlink" href="#transaction_expense.models.Transaction_Expense.user" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accessor to the related object on the forward side of a many-to-one or
+one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Child.parent</span></code> is a <code class="docutils literal notranslate"><span class="pre">ForwardManyToOneDescriptor</span></code> instance.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="transaction_expense.models.Transaction_Expense.user_id">
+<code class="sig-name descname">user_id</code><a class="headerlink" href="#transaction_expense.models.Transaction_Expense.user_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </div>
 <div class="section" id="module-transaction_expense.tests">
 <span id="transaction-expense-tests-module"></span><h2>transaction_expense.tests module<a class="headerlink" href="#module-transaction_expense.tests" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="transaction-expense-views-module">
-<h2>transaction_expense.views module<a class="headerlink" href="#transaction-expense-views-module" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-transaction_expense.views">
+<span id="transaction-expense-views-module"></span><h2>transaction_expense.views module<a class="headerlink" href="#module-transaction_expense.views" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="transaction_expense.views.DateInput">
+<em class="property">class </em><code class="sig-prename descclassname">transaction_expense.views.</code><code class="sig-name descname">DateInput</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">attrs</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">format</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#transaction_expense.views.DateInput" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.forms.widgets.DateInput</span></code></p>
+<p>DateInput is needed for the forms to have a date picker.</p>
+<dl class="py attribute">
+<dt id="transaction_expense.views.DateInput.input_type">
+<code class="sig-name descname">input_type</code><em class="property"> = 'date'</em><a class="headerlink" href="#transaction_expense.views.DateInput.input_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="transaction_expense.views.DateInput.media">
+<em class="property">property </em><code class="sig-name descname">media</code><a class="headerlink" href="#transaction_expense.views.DateInput.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="transaction_expense.views.TransactionExpenseCreateView">
+<em class="property">class </em><code class="sig-prename descclassname">transaction_expense.views.</code><code class="sig-name descname">TransactionExpenseCreateView</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#transaction_expense.views.TransactionExpenseCreateView" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.views.generic.edit.CreateView</span></code></p>
+<div class="line-block">
+<div class="line">TransactionExpenseCreateView is used for creating new transactions by using the generic view for creation.</div>
+<div class="line">form_class: is the form which will be used for the user input.</div>
+<div class="line">model: is the Model which will be used.</div>
+<div class="line">success_url: if the input was successful the user will be redirected back to the form for further inputs.</div>
+<div class="line">template_name: is the template which will be used for the user input.</div>
+</div>
+<dl class="py attribute">
+<dt id="transaction_expense.views.TransactionExpenseCreateView.form_class">
+<code class="sig-name descname">form_class</code><a class="headerlink" href="#transaction_expense.views.TransactionExpenseCreateView.form_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#transaction_expense.views.TransactionExpenseForm" title="transaction_expense.views.TransactionExpenseForm"><code class="xref py py-class docutils literal notranslate"><span class="pre">TransactionExpenseForm</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="transaction_expense.views.TransactionExpenseCreateView.form_valid">
+<code class="sig-name descname">form_valid</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">form</span></em><span class="sig-paren">)</span><a class="headerlink" href="#transaction_expense.views.TransactionExpenseCreateView.form_valid" title="Permalink to this definition">¶</a></dt>
+<dd><p>form_valid validates and saves the form and redirects to the success url.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="transaction_expense.views.TransactionExpenseCreateView.get_form">
+<code class="sig-name descname">get_form</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#transaction_expense.views.TransactionExpenseCreateView.get_form" title="Permalink to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">According to <a class="reference external" href="https://docs.djangoproject.com/en/3.0/ref/class-based-views/mixins-editing/#django.views.generic.edit.FormMixin.get_form">https://docs.djangoproject.com/en/3.0/ref/class-based-views/mixins-editing/#django.views.generic.edit.FormMixin.get_form</a></div>
+<div class="line">get_form is a mixin which is used to get the current user who is adding a transaction.</div>
+<div class="line">form.fields[“category”]: this query is run before the form is shown that the user can choose from his categories the user has created before.</div>
+<div class="line">form.fields[“payment”]: this query is run before the form is shown that the user can choose from his payment methods the user has created before.</div>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="transaction_expense.views.TransactionExpenseCreateView.model">
+<code class="sig-name descname">model</code><a class="headerlink" href="#transaction_expense.views.TransactionExpenseCreateView.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#transaction_expense.models.Transaction_Expense" title="transaction_expense.models.Transaction_Expense"><code class="xref py py-class docutils literal notranslate"><span class="pre">transaction_expense.models.Transaction_Expense</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="transaction_expense.views.TransactionExpenseCreateView.success_url">
+<code class="sig-name descname">success_url</code><em class="property"> = '/transaction/add'</em><a class="headerlink" href="#transaction_expense.views.TransactionExpenseCreateView.success_url" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="transaction_expense.views.TransactionExpenseCreateView.template_name">
+<code class="sig-name descname">template_name</code><em class="property"> = 'add_transaction.html'</em><a class="headerlink" href="#transaction_expense.views.TransactionExpenseCreateView.template_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="transaction_expense.views.TransactionExpenseDeleteView">
+<em class="property">class </em><code class="sig-prename descclassname">transaction_expense.views.</code><code class="sig-name descname">TransactionExpenseDeleteView</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#transaction_expense.views.TransactionExpenseDeleteView" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.views.generic.edit.DeleteView</span></code></p>
+<div class="line-block">
+<div class="line">TransactionExpenseDeleteView is used to delete transactions.</div>
+<div class="line">model: is the Model which will be used.</div>
+<div class="line">success_url: if the input was successful the user will be redirected back to list of transactions.</div>
+</div>
+<dl class="py method">
+<dt id="transaction_expense.views.TransactionExpenseDeleteView.get">
+<code class="sig-name descname">get</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#transaction_expense.views.TransactionExpenseDeleteView.get" title="Permalink to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">This function is used to skip a second delete validation page.</div>
+<div class="line">Post is send to delete the transaction.</div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="transaction_expense.views.TransactionExpenseDeleteView.get_queryset">
+<code class="sig-name descname">get_queryset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#transaction_expense.views.TransactionExpenseDeleteView.get_queryset" title="Permalink to this definition">¶</a></dt>
+<dd><p>get_queryset: is used to define the queryset which will be returned
+:return: data which is owned by the user will be returned.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="transaction_expense.views.TransactionExpenseDeleteView.model">
+<code class="sig-name descname">model</code><a class="headerlink" href="#transaction_expense.views.TransactionExpenseDeleteView.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#transaction_expense.models.Transaction_Expense" title="transaction_expense.models.Transaction_Expense"><code class="xref py py-class docutils literal notranslate"><span class="pre">transaction_expense.models.Transaction_Expense</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="transaction_expense.views.TransactionExpenseDeleteView.success_url">
+<code class="sig-name descname">success_url</code><em class="property"> = '/transaction'</em><a class="headerlink" href="#transaction_expense.views.TransactionExpenseDeleteView.success_url" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="transaction_expense.views.TransactionExpenseEditView">
+<em class="property">class </em><code class="sig-prename descclassname">transaction_expense.views.</code><code class="sig-name descname">TransactionExpenseEditView</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#transaction_expense.views.TransactionExpenseEditView" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.views.generic.edit.UpdateView</span></code></p>
+<div class="line-block">
+<div class="line">form_class: is the form which will be used for the user input.</div>
+<div class="line">model: is the Model which will be used.</div>
+<div class="line">success_url: if the input was successful the user will be redirected back to list of transactions.</div>
+<div class="line">template_name: is the template which will be used for the user input.</div>
+</div>
+<dl class="py attribute">
+<dt id="transaction_expense.views.TransactionExpenseEditView.form_class">
+<code class="sig-name descname">form_class</code><a class="headerlink" href="#transaction_expense.views.TransactionExpenseEditView.form_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#transaction_expense.views.TransactionExpenseForm" title="transaction_expense.views.TransactionExpenseForm"><code class="xref py py-class docutils literal notranslate"><span class="pre">TransactionExpenseForm</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="transaction_expense.views.TransactionExpenseEditView.get_form">
+<code class="sig-name descname">get_form</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#transaction_expense.views.TransactionExpenseEditView.get_form" title="Permalink to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">According to <a class="reference external" href="https://docs.djangoproject.com/en/3.0/ref/class-based-views/mixins-editing/#django.views.generic.edit.FormMixin.get_form">https://docs.djangoproject.com/en/3.0/ref/class-based-views/mixins-editing/#django.views.generic.edit.FormMixin.get_form</a></div>
+<div class="line">get_form is a mixin which is used to get the current user who is adding a transaction.</div>
+</div>
+<div class="line-block">
+<div class="line">form.fields[“category”]: this query is run before the form is shown that the user can choose from his categories the user has created before.</div>
+</div>
+<div class="line-block">
+<div class="line">form.fields[“payment”]: this query is run before the form is shown that the user can choose from his payment methods the user has created before.</div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="transaction_expense.views.TransactionExpenseEditView.get_object">
+<code class="sig-name descname">get_object</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#transaction_expense.views.TransactionExpenseEditView.get_object" title="Permalink to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">According to: <a class="reference external" href="https://docs.djangoproject.com/en/3.0/ref/class-based-views/mixins-single-object/#django.views.generic.detail.SingleObjectMixin.get_object">https://docs.djangoproject.com/en/3.0/ref/class-based-views/mixins-single-object/#django.views.generic.detail.SingleObjectMixin.get_object</a></div>
+<div class="line">get_object: returns the object which is currently being viewed.</div>
+<div class="line">It’s used to validate that the transactions which was requested is really made by the user.</div>
+<div class="line">If it’s not return an error</div>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="transaction_expense.views.TransactionExpenseEditView.model">
+<code class="sig-name descname">model</code><a class="headerlink" href="#transaction_expense.views.TransactionExpenseEditView.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#transaction_expense.models.Transaction_Expense" title="transaction_expense.models.Transaction_Expense"><code class="xref py py-class docutils literal notranslate"><span class="pre">transaction_expense.models.Transaction_Expense</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="transaction_expense.views.TransactionExpenseEditView.success_url">
+<code class="sig-name descname">success_url</code><em class="property"> = '/transaction'</em><a class="headerlink" href="#transaction_expense.views.TransactionExpenseEditView.success_url" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="transaction_expense.views.TransactionExpenseEditView.template_name">
+<code class="sig-name descname">template_name</code><em class="property"> = 'add_transaction.html'</em><a class="headerlink" href="#transaction_expense.views.TransactionExpenseEditView.template_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="transaction_expense.views.TransactionExpenseForm">
+<em class="property">class </em><code class="sig-prename descclassname">transaction_expense.views.</code><code class="sig-name descname">TransactionExpenseForm</code><span class="sig-paren">(</span><em class="sig-param">data=None</em>, <em class="sig-param">files=None</em>, <em class="sig-param">auto_id='id_%s'</em>, <em class="sig-param">prefix=None</em>, <em class="sig-param">initial=None</em>, <em class="sig-param">error_class=&lt;class 'django.forms.utils.ErrorList'&gt;</em>, <em class="sig-param">label_suffix=None</em>, <em class="sig-param">empty_permitted=False</em>, <em class="sig-param">instance=None</em>, <em class="sig-param">use_required_attribute=None</em>, <em class="sig-param">renderer=None</em><span class="sig-paren">)</span><a class="headerlink" href="#transaction_expense.views.TransactionExpenseForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.forms.models.ModelForm</span></code></p>
+<p>The class TransactionExpenseForm is needed to be able to override the normal Django Form
+to have the special widget with a Datepicker option.</p>
+<dl class="py class">
+<dt id="transaction_expense.views.TransactionExpenseForm.Meta">
+<em class="property">class </em><code class="sig-name descname">Meta</code><a class="headerlink" href="#transaction_expense.views.TransactionExpenseForm.Meta" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<div class="line-block">
+<div class="line">According to <a class="reference external" href="https://docs.djangoproject.com/en/3.0/topics/db/models/#meta-options">https://docs.djangoproject.com/en/3.0/topics/db/models/#meta-options</a></div>
+<div class="line">and <a class="reference external" href="https://docs.djangoproject.com/en/3.0/ref/forms/widgets/">https://docs.djangoproject.com/en/3.0/ref/forms/widgets/</a></div>
+<div class="line">Meta data can be set to add additional information to a class.</div>
+<div class="line">model: is the Model which will be used.</div>
+<div class="line">fields: are the chosen fields which will be shown.</div>
+<div class="line">widgets: are used to show customized html elements.</div>
+</div>
+<dl class="py attribute">
+<dt id="transaction_expense.views.TransactionExpenseForm.Meta.fields">
+<code class="sig-name descname">fields</code><em class="property"> = ('date', 'amount', 'description', 'category', 'payment')</em><a class="headerlink" href="#transaction_expense.views.TransactionExpenseForm.Meta.fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="transaction_expense.views.TransactionExpenseForm.Meta.model">
+<code class="sig-name descname">model</code><a class="headerlink" href="#transaction_expense.views.TransactionExpenseForm.Meta.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#transaction_expense.models.Transaction_Expense" title="transaction_expense.models.Transaction_Expense"><code class="xref py py-class docutils literal notranslate"><span class="pre">transaction_expense.models.Transaction_Expense</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="transaction_expense.views.TransactionExpenseForm.Meta.widgets">
+<code class="sig-name descname">widgets</code><em class="property"> = {'date': &lt;transaction_expense.views.DateInput object&gt;}</em><a class="headerlink" href="#transaction_expense.views.TransactionExpenseForm.Meta.widgets" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="transaction_expense.views.TransactionExpenseForm.base_fields">
+<code class="sig-name descname">base_fields</code><em class="property"> = {'amount': &lt;django.forms.fields.DecimalField object&gt;, 'category': &lt;django.forms.models.ModelChoiceField object&gt;, 'date': &lt;django.forms.fields.DateTimeField object&gt;, 'description': &lt;django.forms.fields.CharField object&gt;, 'payment': &lt;django.forms.models.ModelChoiceField object&gt;}</em><a class="headerlink" href="#transaction_expense.views.TransactionExpenseForm.base_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="transaction_expense.views.TransactionExpenseForm.declared_fields">
+<code class="sig-name descname">declared_fields</code><em class="property"> = {}</em><a class="headerlink" href="#transaction_expense.views.TransactionExpenseForm.declared_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="transaction_expense.views.TransactionExpenseForm.media">
+<em class="property">property </em><code class="sig-name descname">media</code><a class="headerlink" href="#transaction_expense.views.TransactionExpenseForm.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="transaction_expense.views.TransactionExpenseListView">
+<em class="property">class </em><code class="sig-prename descclassname">transaction_expense.views.</code><code class="sig-name descname">TransactionExpenseListView</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#transaction_expense.views.TransactionExpenseListView" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.views.generic.list.ListView</span></code></p>
+<div class="line-block">
+<div class="line">TransactionExpenseListView is used to show all expenses.</div>
+<div class="line">ListView: is a generic view which offers easier lists with less code to write</div>
+<div class="line">model: is the Model which will be used.</div>
+<div class="line">template_name: is the template where the data will be mapped to.</div>
+</div>
+<dl class="py method">
+<dt id="transaction_expense.views.TransactionExpenseListView.get_queryset">
+<code class="sig-name descname">get_queryset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#transaction_expense.views.TransactionExpenseListView.get_queryset" title="Permalink to this definition">¶</a></dt>
+<dd><p>get_queryset: is used to define the queryset which will be returned
+:return: filtered data which is owned by the user and ordered by date desc will be returned.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="transaction_expense.views.TransactionExpenseListView.model">
+<code class="sig-name descname">model</code><a class="headerlink" href="#transaction_expense.views.TransactionExpenseListView.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#transaction_expense.models.Transaction_Expense" title="transaction_expense.models.Transaction_Expense"><code class="xref py py-class docutils literal notranslate"><span class="pre">transaction_expense.models.Transaction_Expense</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="transaction_expense.views.TransactionExpenseListView.template_name">
+<code class="sig-name descname">template_name</code><em class="property"> = 'transactions.html'</em><a class="headerlink" href="#transaction_expense.views.TransactionExpenseListView.template_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="transaction_expense.views.transaction_expense_pie_chart">
+<code class="sig-prename descclassname">transaction_expense.views.</code><code class="sig-name descname">transaction_expense_pie_chart</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em><span class="sig-paren">)</span><a class="headerlink" href="#transaction_expense.views.transaction_expense_pie_chart" title="Permalink to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">This function is used to fill the pie chart.</div>
+<div class="line">If a user chooses a range the following variables will be used:</div>
+<div class="line">start_date: start date range</div>
+<div class="line">end_date: end date range</div>
+<div class="line">If no date is selected all transactions will be returned. otherwise the transactions will be sorted by date ascending.</div>
+</div>
+<div class="line-block">
+<div class="line">Because the data which is queried has the wrong data format for the pie chart it has to be formatted and restructured.</div>
+</div>
+</dd></dl>
+
 </div>
 <div class="section" id="module-transaction_expense">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-transaction_expense" title="Permalink to this headline">¶</a></h2>

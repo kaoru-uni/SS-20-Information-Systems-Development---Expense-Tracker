@@ -65,111 +65,137 @@
 </dd></dl>
 
 </div>
-<div class="section" id="module-payment.forms">
-<span id="payment-forms-module"></span><h2>payment.forms module<a class="headerlink" href="#module-payment.forms" title="Permalink to this headline">¶</a></h2>
-<dl class="py class">
-<dt id="payment.forms.DateInput">
-<em class="property">class </em><code class="sig-prename descclassname">payment.forms.</code><code class="sig-name descname">DateInput</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">attrs</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">format</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#payment.forms.DateInput" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.forms.widgets.DateInput</span></code></p>
-<dl class="py attribute">
-<dt id="payment.forms.DateInput.input_type">
-<code class="sig-name descname">input_type</code><em class="property"> = 'date'</em><a class="headerlink" href="#payment.forms.DateInput.input_type" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt id="payment.forms.DateInput.media">
-<em class="property">property </em><code class="sig-name descname">media</code><a class="headerlink" href="#payment.forms.DateInput.media" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt id="payment.forms.PaymentForm">
-<em class="property">class </em><code class="sig-prename descclassname">payment.forms.</code><code class="sig-name descname">PaymentForm</code><span class="sig-paren">(</span><em class="sig-param">data=None</em>, <em class="sig-param">files=None</em>, <em class="sig-param">auto_id='id_%s'</em>, <em class="sig-param">prefix=None</em>, <em class="sig-param">initial=None</em>, <em class="sig-param">error_class=&lt;class 'django.forms.utils.ErrorList'&gt;</em>, <em class="sig-param">label_suffix=None</em>, <em class="sig-param">empty_permitted=False</em>, <em class="sig-param">field_order=None</em>, <em class="sig-param">use_required_attribute=None</em>, <em class="sig-param">renderer=None</em><span class="sig-paren">)</span><a class="headerlink" href="#payment.forms.PaymentForm" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.forms.forms.Form</span></code></p>
-<dl class="py attribute">
-<dt id="payment.forms.PaymentForm.base_fields">
-<code class="sig-name descname">base_fields</code><em class="property"> = {'amount': &lt;django.forms.fields.DecimalField object&gt;, 'date': &lt;django.forms.fields.DateField object&gt;, 'type': &lt;django.forms.fields.CharField object&gt;}</em><a class="headerlink" href="#payment.forms.PaymentForm.base_fields" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt id="payment.forms.PaymentForm.declared_fields">
-<code class="sig-name descname">declared_fields</code><em class="property"> = {'amount': &lt;django.forms.fields.DecimalField object&gt;, 'date': &lt;django.forms.fields.DateField object&gt;, 'type': &lt;django.forms.fields.CharField object&gt;}</em><a class="headerlink" href="#payment.forms.PaymentForm.declared_fields" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt id="payment.forms.PaymentForm.media">
-<em class="property">property </em><code class="sig-name descname">media</code><a class="headerlink" href="#payment.forms.PaymentForm.media" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
+<div class="section" id="payment-forms-module">
+<h2>payment.forms module<a class="headerlink" href="#payment-forms-module" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="module-payment.models">
 <span id="payment-models-module"></span><h2>payment.models module<a class="headerlink" href="#module-payment.models" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
-<dt id="payment.models.PaymentConfig">
-<em class="property">class </em><code class="sig-prename descclassname">payment.models.</code><code class="sig-name descname">PaymentConfig</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">id</span></em>, <em class="sig-param"><span class="n">type</span></em>, <em class="sig-param"><span class="n">date</span></em>, <em class="sig-param"><span class="n">amount</span></em><span class="sig-paren">)</span><a class="headerlink" href="#payment.models.PaymentConfig" title="Permalink to this definition">¶</a></dt>
+<dt id="payment.models.Payment">
+<em class="property">class </em><code class="sig-prename descclassname">payment.models.</code><code class="sig-name descname">Payment</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">id</span></em>, <em class="sig-param"><span class="n">type</span></em>, <em class="sig-param"><span class="n">date</span></em>, <em class="sig-param"><span class="n">description</span></em>, <em class="sig-param"><span class="n">user</span></em><span class="sig-paren">)</span><a class="headerlink" href="#payment.models.Payment" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.models.base.Model</span></code></p>
+<dl class="py attribute">
+<dt id="payment.models.Payment.BANK">
+<code class="sig-name descname">BANK</code><em class="property"> = 'BANK'</em><a class="headerlink" href="#payment.models.Payment.BANK" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="payment.models.Payment.CASH">
+<code class="sig-name descname">CASH</code><em class="property"> = 'CASH'</em><a class="headerlink" href="#payment.models.Payment.CASH" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="payment.models.Payment.CRYPTO">
+<code class="sig-name descname">CRYPTO</code><em class="property"> = 'CRYPTO'</em><a class="headerlink" href="#payment.models.Payment.CRYPTO" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="py exception">
-<dt id="payment.models.PaymentConfig.DoesNotExist">
-<em class="property">exception </em><code class="sig-name descname">DoesNotExist</code><a class="headerlink" href="#payment.models.PaymentConfig.DoesNotExist" title="Permalink to this definition">¶</a></dt>
+<dt id="payment.models.Payment.DoesNotExist">
+<em class="property">exception </em><code class="sig-name descname">DoesNotExist</code><a class="headerlink" href="#payment.models.Payment.DoesNotExist" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></code></p>
 </dd></dl>
 
+<dl class="py attribute">
+<dt id="payment.models.Payment.MASTERCARD">
+<code class="sig-name descname">MASTERCARD</code><em class="property"> = 'MASTERCARD'</em><a class="headerlink" href="#payment.models.Payment.MASTERCARD" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="py exception">
-<dt id="payment.models.PaymentConfig.MultipleObjectsReturned">
-<em class="property">exception </em><code class="sig-name descname">MultipleObjectsReturned</code><a class="headerlink" href="#payment.models.PaymentConfig.MultipleObjectsReturned" title="Permalink to this definition">¶</a></dt>
+<dt id="payment.models.Payment.MultipleObjectsReturned">
+<em class="property">exception </em><code class="sig-name descname">MultipleObjectsReturned</code><a class="headerlink" href="#payment.models.Payment.MultipleObjectsReturned" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></code></p>
 </dd></dl>
 
+<dl class="py attribute">
+<dt id="payment.models.Payment.PAYMENT_TYPE">
+<code class="sig-name descname">PAYMENT_TYPE</code><em class="property"> = [('CASH', 'Cash'), ('VISA', 'Visa'), ('MASTERCARD', 'Mastercard'), ('BANK', 'Bank'), ('CRYPTO', 'Crypto')]</em><a class="headerlink" href="#payment.models.Payment.PAYMENT_TYPE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="payment.models.Payment.VISA">
+<code class="sig-name descname">VISA</code><em class="property"> = 'VISA'</em><a class="headerlink" href="#payment.models.Payment.VISA" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="payment.models.Payment.date">
+<code class="sig-name descname">date</code><a class="headerlink" href="#payment.models.Payment.date" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="payment.models.Payment.description">
+<code class="sig-name descname">description</code><a class="headerlink" href="#payment.models.Payment.description" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
 <dl class="py method">
-<dt id="payment.models.PaymentConfig.add">
-<code class="sig-name descname">add</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#payment.models.PaymentConfig.add" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt id="payment.models.PaymentConfig.amount">
-<code class="sig-name descname">amount</code><a class="headerlink" href="#payment.models.PaymentConfig.amount" title="Permalink to this definition">¶</a></dt>
-<dd><p>A wrapper for a deferred-loading field. When the value is read from this
-object the first time, the query is executed.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt id="payment.models.PaymentConfig.date">
-<code class="sig-name descname">date</code><a class="headerlink" href="#payment.models.PaymentConfig.date" title="Permalink to this definition">¶</a></dt>
-<dd><p>A wrapper for a deferred-loading field. When the value is read from this
-object the first time, the query is executed.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="payment.models.PaymentConfig.get_next_by_date">
-<code class="sig-name descname">get_next_by_date</code><span class="sig-paren">(</span><em class="sig-param">*</em>, <em class="sig-param">field=&lt;django.db.models.fields.DateTimeField: date&gt;</em>, <em class="sig-param">is_next=True</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#payment.models.PaymentConfig.get_next_by_date" title="Permalink to this definition">¶</a></dt>
+<dt id="payment.models.Payment.get_next_by_date">
+<code class="sig-name descname">get_next_by_date</code><span class="sig-paren">(</span><em class="sig-param">*</em>, <em class="sig-param">field=&lt;django.db.models.fields.DateTimeField: date&gt;</em>, <em class="sig-param">is_next=True</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#payment.models.Payment.get_next_by_date" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="payment.models.PaymentConfig.get_previous_by_date">
-<code class="sig-name descname">get_previous_by_date</code><span class="sig-paren">(</span><em class="sig-param">*</em>, <em class="sig-param">field=&lt;django.db.models.fields.DateTimeField: date&gt;</em>, <em class="sig-param">is_next=False</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#payment.models.PaymentConfig.get_previous_by_date" title="Permalink to this definition">¶</a></dt>
+<dt id="payment.models.Payment.get_previous_by_date">
+<code class="sig-name descname">get_previous_by_date</code><span class="sig-paren">(</span><em class="sig-param">*</em>, <em class="sig-param">field=&lt;django.db.models.fields.DateTimeField: date&gt;</em>, <em class="sig-param">is_next=False</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#payment.models.Payment.get_previous_by_date" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="payment.models.Payment.get_type_display">
+<code class="sig-name descname">get_type_display</code><span class="sig-paren">(</span><em class="sig-param">*</em>, <em class="sig-param">field=&lt;django.db.models.fields.CharField: type&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#payment.models.Payment.get_type_display" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt id="payment.models.PaymentConfig.id">
-<code class="sig-name descname">id</code><a class="headerlink" href="#payment.models.PaymentConfig.id" title="Permalink to this definition">¶</a></dt>
+<dt id="payment.models.Payment.id">
+<code class="sig-name descname">id</code><a class="headerlink" href="#payment.models.Payment.id" title="Permalink to this definition">¶</a></dt>
 <dd><p>A wrapper for a deferred-loading field. When the value is read from this
 object the first time, the query is executed.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="payment.models.PaymentConfig.objects">
-<code class="sig-name descname">objects</code><em class="property"> = &lt;django.db.models.manager.Manager object&gt;</em><a class="headerlink" href="#payment.models.PaymentConfig.objects" title="Permalink to this definition">¶</a></dt>
+<dt id="payment.models.Payment.objects">
+<code class="sig-name descname">objects</code><em class="property"> = &lt;django.db.models.manager.Manager object&gt;</em><a class="headerlink" href="#payment.models.Payment.objects" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt id="payment.models.PaymentConfig.type">
-<code class="sig-name descname">type</code><a class="headerlink" href="#payment.models.PaymentConfig.type" title="Permalink to this definition">¶</a></dt>
+<dt id="payment.models.Payment.transaction_expense_set">
+<code class="sig-name descname">transaction_expense_set</code><a class="headerlink" href="#payment.models.Payment.transaction_expense_set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accessor to the related objects manager on the reverse side of a
+many-to-one relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Parent.children</span></code> is a <code class="docutils literal notranslate"><span class="pre">ReverseManyToOneDescriptor</span></code> instance.</p>
+<p>Most of the implementation is delegated to a dynamically defined manager
+class built by <code class="docutils literal notranslate"><span class="pre">create_forward_many_to_many_manager()</span></code> defined below.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="payment.models.Payment.type">
+<code class="sig-name descname">type</code><a class="headerlink" href="#payment.models.Payment.type" title="Permalink to this definition">¶</a></dt>
 <dd><p>A wrapper for a deferred-loading field. When the value is read from this
 object the first time, the query is executed.</p>
 </dd></dl>
+
+<dl class="py attribute">
+<dt id="payment.models.Payment.user">
+<code class="sig-name descname">user</code><a class="headerlink" href="#payment.models.Payment.user" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accessor to the related object on the forward side of a many-to-one or
+one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Child.parent</span></code> is a <code class="docutils literal notranslate"><span class="pre">ForwardManyToOneDescriptor</span></code> instance.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="payment.models.Payment.user_id">
+<code class="sig-name descname">user_id</code><a class="headerlink" href="#payment.models.Payment.user_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -180,20 +206,188 @@ object the first time, the query is executed.</p>
 <div class="section" id="module-payment.views">
 <span id="payment-views-module"></span><h2>payment.views module<a class="headerlink" href="#module-payment.views" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
-<dt id="payment.views.PaymentConfigView">
-<em class="property">class </em><code class="sig-prename descclassname">payment.views.</code><code class="sig-name descname">PaymentConfigView</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#payment.views.PaymentConfigView" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.views.generic.base.TemplateView</span></code></p>
+<dt id="payment.views.DateInput">
+<em class="property">class </em><code class="sig-prename descclassname">payment.views.</code><code class="sig-name descname">DateInput</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">attrs</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">format</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#payment.views.DateInput" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.forms.widgets.DateInput</span></code></p>
 <dl class="py attribute">
-<dt id="payment.views.PaymentConfigView.template_name">
-<code class="sig-name descname">template_name</code><em class="property"> = 'all_payment.html'</em><a class="headerlink" href="#payment.views.PaymentConfigView.template_name" title="Permalink to this definition">¶</a></dt>
+<dt id="payment.views.DateInput.input_type">
+<code class="sig-name descname">input_type</code><em class="property"> = 'date'</em><a class="headerlink" href="#payment.views.DateInput.input_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="payment.views.DateInput.media">
+<em class="property">property </em><code class="sig-name descname">media</code><a class="headerlink" href="#payment.views.DateInput.media" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
-<dl class="py function">
-<dt id="payment.views.amount_insert">
-<code class="sig-prename descclassname">payment.views.</code><code class="sig-name descname">amount_insert</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">httprequest</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#payment.views.amount_insert" title="Permalink to this definition">¶</a></dt>
+<dl class="py class">
+<dt id="payment.views.PaymentCreateView">
+<em class="property">class </em><code class="sig-prename descclassname">payment.views.</code><code class="sig-name descname">PaymentCreateView</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#payment.views.PaymentCreateView" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.views.generic.edit.CreateView</span></code></p>
+<dl class="py attribute">
+<dt id="payment.views.PaymentCreateView.form_class">
+<code class="sig-name descname">form_class</code><a class="headerlink" href="#payment.views.PaymentCreateView.form_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#payment.views.PaymentForm" title="payment.views.PaymentForm"><code class="xref py py-class docutils literal notranslate"><span class="pre">PaymentForm</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="payment.views.PaymentCreateView.form_valid">
+<code class="sig-name descname">form_valid</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">form</span></em><span class="sig-paren">)</span><a class="headerlink" href="#payment.views.PaymentCreateView.form_valid" title="Permalink to this definition">¶</a></dt>
+<dd><p>If the form is valid, save the associated model.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="payment.views.PaymentCreateView.model">
+<code class="sig-name descname">model</code><a class="headerlink" href="#payment.views.PaymentCreateView.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#payment.models.Payment" title="payment.models.Payment"><code class="xref py py-class docutils literal notranslate"><span class="pre">payment.models.Payment</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="payment.views.PaymentCreateView.success_url">
+<code class="sig-name descname">success_url</code><em class="property"> = '/payment/add'</em><a class="headerlink" href="#payment.views.PaymentCreateView.success_url" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="payment.views.PaymentCreateView.template_name">
+<code class="sig-name descname">template_name</code><em class="property"> = 'add_payment.html'</em><a class="headerlink" href="#payment.views.PaymentCreateView.template_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="payment.views.PaymentDeleteView">
+<em class="property">class </em><code class="sig-prename descclassname">payment.views.</code><code class="sig-name descname">PaymentDeleteView</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#payment.views.PaymentDeleteView" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.views.generic.edit.DeleteView</span></code></p>
+<dl class="py method">
+<dt id="payment.views.PaymentDeleteView.get">
+<code class="sig-name descname">get</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#payment.views.PaymentDeleteView.get" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="payment.views.PaymentDeleteView.get_queryset">
+<code class="sig-name descname">get_queryset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#payment.views.PaymentDeleteView.get_queryset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the <cite>QuerySet</cite> that will be used to look up the object.</p>
+<p>This method is called by the default implementation of get_object() and
+may not be called if get_object() is overridden.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="payment.views.PaymentDeleteView.model">
+<code class="sig-name descname">model</code><a class="headerlink" href="#payment.views.PaymentDeleteView.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#payment.models.Payment" title="payment.models.Payment"><code class="xref py py-class docutils literal notranslate"><span class="pre">payment.models.Payment</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="payment.views.PaymentDeleteView.success_url">
+<code class="sig-name descname">success_url</code><em class="property"> = '/payment'</em><a class="headerlink" href="#payment.views.PaymentDeleteView.success_url" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="payment.views.PaymentEditView">
+<em class="property">class </em><code class="sig-prename descclassname">payment.views.</code><code class="sig-name descname">PaymentEditView</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#payment.views.PaymentEditView" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.views.generic.edit.UpdateView</span></code></p>
+<dl class="py attribute">
+<dt id="payment.views.PaymentEditView.form_class">
+<code class="sig-name descname">form_class</code><a class="headerlink" href="#payment.views.PaymentEditView.form_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#payment.views.PaymentForm" title="payment.views.PaymentForm"><code class="xref py py-class docutils literal notranslate"><span class="pre">PaymentForm</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="payment.views.PaymentEditView.get_object">
+<code class="sig-name descname">get_object</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#payment.views.PaymentEditView.get_object" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the object the view is displaying.</p>
+<p>Require <cite>self.queryset</cite> and a <cite>pk</cite> or <cite>slug</cite> argument in the URLconf.
+Subclasses can override this to return any object.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="payment.views.PaymentEditView.model">
+<code class="sig-name descname">model</code><a class="headerlink" href="#payment.views.PaymentEditView.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#payment.models.Payment" title="payment.models.Payment"><code class="xref py py-class docutils literal notranslate"><span class="pre">payment.models.Payment</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="payment.views.PaymentEditView.success_url">
+<code class="sig-name descname">success_url</code><em class="property"> = '/payment'</em><a class="headerlink" href="#payment.views.PaymentEditView.success_url" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="payment.views.PaymentEditView.template_name">
+<code class="sig-name descname">template_name</code><em class="property"> = 'add_payment.html'</em><a class="headerlink" href="#payment.views.PaymentEditView.template_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="payment.views.PaymentForm">
+<em class="property">class </em><code class="sig-prename descclassname">payment.views.</code><code class="sig-name descname">PaymentForm</code><span class="sig-paren">(</span><em class="sig-param">data=None</em>, <em class="sig-param">files=None</em>, <em class="sig-param">auto_id='id_%s'</em>, <em class="sig-param">prefix=None</em>, <em class="sig-param">initial=None</em>, <em class="sig-param">error_class=&lt;class 'django.forms.utils.ErrorList'&gt;</em>, <em class="sig-param">label_suffix=None</em>, <em class="sig-param">empty_permitted=False</em>, <em class="sig-param">instance=None</em>, <em class="sig-param">use_required_attribute=None</em>, <em class="sig-param">renderer=None</em><span class="sig-paren">)</span><a class="headerlink" href="#payment.views.PaymentForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.forms.models.ModelForm</span></code></p>
+<dl class="py class">
+<dt id="payment.views.PaymentForm.Meta">
+<em class="property">class </em><code class="sig-name descname">Meta</code><a class="headerlink" href="#payment.views.PaymentForm.Meta" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt id="payment.views.PaymentForm.Meta.fields">
+<code class="sig-name descname">fields</code><em class="property"> = ('type', 'description', 'date')</em><a class="headerlink" href="#payment.views.PaymentForm.Meta.fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="payment.views.PaymentForm.Meta.model">
+<code class="sig-name descname">model</code><a class="headerlink" href="#payment.views.PaymentForm.Meta.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#payment.models.Payment" title="payment.models.Payment"><code class="xref py py-class docutils literal notranslate"><span class="pre">payment.models.Payment</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="payment.views.PaymentForm.Meta.widgets">
+<code class="sig-name descname">widgets</code><em class="property"> = {'date': &lt;payment.views.DateInput object&gt;}</em><a class="headerlink" href="#payment.views.PaymentForm.Meta.widgets" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="payment.views.PaymentForm.base_fields">
+<code class="sig-name descname">base_fields</code><em class="property"> = {'date': &lt;django.forms.fields.DateTimeField object&gt;, 'description': &lt;django.forms.fields.CharField object&gt;, 'type': &lt;django.forms.fields.TypedChoiceField object&gt;}</em><a class="headerlink" href="#payment.views.PaymentForm.base_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="payment.views.PaymentForm.declared_fields">
+<code class="sig-name descname">declared_fields</code><em class="property"> = {}</em><a class="headerlink" href="#payment.views.PaymentForm.declared_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="payment.views.PaymentForm.media">
+<em class="property">property </em><code class="sig-name descname">media</code><a class="headerlink" href="#payment.views.PaymentForm.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="payment.views.PaymentListView">
+<em class="property">class </em><code class="sig-prename descclassname">payment.views.</code><code class="sig-name descname">PaymentListView</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#payment.views.PaymentListView" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.views.generic.list.ListView</span></code></p>
+<dl class="py method">
+<dt id="payment.views.PaymentListView.get_queryset">
+<code class="sig-name descname">get_queryset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#payment.views.PaymentListView.get_queryset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the list of items for this view.</p>
+<p>The return value must be an iterable and may be an instance of
+<cite>QuerySet</cite> in which case <cite>QuerySet</cite> specific behavior will be enabled.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="payment.views.PaymentListView.model">
+<code class="sig-name descname">model</code><a class="headerlink" href="#payment.views.PaymentListView.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#payment.models.Payment" title="payment.models.Payment"><code class="xref py py-class docutils literal notranslate"><span class="pre">payment.models.Payment</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="payment.views.PaymentListView.template_name">
+<code class="sig-name descname">template_name</code><em class="property"> = 'payment.html'</em><a class="headerlink" href="#payment.views.PaymentListView.template_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
 
 </div>
 <div class="section" id="module-payment">
