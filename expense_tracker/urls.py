@@ -21,6 +21,7 @@ import dashboard
 from user_profile_setting.views import user_details
 from user_profile_setting.views import UserProfileSettingConfigView
 from register import views as register_view
+from user_profile_setting.views import export_csv
 from . import views
 from dashboard import views
 
@@ -51,4 +52,5 @@ urlpatterns = [
     path("", include("django.contrib.auth.urls")),
     path("transaction/", include("transaction_expense.urls")),
     path("payment/", include("payment.urls")),
+    path("download-csv/", export_csv),
 ]

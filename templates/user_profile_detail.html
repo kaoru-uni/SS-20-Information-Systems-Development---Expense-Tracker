@@ -5,7 +5,7 @@
 {% block content %}
     <form action="../templates/user_profile_detail" method="POST">
     {%  csrf_token %}
-    {{ form | crispy }}
-    <button type="submit" class="btn btn-success">Save</button>
+
+    <button type="submit" class="btn btn-success" id="sort-btn">Export transactions</button>
     </form>
 {% endblock %}

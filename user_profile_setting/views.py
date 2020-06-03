@@ -1,7 +1,10 @@
 from django.shortcuts import render
+import csv
+from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from .forms import UserProfileForm
 from django.views.generic import TemplateView
+from transaction_expense.models import Transaction_Expense
 
 
 # Create your views here.
@@ -27,3 +30,18 @@ def user_details(httprequest, *args, **kwargs):
         "form": user_profile_details()
     }
     return render(httprequest, "user_profile_detail.html", context)
+
+
+def export_csv(request):
+    if request.GET.get('sort-btn'):
+        # Create the HttpResponse object with the appropriate CSV header.
+        response = HttpResponse(content_type='text/csv')
+
+    writer = csv.writer(response)
+    writer.writerow(['Date', 'Amount', 'User', 'Payment', 'Description', 'Category', ])
+    for Transaction_Expense in Transaction_Expense.objects.all().values_list('date', 'amount', 'user', 'payment',
+                                                                             'description', 'category'):
+        writer.writerow(Transaction_Expense)
+    response['Content-Disposition'] = 'attachment; filename="transaction.csv"'
+
+    return response

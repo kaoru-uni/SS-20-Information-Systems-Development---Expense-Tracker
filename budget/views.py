@@ -36,7 +36,10 @@ def budget_pie_chart_data(request):
         .aggregate(Sum("amount"))["amount__sum"]
         or 0.00
     )
-    budget_left = decimal.Decimal(total_budget) - total_transactions
+    if total_budget is not None:
+        budget_left = decimal.Decimal(total_budget) - total_transactions
+    else:
+        budget_left = 0
     queryset = Budget.objects.filter(user=request.user).values(
         "amount", "category_id", "name"
     )

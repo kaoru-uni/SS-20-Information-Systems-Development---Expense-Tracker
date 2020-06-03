@@ -102,8 +102,8 @@ def transaction_expense_pie_chart(request):
 
         query = (
             Transaction_Expense.objects.filter(user=request.user)
-            .filter(date__range=(formatted_start_date, formatted_end_date))
-            .order_by("date")
+                .filter(date__range=(formatted_start_date, formatted_end_date))
+                .order_by("date")
         )
     else:
         query = Transaction_Expense.objects.filter(user=request.user).order_by("date")
