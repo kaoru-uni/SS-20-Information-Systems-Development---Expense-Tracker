@@ -7,7 +7,6 @@ This model contains the transaction of an expense which is being made.
 A transaction can be made by a family member.
 """
 
-
 # https://stackoverflow.com/questions/323763/foreign-key-from-one-app-into-another-in-django
 # https://stackoverflow.com/questions/26185687/you-are-trying-to-add-a-non-nullable-field-new-field-to-userprofile-without-a
 class Transaction_Expense(models.Model):

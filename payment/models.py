@@ -19,7 +19,7 @@ class Payment(models.Model):
         (BANK, "Bank"),
         (CRYPTO, "Crypto"),
     ]
-    type = models.CharField(max_length=50, choices=PAYMENT_TYPE, default=CASH,)
+    type = models.CharField(max_length=50, choices=PAYMENT_TYPE, default=CASH, )
     date = models.DateTimeField()
     description = models.CharField(max_length=100, default="")
     user = models.ForeignKey("auth.User", on_delete=models.CASCADE)

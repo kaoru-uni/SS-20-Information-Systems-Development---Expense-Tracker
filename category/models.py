@@ -10,6 +10,7 @@ class Category(models.Model):
     """
     Returns self.name instead of object.object
     """
+
     def __str__(self):
         return str(self.name)
 
