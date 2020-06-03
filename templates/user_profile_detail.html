@@ -3,9 +3,29 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
+    <div class="row">
+    <div class="col-sm">
     <form action="{% url 'export_csv' %}" method="POST">
         {%  csrf_token %}
 
         <button type="submit" class="btn btn-success" id="sort-btn">Export transactions</button>
     </form>
+    </div>
+
+    <div class="col-sm">
+    <form action="{% url 'export_budget_csv' %}" method="POST">
+        {%  csrf_token %}
+
+      <button type="submit" class="btn btn-success" id="sort-btn">Export budget</button>
+    </form>
+    </div>
+
+    <div class="col-sm">
+     <form action="{% url 'export_payment_csv' %}" method="POST">
+        {%  csrf_token %}
+
+      <button type="submit" class="btn btn-success" id="sort-btn">Export payment</button>
+    </form>
+    </div>
+</div>
 {% endblock %}

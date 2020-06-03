@@ -5,6 +5,8 @@ from django.contrib.auth.decorators import login_required
 from .forms import UserProfileForm
 from django.views.generic import TemplateView
 from transaction_expense.models import Transaction_Expense
+from budget.models import Budget
+from payment.models import Payment
 
 
 # Create your views here.
@@ -38,7 +40,7 @@ def export_csv(request):
 
     writer = csv.writer(response)
     writer.writerow(
-        ["Date", "Amount", "User", "Payment", "Description", "Category",]
+        ["Date", "Amount", "User", "Payment", "Description", "Category", ]
     )
     querydata = Transaction_Expense.objects.filter(user=request.user)
     for item in querydata:
@@ -55,5 +57,55 @@ def export_csv(request):
 
     # writer.writerow(Transaction_Expense)
     response["Content-Disposition"] = 'attachment; filename="transaction.csv"'
+
+    return response
+
+
+def export_budget_csv(request):
+    # Create the HttpResponse object with the appropriate CSV header.
+    response = HttpResponse(content_type="text/csv")
+
+    writer = csv.writer(response)
+    writer.writerow(
+        ["Name", "Amount", "Description", "Category", "Date", ]
+    )
+    querydata = Budget.objects.filter(user=request.user)
+    for item in querydata:
+        writer.writerow(
+            [
+                item.name,
+                item.amount,
+                item.description,
+                item.category,
+                item.created_date,
+            ]
+        )
+
+    # writer.writerow(Transaction_Expense)
+    response["Content-Disposition"] = 'attachment; filename="budget.csv"'
+
+    return response
+
+
+def export_payment_csv(request):
+    # Create the HttpResponse object with the appropriate CSV header.
+    response = HttpResponse(content_type="text/csv")
+
+    writer = csv.writer(response)
+    writer.writerow(
+        ["Card type", "Description", "Date", ]
+    )
+    querydata = Payment.objects.filter(user=request.user)
+    for item in querydata:
+        writer.writerow(
+            [
+                item.type,
+                item.description,
+                item.date,
+            ]
+        )
+
+    # writer.writerow(Transaction_Expense)
+    response["Content-Disposition"] = 'attachment; filename="payment.csv"'
 
     return response
