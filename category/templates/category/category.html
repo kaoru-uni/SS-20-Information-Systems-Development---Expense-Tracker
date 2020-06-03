@@ -28,10 +28,10 @@
                             <td>{{ category.created_date | date:"Y-m-d" }}</td>
                             <td>{{ category.user }}</td>
                             <td class="text-right">
-                                <a href="{{ category.id  }}/edit"><i class="far fa-edit"></i></a>
+                                <a href="{{ category.id  }}/edit"><i class="far fa-edit" style="color:#03ab30;"></i></a>
                             </td>
                             <td>
-                                <a href="{{ category.id  }}/delete"> <i class="far fa-trash-alt"></i></a>
+                                <a href="{{ category.id  }}/delete"> <i class="far fa-trash-alt" style="color:#03ab30;"></i></a>
                             </td>
                         </tr>
                     {% endfor %}

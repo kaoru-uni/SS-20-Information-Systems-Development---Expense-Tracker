@@ -84,10 +84,10 @@
                         <td>{{ budget.created_date | date:"Y-m-d" }}</td>
                         <td>{{ budget.user }}</td>
                         <td class="text-right">
-                            <a href="{{ budget.id  }}/budgetedit"><i class="far fa-edit"></i></a>
+                            <a href="{{ budget.id  }}/budgetedit"><i class="far fa-edit" style="color:#03ab30;"></i></a>
                         </td>
                         <td>
-                            <a href="{{ budget.id  }}/budgetdelete"> <i class="far fa-trash-alt"></i></a>
+                            <a href="{{ budget.id  }}/budgetdelete"> <i class="far fa-trash-alt" style="color:#03ab30;"></i></a>
                         </td>
                     </tr>
                 {% endfor %}
