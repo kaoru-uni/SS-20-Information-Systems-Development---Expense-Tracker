@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+<style type="text/css">
+        body {
+         background: url('{% static "expense_tracker/Background_Small.jpg" %}') no-repeat center center fixed;
+         -webkit-background-size: cover;
+         -moz-background-size: cover;
+         -o-background-size: cover;
+         background-size: cover;
+        }
+</style>
+
+    <div class="row h-100">
+    <div class="col-lg-5 my-auto">
+    </div>
+    <div class="col-lg-7 my-auto">
+        <div class="mx-auto header-content">
+            <h1 class="mb-5">EXPENSIO <br>
+                <div class="text-white">
+                The Open Source web-based Expense Tracker build with Django.
+                </div>
+            </h1>
+            <a class="btn btn-outline-light btn-xl js-scroll-trigger" role="button" href="/register">Register now for Free!</a>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

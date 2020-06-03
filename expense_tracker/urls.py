@@ -48,4 +48,6 @@ urlpatterns = [
     path("transaction/", include("transaction_expense.urls")),
     path("payment/", include("payment.urls")),
     path("profile/", include("user_profile_setting.urls")),
+    path("profile/", include("user_profile_setting.urls")),
+    path("welcome/", views.welcome, name="welcome"),
 ]
