@@ -24,7 +24,7 @@
                     {% for transaction in object_list %}
                         <tr>
                             <td>{{ transaction.date | date:"Y-m-d" }}</td>
-                            <td>{{ transaction.amount }}</td>
+                            <td>{{ transaction.amount }} CHF</td>
                             <td>{{ transaction.user }}</td>
                             {% if transaction.payment.type == 'CASH'%}
                                 <td><i class="far fa-money-bill-alt"></i></td>

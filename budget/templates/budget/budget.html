@@ -78,7 +78,7 @@
                 {% for budget in budget_data_all %}
                     <tr>
                         <td>{{ budget.name }}</td>
-                        <td>{{ budget.amount }} CHF</td>
+                        <td>{{ budget.amount|floatformat:2 }} CHF</td>
                         <td>{{ budget.description }}</td>
                         <td>{{ budget.category }}</td>
                         <td>{{ budget.created_date | date:"Y-m-d" }}</td>
