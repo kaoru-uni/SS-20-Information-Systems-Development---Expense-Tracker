@@ -11,7 +11,8 @@ from payment.models import Payment
 
 # Create your views here.
 
-
+# https://www.youtube.com/watch?v=z4lfVsb_7MA - for creating the login
+# https://www.youtube.com/watch?v=3aVqWaLjqS4
 @login_required
 def profile(request, *args, **kwargs):
     return render(request, "profile.html")
