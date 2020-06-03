@@ -1,31 +1,38 @@
 {% extends 'base.html' %}
 
 {% load crispy_forms_tags %}
-
+<!-- https://docs.djangoproject.com/en/3.0/ref/contrib/auth/ -->
 {% block content %}
-    <div class="row">
-    <div class="col-sm">
-    <form action="{% url 'export_csv' %}" method="POST">
-        {%  csrf_token %}
+<ul class="list-group">
+    <li class="list-group-item">Hello, {{ user }}!</li>
+    <li class="list-group-item">Your E-Mail address is: {{request.user.email}}</li>
+    <li class="list-group-item">Your are an important user since: {{request.user.date_joined}}</li>
+    <li class="list-group-item">Your last login was on: {{request.user.last_login}}</li>
+</ul>
 
-        <button type="submit" class="btn btn-success" id="sort-btn">Export transactions</button>
-    </form>
+<div class="row pt-5">
+    <div class="col-sm">
+        <form action="{% url 'export_csv' %}" method="POST">
+            {%  csrf_token %}
+
+            <button type="submit" class="btn btn-success" id="sort-btn">Export transactions</button>
+        </form>
     </div>
 
     <div class="col-sm">
-    <form action="{% url 'export_budget_csv' %}" method="POST">
-        {%  csrf_token %}
+        <form action="{% url 'export_budget_csv' %}" method="POST">
+            {%  csrf_token %}
 
-      <button type="submit" class="btn btn-success" id="sort-btn">Export budget</button>
-    </form>
+            <button type="submit" class="btn btn-success" id="sort-btn">Export budget</button>
+        </form>
     </div>
 
     <div class="col-sm">
-     <form action="{% url 'export_payment_csv' %}" method="POST">
-        {%  csrf_token %}
+        <form action="{% url 'export_payment_csv' %}" method="POST">
+            {%  csrf_token %}
 
-      <button type="submit" class="btn btn-success" id="sort-btn">Export payment</button>
-    </form>
+            <button type="submit" class="btn btn-success" id="sort-btn">Export payment</button>
+        </form>
     </div>
 </div>
 {% endblock %}
