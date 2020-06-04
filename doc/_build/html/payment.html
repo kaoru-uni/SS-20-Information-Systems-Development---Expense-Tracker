@@ -74,8 +74,12 @@
 <span id="payment-models-module"></span><h2>payment.models module<a class="headerlink" href="#module-payment.models" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
 <dt id="payment.models.Payment">
-<em class="property">class </em><code class="sig-prename descclassname">payment.models.</code><code class="sig-name descname">Payment</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">id</span></em>, <em class="sig-param"><span class="n">type</span></em>, <em class="sig-param"><span class="n">date</span></em>, <em class="sig-param"><span class="n">description</span></em>, <em class="sig-param"><span class="n">user</span></em><span class="sig-paren">)</span><a class="headerlink" href="#payment.models.Payment" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">payment.models.</code><code class="sig-name descname">Payment</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#payment.models.Payment" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.models.base.Model</span></code></p>
+<div class="line-block">
+<div class="line">This class represents the model for the payment options.</div>
+<div class="line">PAYMENT_TYPE: A user chan choose from the available options.</div>
+</div>
 <dl class="py attribute">
 <dt id="payment.models.Payment.BANK">
 <code class="sig-name descname">BANK</code><em class="property"> = 'BANK'</em><a class="headerlink" href="#payment.models.Payment.BANK" title="Permalink to this definition">¶</a></dt>

@@ -166,20 +166,19 @@ class BudgetDeleteView(DeleteView):
     model = Budget
     success_url = "/budget"
 
-    """
-    | get_queryset: is used to define the queryset which will be returned
-    | :return: data which is owned by the user will be returned.
-    """
-
     def get_queryset(self):
+        """
+        | get_queryset: is used to define the queryset which will be returned
+        | :return: data which is owned by the user will be returned.
+        """
         logged_in_user = self.request.user
         return self.model.objects.filter(user=logged_in_user)
+
+    def get(self, request, *args, **kwargs):
         """
         | This function is used to skip a second delete validation page.
         | Post is send to delete the transaction.
         """
-
-    def get(self, request, *args, **kwargs):
         return self.post(request, *args, **kwargs)
 
 
@@ -209,14 +208,13 @@ class BudgetEditView(UpdateView):
         )
         return form
 
+    def get_object(self, *args, **kwargs):
         """
         | According to: https://docs.djangoproject.com/en/3.0/ref/class-based-views/mixins-single-object/#django.views.generic.detail.SingleObjectMixin.get_object
         | get_object: returns the object which is currently being viewed.
         | It's used to validate that the budget which was requested is really made by the user.
         | If it's not return an error
         """
-
-    def get_object(self, *args, **kwargs):
         budget_found = super(BudgetEditView, self).get_object(*args, **kwargs)
         if not budget_found.user == self.request.user:
             raise Http404

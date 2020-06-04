@@ -30,6 +30,11 @@ class UserProfileSettingConfigView(TemplateView):
 # https://docs.djangoproject.com/en/3.0/howto/outputting-csv/
 # https://studygyaan.com/django/how-to-export-csv-file-with-django
 def export_csv(request):
+    """
+    | export_csv is used for exporting the transactions.
+    :param request:
+    :return:
+    """
     # Create the HttpResponse object with the appropriate CSV header.
     response = HttpResponse(content_type="text/csv")
 
@@ -57,6 +62,11 @@ def export_csv(request):
 
 
 def export_budget_csv(request):
+    """
+    | export_budget_csv is used for exporting the budget.
+    | :param request:
+    | :return:
+    """
     # Create the HttpResponse object with the appropriate CSV header.
     response = HttpResponse(content_type="text/csv")
 
@@ -83,6 +93,11 @@ def export_budget_csv(request):
 
 
 def export_payment_csv(request):
+    """
+    | export_payment_csv is used for exporting the payment options from the user.
+    | :param request:
+    | :return:
+    """
     # Create the HttpResponse object with the appropriate CSV header.
     response = HttpResponse(content_type="text/csv")
 
@@ -103,16 +118,32 @@ def export_payment_csv(request):
 
 
 def get_payment(data):
+    """
+    | data could look like this: Type: CASH, Description: from kaoru
+    | get_payment splits the string.
+    | splitted_data: contains of "Type: CASH" and the other of "Description: from kaoru"
+    | payment: has the data from the first string (Type Cash) which is split by " " (space) and the second value is selected.
+    | description: is for example "Description: from kaoru"
+    | :return: payment and description will be returned.
+    """
     splitted_data = data.split(",")
     payment = splitted_data[0].split(" ")[1]
     description = splitted_data[1]
     return payment, description
 
 
-# https://docs.djangoproject.com/en/3.0/topics/db/queries/#creating-objects
-# https://stackoverflow.com/questions/8636760/parsing-a-datetime-string-into-a-django-datetimefield
-# https://www.foxinfotech.in/2018/09/python-how-to-skip-first-line-in-csv.html
 def transaction_upload(request):
+    """
+    | The following sources has been used:
+    | https://docs.djangoproject.com/en/3.0/topics/db/queries/#creating-objects
+    | https://stackoverflow.com/questions/8636760/parsing-a-datetime-string-into-a-django-datetimefield
+    | https://www.foxinfotech.in/2018/09/python-how-to-skip-first-line-in-csv.html
+    | transaction_upload uploads the transaction csv file.
+    | it reads the file from a GET method.
+    | looks which user is logged in.
+    | splits each row by newline and set the delimeter to comma.
+    | next() skips the first line which consists of the header.
+    """
     template = "user_profile_detail.html"
     prompt = {"order": "Date, Amount, User, Payment, Description, Category"}
 

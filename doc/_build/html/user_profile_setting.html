@@ -101,27 +101,67 @@
 <dl class="py function">
 <dt id="user_profile_setting.views.export_budget_csv">
 <code class="sig-prename descclassname">user_profile_setting.views.</code><code class="sig-name descname">export_budget_csv</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em><span class="sig-paren">)</span><a class="headerlink" href="#user_profile_setting.views.export_budget_csv" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><div class="line-block">
+<div class="line">export_budget_csv is used for exporting the budget.</div>
+<div class="line">:param request:</div>
+<div class="line">:return:</div>
+</div>
+</dd></dl>
 
 <dl class="py function">
 <dt id="user_profile_setting.views.export_csv">
 <code class="sig-prename descclassname">user_profile_setting.views.</code><code class="sig-name descname">export_csv</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em><span class="sig-paren">)</span><a class="headerlink" href="#user_profile_setting.views.export_csv" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><div class="line-block">
+<div class="line">export_csv is used for exporting the transactions.</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>request</strong> – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt id="user_profile_setting.views.export_payment_csv">
 <code class="sig-prename descclassname">user_profile_setting.views.</code><code class="sig-name descname">export_payment_csv</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em><span class="sig-paren">)</span><a class="headerlink" href="#user_profile_setting.views.export_payment_csv" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><div class="line-block">
+<div class="line">export_payment_csv is used for exporting the payment options from the user.</div>
+<div class="line">:param request:</div>
+<div class="line">:return:</div>
+</div>
+</dd></dl>
 
 <dl class="py function">
 <dt id="user_profile_setting.views.get_payment">
 <code class="sig-prename descclassname">user_profile_setting.views.</code><code class="sig-name descname">get_payment</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#user_profile_setting.views.get_payment" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><div class="line-block">
+<div class="line">data could look like this: Type: CASH, Description: from kaoru</div>
+<div class="line">get_payment splits the string.</div>
+<div class="line">splitted_data: contains of “Type: CASH” and the other of “Description: from kaoru”</div>
+<div class="line">payment: has the data from the first string (Type Cash) which is split by ” ” (space) and the second value is selected.</div>
+<div class="line">description: is for example “Description: from kaoru”</div>
+<div class="line">:return: payment and description will be returned.</div>
+</div>
+</dd></dl>
 
 <dl class="py function">
 <dt id="user_profile_setting.views.transaction_upload">
 <code class="sig-prename descclassname">user_profile_setting.views.</code><code class="sig-name descname">transaction_upload</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em><span class="sig-paren">)</span><a class="headerlink" href="#user_profile_setting.views.transaction_upload" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><div class="line-block">
+<div class="line">The following sources has been used:</div>
+<div class="line"><a class="reference external" href="https://docs.djangoproject.com/en/3.0/topics/db/queries/#creating-objects">https://docs.djangoproject.com/en/3.0/topics/db/queries/#creating-objects</a></div>
+<div class="line"><a class="reference external" href="https://stackoverflow.com/questions/8636760/parsing-a-datetime-string-into-a-django-datetimefield">https://stackoverflow.com/questions/8636760/parsing-a-datetime-string-into-a-django-datetimefield</a></div>
+<div class="line"><a class="reference external" href="https://www.foxinfotech.in/2018/09/python-how-to-skip-first-line-in-csv.html">https://www.foxinfotech.in/2018/09/python-how-to-skip-first-line-in-csv.html</a></div>
+<div class="line">transaction_upload uploads the transaction csv file.</div>
+<div class="line">it reads the file from a GET method.</div>
+<div class="line">looks which user is logged in.</div>
+<div class="line">splits each row by newline and set the delimeter to comma.</div>
+<div class="line">next() skips the first line which consists of the header.</div>
+</div>
+</dd></dl>
 
 </div>
 <div class="section" id="module-user_profile_setting">
