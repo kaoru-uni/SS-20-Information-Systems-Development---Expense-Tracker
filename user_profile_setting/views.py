@@ -1,8 +1,6 @@
 from django.shortcuts import render
-import csv, io
+import csv
 from django.http import HttpResponse
-from django.contrib.auth.decorators import login_required
-from .forms import UserProfileForm
 from django.views.generic import TemplateView
 from transaction_expense.models import Transaction_Expense
 from category.models import Category
@@ -11,16 +9,14 @@ from payment.models import Payment
 from django.utils.dateparse import parse_datetime
 from django.contrib.auth.models import User
 
-# Create your views here.
 
 # https://www.youtube.com/watch?v=z4lfVsb_7MA - for creating the login
 # https://www.youtube.com/watch?v=3aVqWaLjqS4
-@login_required
-def profile(request, *args, **kwargs):
-    return render(request, "profile.html")
-
-
 class UserProfileSettingConfigView(TemplateView):
+    """
+    | UserProfileSettingConfigView shows the overview of the whole pfoile page.
+    | template_name: is the template which is used.
+    """
     template_name = "user_profile_detail.html"
 
     def form_valid(self, form):
@@ -29,48 +25,15 @@ class UserProfileSettingConfigView(TemplateView):
         return super(UserProfileSettingConfigView, self).form_valid(form)
 
 
-def user_details(httprequest, *args, **kwargs):
-    user_profile_details = UserProfileForm()
-    context = {"form": user_profile_details()}
-    return render(httprequest, "user_profile_detail.html", context)
-
-
 # https://docs.djangoproject.com/en/3.0/howto/outputting-csv/
 # https://studygyaan.com/django/how-to-export-csv-file-with-django
-def export_csv(request):
-    # Create the HttpResponse object with the appropriate CSV header.
-    response = HttpResponse(content_type="text/csv")
-
-    writer = csv.writer(response)
-    writer.writerow(
-        ["Date", "Amount", "User", "Payment", "Description", "Category",]
-    )
-    querydata = Transaction_Expense.objects.filter(user=request.user)
-    for item in querydata:
-        writer.writerow(
-            [
-                item.date,
-                item.amount,
-                item.user,
-                item.payment,
-                item.description,
-                item.category,
-            ]
-        )
-
-    # writer.writerow(Transaction_Expense)
-    response["Content-Disposition"] = 'attachment; filename="transaction.csv"'
-
-    return response
-
-
 def export_budget_csv(request):
     # Create the HttpResponse object with the appropriate CSV header.
     response = HttpResponse(content_type="text/csv")
 
     writer = csv.writer(response)
     writer.writerow(
-        ["Name", "Amount", "Description", "Category", "Date",]
+        ["Name", "Amount", "Description", "Category", "Date", ]
     )
     querydata = Budget.objects.filter(user=request.user)
     for item in querydata:
@@ -96,12 +59,12 @@ def export_payment_csv(request):
 
     writer = csv.writer(response)
     writer.writerow(
-        ["Card type", "Description", "Date",]
+        ["Card type", "Description", "Date", ]
     )
     querydata = Payment.objects.filter(user=request.user)
     for item in querydata:
         writer.writerow(
-            [item.type, item.description, item.date,]
+            [item.type, item.description, item.date, ]
         )
 
     # writer.writerow(Transaction_Expense)
@@ -136,7 +99,6 @@ def transaction_upload(request):
     next(csv_data)
     for column in csv_data:
         if len(column) != 0:
-            # print('column: ', column)
             csv_date = parse_datetime(column[0])
             csv_amount = column[1]
             csv_payment_data = column[3]

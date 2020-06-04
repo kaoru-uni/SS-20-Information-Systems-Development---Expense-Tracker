@@ -8,9 +8,18 @@ from budget.views import budget_pie_chart_data_dash
 import datetime
 from calendar import monthrange
 
-# https://docs.djangoproject.com/en/3.0/ref/models/querysets/#month
-# https://stackoverflow.com/questions/4938429/how-do-we-determine-the-number-of-days-for-a-given-month-in-python
+"""
+This view is used for the dashboard.
+"""
 def dashboard_pie_chart(request):
+    """
+    | The following sources has been used:
+    | https://docs.djangoproject.com/en/3.0/ref/models/querysets/#month
+    | https://stackoverflow.com/questions/4938429/how-do-we-determine-the-number-of-days-for-a-given-month-in-python
+    | This function is used to fill the pie chart.
+    | It only shows the transactions of the current month and sorts dem descending by date.
+    :rtype: returned will be the request, template and data which is used for the template.
+    """
     budget_data = budget_pie_chart_data_dash(request)
 
     today = datetime.date.today()
@@ -51,4 +60,3 @@ def dashboard_pie_chart(request):
             "transaction_queryset": transaction_queryset,
         },
     )
-

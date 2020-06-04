@@ -10,7 +10,7 @@ Welcome to Expense Tracker's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-
+   modules
 
 Indices and tables
 ==================

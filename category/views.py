@@ -7,14 +7,14 @@ from category.models import Category
 
 #https://docs.djangoproject.com/en/3.0/ref/class-based-views/generic-editing/
 class CategoryCreateView(CreateView):
-        model = Category
-        fields = ['name']
-        success_url = "/category"
-        template_name = "category/category_add.html"
-        def form_valid(self, form):
-            form_to_save = form.save(commit=False)
-            form_to_save.user = self.request.user
-            return super(CategoryCreateView, self).form_valid(form)
+    model = Category
+    fields = ['name']
+    success_url = "/category"
+    template_name = "category/category_add.html"
+    def form_valid(self, form):
+        form_to_save = form.save(commit=False)
+        form_to_save.user = self.request.user
+        return super(CategoryCreateView, self).form_valid(form)
 
 
 class CategoryListView(ListView):

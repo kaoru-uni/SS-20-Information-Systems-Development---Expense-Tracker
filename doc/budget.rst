@@ -44,6 +44,14 @@ budget.tests module
    :undoc-members:
    :show-inheritance:
 
+budget.urls module
+------------------
+
+.. automodule:: budget.urls
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 budget.views module
 -------------------
 

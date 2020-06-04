@@ -20,6 +20,22 @@ category.migrations.0002\_auto\_20200413\_1520 module
    :undoc-members:
    :show-inheritance:
 
+category.migrations.0003\_category\_user module
+-----------------------------------------------
+
+.. automodule:: category.migrations.0003_category_user
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+category.migrations.0004\_category\_created\_date module
+--------------------------------------------------------
+
+.. automodule:: category.migrations.0004_category_created_date
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 
 Module contents
 ---------------
