@@ -14,8 +14,8 @@
     <script src="_static/language_data.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="transaction_expense package" href="transaction_expense.html" />
-    <link rel="prev" title="payment package" href="payment.html" />
+    <link rel="next" title="register.migrations package" href="register.migrations.html" />
+    <link rel="prev" title="payment.migrations package" href="payment.migrations.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -37,6 +37,12 @@
 <div class="section" id="subpackages">
 <h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="register.migrations.html">register.migrations package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="register.migrations.html#module-register.migrations">Module contents</a></li>
+</ul>
+</li>
+</ul>
 </div>
 </div>
 <div class="section" id="submodules">
@@ -65,10 +71,21 @@
 <dt id="register.forms.RegisterForm">
 <em class="property">class </em><code class="sig-prename descclassname">register.forms.</code><code class="sig-name descname">RegisterForm</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#register.forms.RegisterForm" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.auth.forms.UserCreationForm</span></code></p>
+<div class="line-block">
+<div class="line">This class is used as an form for the registration.</div>
+<div class="line">email: creates an email field forms which checks if the email is valid.</div>
+</div>
 <dl class="py class">
 <dt id="register.forms.RegisterForm.Meta">
 <em class="property">class </em><code class="sig-name descname">Meta</code><a class="headerlink" href="#register.forms.RegisterForm.Meta" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<div class="line-block">
+<div class="line">According to <a class="reference external" href="https://docs.djangoproject.com/en/3.0/topics/db/models/#meta-options">https://docs.djangoproject.com/en/3.0/topics/db/models/#meta-options</a></div>
+<div class="line">and <a class="reference external" href="https://docs.djangoproject.com/en/3.0/ref/forms/widgets/">https://docs.djangoproject.com/en/3.0/ref/forms/widgets/</a></div>
+<div class="line">Meta data can be set to add additional information to a class.</div>
+<div class="line">model: is the Model which will be used.</div>
+<div class="line">fields: are the chosen fields which will be shown.</div>
+</div>
 <dl class="py attribute">
 <dt id="register.forms.RegisterForm.Meta.fields">
 <code class="sig-name descname">fields</code><em class="property"> = ['username', 'email', 'password1', 'password2']</em><a class="headerlink" href="#register.forms.RegisterForm.Meta.fields" title="Permalink to this definition">¶</a></dt>
@@ -111,7 +128,15 @@
 <dl class="py function">
 <dt id="register.views.register">
 <code class="sig-prename descclassname">register.views.</code><code class="sig-name descname">register</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">response</span></em><span class="sig-paren">)</span><a class="headerlink" href="#register.views.register" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><div class="line-block">
+<div class="line">The following source has been used:</div>
+<div class="line"><a class="reference external" href="https://www.youtube.com/watch?v=z4lfVsb_7MA">https://www.youtube.com/watch?v=z4lfVsb_7MA</a> - for creating the registration</div>
+<div class="line">This function is used for user registration.</div>
+<div class="line">Check if the form has a valid input and is a POST.</div>
+<div class="line">If the input is valid save the user and redirect back to the index site.</div>
+<div class="line">Otherwise redirect to the register form</div>
+</div>
+</dd></dl>
 
 </div>
 <div class="section" id="module-register">
@@ -157,8 +182,8 @@
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
   <li><a href="modules.html">Expense_Tracker</a><ul>
-      <li>Previous: <a href="payment.html" title="previous chapter">payment package</a></li>
-      <li>Next: <a href="transaction_expense.html" title="next chapter">transaction_expense package</a></li>
+      <li>Previous: <a href="payment.migrations.html" title="previous chapter">payment.migrations package</a></li>
+      <li>Next: <a href="register.migrations.html" title="next chapter">register.migrations package</a></li>
   </ul></li>
   </ul></li>
 </ul>

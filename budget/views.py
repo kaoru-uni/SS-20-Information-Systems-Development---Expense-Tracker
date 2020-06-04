@@ -13,18 +13,17 @@ from transaction_expense.models import Transaction_Expense
 
 def budget_pie_chart_data(request):
     """
-    https://simpleisbetterthancomplex.com/tutorial/2020/01/19/how-to-use-chart-js-with-django.html
-    https://stackoverflow.com/questions/47501469/django-filtering-by-user/47502441
-    https://stackoverflow.com/questions/19138609/django-aggreagtion-sum-return-value-only/37751814
-    https://docs.djangoproject.com/en/3.0/ref/models/querysets/#month
-    https://stackoverflow.com/questions/1416830/django-actual-month-in-queryset
-    budget_pie_chart_data is used to populate the budget.html page.
-    @:param data {}
-    @:param today is the current date
-    @:param month is the current month from today as a string
-    @:param year is the current year from today as a string
-    total_budget sums up all budget of a user.
-    budget_left is the difference between the total budget and all transactions of the current month.
+    | https://simpleisbetterthancomplex.com/tutorial/2020/01/19/how-to-use-chart-js-with-django.html
+    | https://stackoverflow.com/questions/47501469/django-filtering-by-user/47502441
+    | https://stackoverflow.com/questions/19138609/django-aggreagtion-sum-return-value-only/37751814
+    | https://docs.djangoproject.com/en/3.0/ref/models/querysets/#month
+    | https://stackoverflow.com/questions/1416830/django-actual-month-in-queryset
+    | budget_pie_chart_data is used to populate the budget.html page.
+    | today: is the current date
+    | month: is the current month from today as a string
+    | year: is the current year from today as a string
+    | total_budget: sums up all budget of a user.
+    | budget_left is the difference between the total budget and all transactions of the current month.
     """
 
     data = {}
@@ -78,14 +77,13 @@ def budget_pie_chart_data(request):
 
 def budget_pie_chart_data_dash(request):
     """
-    Is used on the dashboard
-    budget_pie_chart_dash is used to populate the budget.html page.
-    @:param data {}
-    @:param today is the current date
-    @:param month is the current month from today as a string
-    @:param year is the current year from today as a string
-    total_budget sums up all budget of a user.
-    budget_left is the difference between the total budget and all transactions of the current month.
+    | Is used on the dashboard
+    | budget_pie_chart_dash is used to populate the budget.html page.
+    | today: is the current date
+    | month: is the current month from today as a string
+    | year: is the current year from today as a string
+    | total_budget: sums up all budget of a user.
+    | budget_left: is the difference between the total budget and all transactions of the current month.
     """
     data = {}
     today = datetime.date.today()
