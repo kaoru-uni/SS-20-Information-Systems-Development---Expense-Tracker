@@ -122,7 +122,7 @@ def budget_pie_chart_data_dash(request):
     | form_class: is the form which will be used for the user input.
     | model: is the Model which will be used.
     | success_url: if the input was successful the user will be redirected to the budget overview page. 
-    | template_name: is the template which will be used for the user input. The budget_add.html is used. 
+    | template_name: is the templates which will be used for the user input. The budget_add.html is used. 
     | https://docs.djangoproject.com/en/3.0/ref/class-based-views/generic-editing/
     """
 
@@ -149,7 +149,7 @@ class BudgetCreateView(CreateView):
     | BudgetCreateView is used to show all budgets. 
     | ListView: is a generic view which offers easier lists with less code to write
     | model: is the Model which will be used.
-    | template_name: is the template where the data will be mapped to.
+    | template_name: is the templates where the data will be mapped to.
     | https://docs.djangoproject.com/en/3.0/ref/class-based-views/generic-editing/
     """
 
