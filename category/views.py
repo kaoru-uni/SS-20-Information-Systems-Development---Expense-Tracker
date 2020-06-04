@@ -1,20 +1,27 @@
 from django.http import Http404
-from django.urls import reverse_lazy
+from django.views.generic import ListView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
-from django.views.generic import View, ListView
+
 from category.models import Category
 
 
-#https://docs.djangoproject.com/en/3.0/ref/class-based-views/generic-editing/
 class CategoryCreateView(CreateView):
-        model = Category
-        fields = ['name']
-        success_url = "/category"
-        template_name = "category/category_add.html"
-        def form_valid(self, form):
-            form_to_save = form.save(commit=False)
-            form_to_save.user = self.request.user
-            return super(CategoryCreateView, self).form_valid(form)
+    """
+    | CategoryCreateView is used for creating new category by using the generic view for creation.
+    | model: is the Model which will be used.
+    | success_url: if the input was successful the user will be redirected to the category overview page.
+    | template_name: is the templates which will be used for the user input. The budget_add.html is used.
+    | https://docs.djangoproject.com/en/3.0/ref/class-based-views/generic-editing/
+    """
+    model = Category
+    fields = ['name']
+    success_url = "/category"
+    template_name = "category/category_add.html"
+
+    def form_valid(self, form):
+        form_to_save = form.save(commit=False)
+        form_to_save.user = self.request.user
+        return super(CategoryCreateView, self).form_valid(form)
 
 
 class CategoryListView(ListView):
@@ -24,7 +31,16 @@ class CategoryListView(ListView):
     def get_queryset(self):
         return Category.objects.filter(user=self.request.user).order_by('name')
 
+
 class CategoryDeleteView(DeleteView):
+    """
+    | The following sources has been used:
+    | https://stackoverflow.com/questions/5531258/example-of-django-class-based-deleteview
+    | https://stackoverflow.com/questions/17475324/django-deleteview-without-confirmation-template
+    | CategoryDeleteView is used to delete categories.
+    | model: is the Model which will be used.
+    | success_url: if the input was successful the user will be redirected back to list of budgets.
+    """
     model = Category
     success_url = "/category"
 

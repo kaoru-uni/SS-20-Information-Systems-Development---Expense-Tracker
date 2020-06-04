@@ -1,14 +1,17 @@
+from django.contrib.auth.decorators import login_required
 from django.urls import path
 
 from . import views
 from .views import BudgetCreateView, BudgetEditView, BudgetDeleteView
-from django.contrib.auth.decorators import login_required
 
-# https://stackoverflow.com/questions/28555260/django-login-required-for-class-views
-
-
-# https://stackoverflow.com/questions/58825832/django-delete-button-is-not-redirecting-to-the-correct-path
+"""
+| The following source has been used:
+| https://stackoverflow.com/questions/28555260/django-login-required-for-class-views
+| https://stackoverflow.com/questions/58825832/django-delete-button-is-not-redirecting-to-the-correct-path
+| login_required: Enforces that the user is logged in.
+"""
 urlpatterns = [
+
     path("budget_add/", login_required(BudgetCreateView.as_view()), name="add_budget"),
     path(
         "<int:pk>/budgetedit",
