@@ -4,82 +4,104 @@
 <!-- https://docs.djangoproject.com/en/3.0/ref/contrib/auth/ -->
 {% block content %}
     <ul class="list-group">
-        <li class="list-group-item">Hello, {{ user }}!</li>
-        <li class="list-group-item">Your E-Mail address is: {{request.user.email}}</li>
-        <li class="list-group-item">Your are an important user since: {{request.user.date_joined}}</li>
-        <li class="list-group-item">Your last login was on: {{request.user.last_login}}</li>
+        <li class="list-group-item list-group-item-dark"><h4 class="pt-3">USER PROFILE</h4></li>
+        <li class="list-group-item list-group-item-secondary"><b>Hello, {{ user }}!</b></li>
+        <li class="list-group-item list-group-item-secondary"><b>Your E-Mail address is: </b>{{ request.user.email }}</li>
+        <li class="list-group-item list-group-item-secondary"><b>Your are an important user
+            since:</b> {{ request.user.date_joined }}</li>
+        <li class="list-group-item list-group-item-secondary"><b>Your last login was on:</b> {{ request.user.last_login }}</li>
     </ul>
+    <br>
+    <ul class="list-group">
+        <li class="list-group-item list-group-item-success"><h4 class="pt-1">EXPORT YOUR DATA</h4>
+            <div class="row pt-1">
+                <div class="col-sm">
+                    <form action="{% url 'export_csv' %}" method="POST">
+                        {% csrf_token %}
 
-    <h4 class="pt-3">export your data</h4>
-    <div class="row pt-1">
-        <div class="col-sm">
-            <form action="{% url 'export_csv' %}" method="POST">
-                {%  csrf_token %}
+                        <button type="submit" class="btn btn-success" id="sort-btn">Export transactions</button>
+                    </form>
+                </div>
 
-                <button type="submit" class="btn btn-success" id="sort-btn">Export transactions</button>
-            </form>
-        </div>
+                <div class="col-sm">
+                    <form action="{% url 'export_budget_csv' %}" method="POST">
+                        {% csrf_token %}
 
-        <div class="col-sm">
-            <form action="{% url 'export_budget_csv' %}" method="POST">
-                {%  csrf_token %}
+                        <button type="submit" class="btn btn-success" id="sort-btn">Export budget</button>
+                    </form>
+                </div>
 
-                <button type="submit" class="btn btn-success" id="sort-btn">Export budget</button>
-            </form>
-        </div>
+                <div class="col-sm">
+                    <form action="{% url 'export_payment_csv' %}" method="POST">
+                        {% csrf_token %}
 
-        <div class="col-sm">
-            <form action="{% url 'export_payment_csv' %}" method="POST">
-                {%  csrf_token %}
+                        <button type="submit" class="btn btn-success" id="sort-btn">Export payment</button>
+                    </form>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <br>
+    <ul class="list-group">
+        <li class="list-group-item list-group-item-primary"><h4 class="pt-1">UPLOAD CSV DATA</h4>
+            <div class="pt-2">You can upload your transactions into your account from a csv file.</h5>
+                <div class="pt-2">Your data has to look exactly like this. If you are unsure, please download an export
+                    first and
+                    edit the file.
+                </div>
+                <div class="row pt-2">
 
-                <button type="submit" class="btn btn-success" id="sort-btn">Export payment</button>
-            </form>
-        </div>
-    </div>
+                </div>
+                <div class="row pt-2 pb-2">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Date</th>
+                                <th scope="col">Amount</th>
+                                <th scope="col">User</th>
+                                <th scope="col">Payment</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">Category</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <th scope="row">2020-06-01 00:00:00+00:00</th>
+                                <td>80.00</td>
+                                <td>user name</td>
+                                <td>"Type: MASTERCARD, Description: from gerhard"</td>
+                                <td>Coop</td>
+                                <td>Food</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <ul class="list-group pt-3">
+                            <li class="list-group-item"><b>Date:</b> has to look like a DateTimeField from Django</li>
+                            <li class="list-group-item"><b>Amount:</b> this is the Transaction amount</li>
+                            <li class="list-group-item"><b>User:</b> this field will be ignored. Instead your currently logged
+                                in User will
+                                be used.
+                            </li>
+                            <li class="list-group-item"><b>Payment:</b> has be be "Type: MASTERCARD, Description: text". You
+                                can choose
+                                between the options which are available under Payment.
+                            </li>
+                            <li class="list-group-item"><b>Description:</b> this is the Transaction description</li>
+                            <li class="list-group-item"><b>Category:</b> this category has to exist under Category</li>
+                        </ul>
+                    </div>
+                </div>
 
-    <h4 class="pt-3">You can upload your transactions into your account from a csv file.</h4>
-    <div class="row pt-2">
-        <form action="{% url 'transaction_upload' %}" method="POST" enctype="multipart/form-data">
-            {%  csrf_token %}
-            <input type="file" name="file">
 
-            <button type="submit" class="btn btn-success" id="sort-btn">Upload file</button>
-        </form>
-    </div>
-    <div class="pt-2">Your data has to look exactly like this. If you are unsure, please download an export first and edit the file.</div>
-    <div class="row pt-2 pb-2">
-        <div class="table-responsive">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">Date</th>
-                        <th scope="col">Amount</th>
-                        <th scope="col">User</th>
-                        <th scope="col">Payment</th>
-                        <th scope="col">Description</th>
-                        <th scope="col">Category</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">2020-06-01 00:00:00+00:00</th>
-                        <td>80.00</td>
-                        <td>user name</td>
-                        <td>"Type: MASTERCARD, Description: from gerhard"</td>
-                        <td>Coop</td>
-                        <td>Food</td>
-                    </tr>
-                </tbody>
-            </table>
-            <ul class="list-group pt-3">
-                <li class="list-group-item">Date: has to look like a DateTimeField from Django</li>
-                <li class="list-group-item">Amount: this is the Transaction amount</li>
-                <li class="list-group-item">User: this field will be ignored. Instead your currently logged in User will be used.</li>
-                <li class="list-group-item">Payment: has be be "Type: MASTERCARD, Description: text". You can choose between the options which are available under Payment.</li>
-                <li class="list-group-item">Description: this is the Transaction description</li>
-                <li class="list-group-item">Category: this category has to exist under Category</li>
-            </ul>
-        </div>
-    </div>
+                <div class="row pt-2">
+                    <form action="{% url 'transaction_upload' %}" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <input type="file" name="file">
 
+                        <button type="submit" class="btn btn-primary" id="sort-btn">Upload file</button>
+                    </form>
+                </div>
+        </li>
+    </ul>
 {% endblock %}
