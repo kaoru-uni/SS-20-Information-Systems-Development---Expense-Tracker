@@ -72,6 +72,9 @@
 <em class="property">class </em><code class="sig-prename descclassname">transaction_expense.models.</code><code class="sig-name descname">Transaction_Expense</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#transaction_expense.models.Transaction_Expense" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.models.base.Model</span></code></p>
 <div class="line-block">
+<div class="line">The following sources has been used:</div>
+<div class="line"><a class="reference external" href="https://stackoverflow.com/questions/323763/foreign-key-from-one-app-into-another-in-django">https://stackoverflow.com/questions/323763/foreign-key-from-one-app-into-another-in-django</a></div>
+<div class="line"><a class="reference external" href="https://stackoverflow.com/questions/26185687/you-are-trying-to-add-a-non-nullable-field-new-field-to-userprofile-without-a">https://stackoverflow.com/questions/26185687/you-are-trying-to-add-a-non-nullable-field-new-field-to-userprofile-without-a</a></div>
 <div class="line">This model contains the transaction of an expense which is being made.</div>
 <div class="line">date: The date can be set by the user.</div>
 <div class="line">amount: Amount of the value which was paid.</div>
@@ -219,6 +222,8 @@ one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
 <em class="property">class </em><code class="sig-prename descclassname">transaction_expense.views.</code><code class="sig-name descname">TransactionExpenseCreateView</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#transaction_expense.views.TransactionExpenseCreateView" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.views.generic.edit.CreateView</span></code></p>
 <div class="line-block">
+<div class="line">The following source has been used:</div>
+<div class="line"><a class="reference external" href="https://stackoverflow.com/questions/10382838/how-to-set-foreignkey-in-createview">https://stackoverflow.com/questions/10382838/how-to-set-foreignkey-in-createview</a></div>
 <div class="line">TransactionExpenseCreateView is used for creating new transactions by using the generic view for creation.</div>
 <div class="line">form_class: is the form which will be used for the user input.</div>
 <div class="line">model: is the Model which will be used.</div>
@@ -271,6 +276,9 @@ one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
 <em class="property">class </em><code class="sig-prename descclassname">transaction_expense.views.</code><code class="sig-name descname">TransactionExpenseDeleteView</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#transaction_expense.views.TransactionExpenseDeleteView" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.views.generic.edit.DeleteView</span></code></p>
 <div class="line-block">
+<div class="line">The following sources has been used:</div>
+<div class="line"><a class="reference external" href="https://stackoverflow.com/questions/5531258/example-of-django-class-based-deleteview">https://stackoverflow.com/questions/5531258/example-of-django-class-based-deleteview</a></div>
+<div class="line"><a class="reference external" href="https://stackoverflow.com/questions/17475324/django-deleteview-without-confirmation-template">https://stackoverflow.com/questions/17475324/django-deleteview-without-confirmation-template</a></div>
 <div class="line">TransactionExpenseDeleteView is used to delete transactions.</div>
 <div class="line">model: is the Model which will be used.</div>
 <div class="line">success_url: if the input was successful the user will be redirected back to list of transactions.</div>
@@ -309,6 +317,8 @@ one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
 <em class="property">class </em><code class="sig-prename descclassname">transaction_expense.views.</code><code class="sig-name descname">TransactionExpenseEditView</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#transaction_expense.views.TransactionExpenseEditView" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.views.generic.edit.UpdateView</span></code></p>
 <div class="line-block">
+<div class="line">The following source has been used:</div>
+<div class="line"><a class="reference external" href="https://stackoverflow.com/questions/25324948/django-generic-updateview-how-to-check-credential">https://stackoverflow.com/questions/25324948/django-generic-updateview-how-to-check-credential</a></div>
 <div class="line">form_class: is the form which will be used for the user input.</div>
 <div class="line">model: is the Model which will be used.</div>
 <div class="line">success_url: if the input was successful the user will be redirected back to list of transactions.</div>
@@ -368,8 +378,12 @@ one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
 <dt id="transaction_expense.views.TransactionExpenseForm">
 <em class="property">class </em><code class="sig-prename descclassname">transaction_expense.views.</code><code class="sig-name descname">TransactionExpenseForm</code><span class="sig-paren">(</span><em class="sig-param">data=None</em>, <em class="sig-param">files=None</em>, <em class="sig-param">auto_id='id_%s'</em>, <em class="sig-param">prefix=None</em>, <em class="sig-param">initial=None</em>, <em class="sig-param">error_class=&lt;class 'django.forms.utils.ErrorList'&gt;</em>, <em class="sig-param">label_suffix=None</em>, <em class="sig-param">empty_permitted=False</em>, <em class="sig-param">instance=None</em>, <em class="sig-param">use_required_attribute=None</em>, <em class="sig-param">renderer=None</em><span class="sig-paren">)</span><a class="headerlink" href="#transaction_expense.views.TransactionExpenseForm" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.forms.models.ModelForm</span></code></p>
-<p>The class TransactionExpenseForm is needed to be able to override the normal Django Form
-to have the special widget with a Datepicker option.</p>
+<div class="line-block">
+<div class="line">The following source has been used:</div>
+<div class="line"><a class="reference external" href="https://stackoverflow.com/questions/27321692/override-a-django-generic-class-based-view-widget">https://stackoverflow.com/questions/27321692/override-a-django-generic-class-based-view-widget</a></div>
+<div class="line">The class TransactionExpenseForm is needed to be able to override the normal Django Form</div>
+</div>
+<p>to have the special widget with a Datepicker option.</p>
 <dl class="py class">
 <dt id="transaction_expense.views.TransactionExpenseForm.Meta">
 <em class="property">class </em><code class="sig-name descname">Meta</code><a class="headerlink" href="#transaction_expense.views.TransactionExpenseForm.Meta" title="Permalink to this definition">¶</a></dt>
@@ -451,6 +465,10 @@ to have the special widget with a Datepicker option.</p>
 <dt id="transaction_expense.views.transaction_expense_pie_chart">
 <code class="sig-prename descclassname">transaction_expense.views.</code><code class="sig-name descname">transaction_expense_pie_chart</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em><span class="sig-paren">)</span><a class="headerlink" href="#transaction_expense.views.transaction_expense_pie_chart" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
+<div class="line">The following sources has been used:</div>
+<div class="line"><a class="reference external" href="https://simpleisbetterthancomplex.com/tutorial/2020/01/19/how-to-use-chart-js-with-django.html">https://simpleisbetterthancomplex.com/tutorial/2020/01/19/how-to-use-chart-js-with-django.html</a></div>
+<div class="line"><a class="reference external" href="https://www.chartjs.org/docs/latest/charts/bar.html">https://www.chartjs.org/docs/latest/charts/bar.html</a></div>
+<div class="line"><a class="reference external" href="https://docs.djangoproject.com/en/3.0/ref/models/querysets/#range">https://docs.djangoproject.com/en/3.0/ref/models/querysets/#range</a></div>
 <div class="line">This function is used to fill the pie chart.</div>
 <div class="line">If a user chooses a range the following variables will be used:</div>
 <div class="line">start_date: start date range</div>

@@ -3,10 +3,12 @@ from category.models import Category
 from payment.models import Payment
 
 
-# https://stackoverflow.com/questions/323763/foreign-key-from-one-app-into-another-in-django
-# https://stackoverflow.com/questions/26185687/you-are-trying-to-add-a-non-nullable-field-new-field-to-userprofile-without-a
+
 class Transaction_Expense(models.Model):
     """
+    | The following sources has been used:
+    | https://stackoverflow.com/questions/323763/foreign-key-from-one-app-into-another-in-django
+    | https://stackoverflow.com/questions/26185687/you-are-trying-to-add-a-non-nullable-field-new-field-to-userprofile-without-a
     | This model contains the transaction of an expense which is being made.
     | date: The date can be set by the user.
     | amount: Amount of the value which was paid.

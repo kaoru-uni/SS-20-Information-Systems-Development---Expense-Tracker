@@ -8,9 +8,11 @@ from .views import (
 )
 from django.contrib.auth.decorators import login_required
 
-# https://stackoverflow.com/questions/28555260/django-login-required-for-class-views
+#
 """
-login_required: Enforces that the user is logged in.
+| The following source has been used:
+| https://stackoverflow.com/questions/28555260/django-login-required-for-class-views
+| login_required: Enforces that the user is logged in.
 """
 urlpatterns = [
     path("", login_required(TransactionExpenseListView.as_view()), name="transactions"),

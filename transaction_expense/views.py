@@ -14,10 +14,12 @@ class DateInput(forms.DateInput):
     input_type = "date"
 
 
-# https://stackoverflow.com/questions/27321692/override-a-django-generic-class-based-view-widget
+#
 class TransactionExpenseForm(forms.ModelForm):
     """
-    The class TransactionExpenseForm is needed to be able to override the normal Django Form
+    | The following source has been used:
+    | https://stackoverflow.com/questions/27321692/override-a-django-generic-class-based-view-widget
+    | The class TransactionExpenseForm is needed to be able to override the normal Django Form
     to have the special widget with a Datepicker option.
     """
 
@@ -53,9 +55,10 @@ class TransactionExpenseListView(ListView):
         return Transaction_Expense.objects.filter(user=self.request.user).order_by("-date")
 
 
-# https://stackoverflow.com/questions/10382838/how-to-set-foreignkey-in-createview
 class TransactionExpenseCreateView(CreateView):
     """
+    | The following source has been used:
+    | https://stackoverflow.com/questions/10382838/how-to-set-foreignkey-in-createview
     | TransactionExpenseCreateView is used for creating new transactions by using the generic view for creation.
     | form_class: is the form which will be used for the user input.
     | model: is the Model which will be used.
@@ -90,9 +93,10 @@ class TransactionExpenseCreateView(CreateView):
         return super(TransactionExpenseCreateView, self).form_valid(form)
 
 
-# https://stackoverflow.com/questions/25324948/django-generic-updateview-how-to-check-credential
 class TransactionExpenseEditView(UpdateView):
     """
+    | The following source has been used:
+    | https://stackoverflow.com/questions/25324948/django-generic-updateview-how-to-check-credential
     | form_class: is the form which will be used for the user input.
     | model: is the Model which will be used.
     | success_url: if the input was successful the user will be redirected back to list of transactions.
@@ -134,10 +138,12 @@ class TransactionExpenseEditView(UpdateView):
         return expense_found
 
 
-# https://stackoverflow.com/questions/5531258/example-of-django-class-based-deleteview
-# https://stackoverflow.com/questions/17475324/django-deleteview-without-confirmation-template
+
 class TransactionExpenseDeleteView(DeleteView):
     """
+    | The following sources has been used:
+    | https://stackoverflow.com/questions/5531258/example-of-django-class-based-deleteview
+    | https://stackoverflow.com/questions/17475324/django-deleteview-without-confirmation-template
     | TransactionExpenseDeleteView is used to delete transactions.
     | model: is the Model which will be used.
     | success_url: if the input was successful the user will be redirected back to list of transactions.
@@ -161,11 +167,13 @@ class TransactionExpenseDeleteView(DeleteView):
         return self.post(request, *args, **kwargs)
 
 
-# https://simpleisbetterthancomplex.com/tutorial/2020/01/19/how-to-use-chart-js-with-django.html
-# https://www.chartjs.org/docs/latest/charts/bar.html
-# https://docs.djangoproject.com/en/3.0/ref/models/querysets/#range
+
 def transaction_expense_pie_chart(request):
     """
+    | The following sources has been used:
+    | https://simpleisbetterthancomplex.com/tutorial/2020/01/19/how-to-use-chart-js-with-django.html
+    | https://www.chartjs.org/docs/latest/charts/bar.html
+    | https://docs.djangoproject.com/en/3.0/ref/models/querysets/#range
     | This function is used to fill the pie chart.
     | If a user chooses a range the following variables will be used:
     | start_date: start date range
