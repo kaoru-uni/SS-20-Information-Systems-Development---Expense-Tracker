@@ -27,6 +27,33 @@ class UserProfileSettingConfigView(TemplateView):
 
 # https://docs.djangoproject.com/en/3.0/howto/outputting-csv/
 # https://studygyaan.com/django/how-to-export-csv-file-with-django
+def export_csv(request):
+    # Create the HttpResponse object with the appropriate CSV header.
+    response = HttpResponse(content_type="text/csv")
+
+    writer = csv.writer(response)
+    writer.writerow(
+        ["Date", "Amount", "User", "Payment", "Description", "Category", ]
+    )
+    querydata = Transaction_Expense.objects.filter(user=request.user)
+    for item in querydata:
+        writer.writerow(
+            [
+                item.date,
+                item.amount,
+                item.user,
+                item.payment,
+                item.description,
+                item.category,
+            ]
+        )
+
+    # writer.writerow(Transaction_Expense)
+    response["Content-Disposition"] = 'attachment; filename="transaction.csv"'
+
+    return response
+
+
 def export_budget_csv(request):
     # Create the HttpResponse object with the appropriate CSV header.
     response = HttpResponse(content_type="text/csv")

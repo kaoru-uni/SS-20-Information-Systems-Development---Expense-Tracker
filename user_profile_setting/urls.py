@@ -10,6 +10,7 @@ from django.contrib.auth.decorators import login_required
 | login_required: Enforces that the user is logged in.
 """
 urlpatterns = [
+    path("export/", views.export_csv, name="export_csv"),
     path(
         "",
         login_required(
