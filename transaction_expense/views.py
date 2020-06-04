@@ -42,7 +42,7 @@ class TransactionExpenseListView(ListView):
     | TransactionExpenseListView is used to show all expenses.
     | ListView: is a generic view which offers easier lists with less code to write
     | model: is the Model which will be used.
-    | template_name: is the template where the data will be mapped to.
+    | template_name: is the templates where the data will be mapped to.
     """
     model = Transaction_Expense
     template_name = "transactions.html"
@@ -63,7 +63,7 @@ class TransactionExpenseCreateView(CreateView):
     | form_class: is the form which will be used for the user input.
     | model: is the Model which will be used.
     | success_url: if the input was successful the user will be redirected back to the form for further inputs.
-    | template_name: is the template which will be used for the user input.
+    | template_name: is the templates which will be used for the user input.
     """
     form_class = TransactionExpenseForm
     model = Transaction_Expense
@@ -100,7 +100,7 @@ class TransactionExpenseEditView(UpdateView):
     | form_class: is the form which will be used for the user input.
     | model: is the Model which will be used.
     | success_url: if the input was successful the user will be redirected back to list of transactions.
-    | template_name: is the template which will be used for the user input.
+    | template_name: is the templates which will be used for the user input.
     """
     form_class = TransactionExpenseForm
     model = Transaction_Expense
