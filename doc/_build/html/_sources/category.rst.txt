@@ -44,6 +44,14 @@ category.tests module
    :undoc-members:
    :show-inheritance:
 
+category.urls module
+--------------------
+
+.. automodule:: category.urls
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 category.views module
 ---------------------
 

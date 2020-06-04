@@ -14,6 +14,8 @@
     <script src="_static/language_data.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="user_profile_setting package" href="user_profile_setting.html" />
+    <link rel="prev" title="register package" href="register.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -35,14 +37,6 @@
 <div class="section" id="subpackages">
 <h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="transaction_expense.migrations.html">transaction_expense.migrations package</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="transaction_expense.migrations.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="transaction_expense.migrations.html#module-transaction_expense.migrations.0001_initial">transaction_expense.migrations.0001_initial module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="transaction_expense.migrations.html#module-transaction_expense.migrations">Module contents</a></li>
-</ul>
-</li>
-</ul>
 </div>
 </div>
 <div class="section" id="submodules">
@@ -198,6 +192,9 @@ one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
 <div class="section" id="module-transaction_expense.tests">
 <span id="transaction-expense-tests-module"></span><h2>transaction_expense.tests module<a class="headerlink" href="#module-transaction_expense.tests" title="Permalink to this headline">¶</a></h2>
 </div>
+<div class="section" id="module-transaction_expense.urls">
+<span id="transaction-expense-urls-module"></span><h2>transaction_expense.urls module<a class="headerlink" href="#module-transaction_expense.urls" title="Permalink to this headline">¶</a></h2>
+</div>
 <div class="section" id="module-transaction_expense.views">
 <span id="transaction-expense-views-module"></span><h2>transaction_expense.views module<a class="headerlink" href="#module-transaction_expense.views" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
@@ -336,11 +333,7 @@ one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
 <dd><div class="line-block">
 <div class="line">According to <a class="reference external" href="https://docs.djangoproject.com/en/3.0/ref/class-based-views/mixins-editing/#django.views.generic.edit.FormMixin.get_form">https://docs.djangoproject.com/en/3.0/ref/class-based-views/mixins-editing/#django.views.generic.edit.FormMixin.get_form</a></div>
 <div class="line">get_form is a mixin which is used to get the current user who is adding a transaction.</div>
-</div>
-<div class="line-block">
 <div class="line">form.fields[“category”]: this query is run before the form is shown that the user can choose from his categories the user has created before.</div>
-</div>
-<div class="line-block">
 <div class="line">form.fields[“payment”]: this query is run before the form is shown that the user can choose from his payment methods the user has created before.</div>
 </div>
 </dd></dl>
@@ -381,9 +374,8 @@ one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
 <div class="line-block">
 <div class="line">The following source has been used:</div>
 <div class="line"><a class="reference external" href="https://stackoverflow.com/questions/27321692/override-a-django-generic-class-based-view-widget">https://stackoverflow.com/questions/27321692/override-a-django-generic-class-based-view-widget</a></div>
-<div class="line">The class TransactionExpenseForm is needed to be able to override the normal Django Form</div>
+<div class="line">The class TransactionExpenseForm is needed to be able to override the normal Django Form to have the special widget with a Datepicker option.</div>
 </div>
-<p>to have the special widget with a Datepicker option.</p>
 <dl class="py class">
 <dt id="transaction_expense.views.TransactionExpenseForm.Meta">
 <em class="property">class </em><code class="sig-name descname">Meta</code><a class="headerlink" href="#transaction_expense.views.TransactionExpenseForm.Meta" title="Permalink to this definition">¶</a></dt>
@@ -474,8 +466,6 @@ one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
 <div class="line">start_date: start date range</div>
 <div class="line">end_date: end date range</div>
 <div class="line">If no date is selected all transactions will be returned. otherwise the transactions will be sorted by date ascending.</div>
-</div>
-<div class="line-block">
 <div class="line">Because the data which is queried has the wrong data format for the pie chart it has to be formatted and restructured.</div>
 </div>
 </dd></dl>
@@ -503,11 +493,30 @@ one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
 
 
 <h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">Expense_Tracker</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="budget.html">budget package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="category.html">category package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dashboard.html">dashboard package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="expense_tracker.html">expense_tracker package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manage.html">manage module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="payment.html">payment package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="register.html">register package</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">transaction_expense package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_profile_setting.html">user_profile_setting package</a></li>
+</ul>
+</li>
+</ul>
 
 <div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">Expense_Tracker</a><ul>
+      <li>Previous: <a href="register.html" title="previous chapter">register package</a></li>
+      <li>Next: <a href="user_profile_setting.html" title="next chapter">user_profile_setting package</a></li>
+  </ul></li>
   </ul></li>
 </ul>
 </div>

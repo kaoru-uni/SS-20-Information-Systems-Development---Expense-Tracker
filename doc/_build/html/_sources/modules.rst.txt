@@ -6,9 +6,10 @@ Expense_Tracker
 
    budget
    category
+   dashboard
    expense_tracker
    manage
    payment
    register
    transaction_expense
-   user
+   user_profile_setting

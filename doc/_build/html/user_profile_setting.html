@@ -14,6 +14,7 @@
     <script src="_static/language_data.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="transaction_expense package" href="transaction_expense.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -35,14 +36,6 @@
 <div class="section" id="subpackages">
 <h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="user_profile_setting.migrations.html">user_profile_setting.migrations package</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="user_profile_setting.migrations.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="user_profile_setting.migrations.html#module-user_profile_setting.migrations.0001_initial">user_profile_setting.migrations.0001_initial module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="user_profile_setting.migrations.html#module-user_profile_setting.migrations">Module contents</a></li>
-</ul>
-</li>
-</ul>
 </div>
 </div>
 <div class="section" id="submodules">
@@ -65,105 +58,8 @@
 </dd></dl>
 
 </div>
-<div class="section" id="module-user_profile_setting.forms">
-<span id="user-profile-setting-forms-module"></span><h2>user_profile_setting.forms module<a class="headerlink" href="#module-user_profile_setting.forms" title="Permalink to this headline">¶</a></h2>
-<dl class="py class">
-<dt id="user_profile_setting.forms.UserProfileForm">
-<em class="property">class </em><code class="sig-prename descclassname">user_profile_setting.forms.</code><code class="sig-name descname">UserProfileForm</code><span class="sig-paren">(</span><em class="sig-param">data=None</em>, <em class="sig-param">files=None</em>, <em class="sig-param">auto_id='id_%s'</em>, <em class="sig-param">prefix=None</em>, <em class="sig-param">initial=None</em>, <em class="sig-param">error_class=&lt;class 'django.forms.utils.ErrorList'&gt;</em>, <em class="sig-param">label_suffix=None</em>, <em class="sig-param">empty_permitted=False</em>, <em class="sig-param">field_order=None</em>, <em class="sig-param">use_required_attribute=None</em>, <em class="sig-param">renderer=None</em><span class="sig-paren">)</span><a class="headerlink" href="#user_profile_setting.forms.UserProfileForm" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.forms.forms.Form</span></code></p>
-<dl class="py attribute">
-<dt id="user_profile_setting.forms.UserProfileForm.base_fields">
-<code class="sig-name descname">base_fields</code><em class="property"> = {'city': &lt;django.forms.fields.CharField object&gt;, 'email': &lt;django.forms.fields.CharField object&gt;, 'first_name': &lt;django.forms.fields.CharField object&gt;, 'last_name': &lt;django.forms.fields.CharField object&gt;, 'phone': &lt;django.forms.fields.DecimalField object&gt;}</em><a class="headerlink" href="#user_profile_setting.forms.UserProfileForm.base_fields" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt id="user_profile_setting.forms.UserProfileForm.declared_fields">
-<code class="sig-name descname">declared_fields</code><em class="property"> = {'city': &lt;django.forms.fields.CharField object&gt;, 'email': &lt;django.forms.fields.CharField object&gt;, 'first_name': &lt;django.forms.fields.CharField object&gt;, 'last_name': &lt;django.forms.fields.CharField object&gt;, 'phone': &lt;django.forms.fields.DecimalField object&gt;}</em><a class="headerlink" href="#user_profile_setting.forms.UserProfileForm.declared_fields" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt id="user_profile_setting.forms.UserProfileForm.media">
-<em class="property">property </em><code class="sig-name descname">media</code><a class="headerlink" href="#user_profile_setting.forms.UserProfileForm.media" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-</div>
 <div class="section" id="module-user_profile_setting.models">
 <span id="user-profile-setting-models-module"></span><h2>user_profile_setting.models module<a class="headerlink" href="#module-user_profile_setting.models" title="Permalink to this headline">¶</a></h2>
-<dl class="py class">
-<dt id="user_profile_setting.models.UserProfileSettingConfig">
-<em class="property">class </em><code class="sig-prename descclassname">user_profile_setting.models.</code><code class="sig-name descname">UserProfileSettingConfig</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">id</span></em>, <em class="sig-param"><span class="n">user</span></em>, <em class="sig-param"><span class="n">description</span></em>, <em class="sig-param"><span class="n">city</span></em>, <em class="sig-param"><span class="n">phone</span></em><span class="sig-paren">)</span><a class="headerlink" href="#user_profile_setting.models.UserProfileSettingConfig" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.models.base.Model</span></code></p>
-<dl class="py exception">
-<dt id="user_profile_setting.models.UserProfileSettingConfig.DoesNotExist">
-<em class="property">exception </em><code class="sig-name descname">DoesNotExist</code><a class="headerlink" href="#user_profile_setting.models.UserProfileSettingConfig.DoesNotExist" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></code></p>
-</dd></dl>
-
-<dl class="py exception">
-<dt id="user_profile_setting.models.UserProfileSettingConfig.MultipleObjectsReturned">
-<em class="property">exception </em><code class="sig-name descname">MultipleObjectsReturned</code><a class="headerlink" href="#user_profile_setting.models.UserProfileSettingConfig.MultipleObjectsReturned" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></code></p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt id="user_profile_setting.models.UserProfileSettingConfig.city">
-<code class="sig-name descname">city</code><a class="headerlink" href="#user_profile_setting.models.UserProfileSettingConfig.city" title="Permalink to this definition">¶</a></dt>
-<dd><p>A wrapper for a deferred-loading field. When the value is read from this
-object the first time, the query is executed.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt id="user_profile_setting.models.UserProfileSettingConfig.description">
-<code class="sig-name descname">description</code><a class="headerlink" href="#user_profile_setting.models.UserProfileSettingConfig.description" title="Permalink to this definition">¶</a></dt>
-<dd><p>A wrapper for a deferred-loading field. When the value is read from this
-object the first time, the query is executed.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt id="user_profile_setting.models.UserProfileSettingConfig.id">
-<code class="sig-name descname">id</code><a class="headerlink" href="#user_profile_setting.models.UserProfileSettingConfig.id" title="Permalink to this definition">¶</a></dt>
-<dd><p>A wrapper for a deferred-loading field. When the value is read from this
-object the first time, the query is executed.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt id="user_profile_setting.models.UserProfileSettingConfig.objects">
-<code class="sig-name descname">objects</code><em class="property"> = &lt;django.db.models.manager.Manager object&gt;</em><a class="headerlink" href="#user_profile_setting.models.UserProfileSettingConfig.objects" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt id="user_profile_setting.models.UserProfileSettingConfig.phone">
-<code class="sig-name descname">phone</code><a class="headerlink" href="#user_profile_setting.models.UserProfileSettingConfig.phone" title="Permalink to this definition">¶</a></dt>
-<dd><p>A wrapper for a deferred-loading field. When the value is read from this
-object the first time, the query is executed.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt id="user_profile_setting.models.UserProfileSettingConfig.user">
-<code class="sig-name descname">user</code><a class="headerlink" href="#user_profile_setting.models.UserProfileSettingConfig.user" title="Permalink to this definition">¶</a></dt>
-<dd><p>Accessor to the related object on the forward side of a one-to-one relation.</p>
-<p>In the example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Restaurant</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
-    <span class="n">place</span> <span class="o">=</span> <span class="n">OneToOneField</span><span class="p">(</span><span class="n">Place</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;restaurant&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">Restaurant.place</span></code> is a <code class="docutils literal notranslate"><span class="pre">ForwardOneToOneDescriptor</span></code> instance.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt id="user_profile_setting.models.UserProfileSettingConfig.user_id">
-<code class="sig-name descname">user_id</code><a class="headerlink" href="#user_profile_setting.models.UserProfileSettingConfig.user_id" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py function">
-<dt id="user_profile_setting.models.create_user_profile">
-<code class="sig-prename descclassname">user_profile_setting.models.</code><code class="sig-name descname">create_user_profile</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sender</span></em>, <em class="sig-param"><span class="n">instance</span></em>, <em class="sig-param"><span class="n">created</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#user_profile_setting.models.create_user_profile" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
 </div>
 <div class="section" id="module-user_profile_setting.tests">
 <span id="user-profile-setting-tests-module"></span><h2>user_profile_setting.tests module<a class="headerlink" href="#module-user_profile_setting.tests" title="Permalink to this headline">¶</a></h2>
@@ -177,6 +73,10 @@ object the first time, the query is executed.</p>
 <dt id="user_profile_setting.views.UserProfileSettingConfigView">
 <em class="property">class </em><code class="sig-prename descclassname">user_profile_setting.views.</code><code class="sig-name descname">UserProfileSettingConfigView</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#user_profile_setting.views.UserProfileSettingConfigView" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.views.generic.base.TemplateView</span></code></p>
+<div class="line-block">
+<div class="line">UserProfileSettingConfigView shows the overview of the whole pfoile page.</div>
+<div class="line">template_name: is the template which is used.</div>
+</div>
 <dl class="py method">
 <dt id="user_profile_setting.views.UserProfileSettingConfigView.form_valid">
 <code class="sig-name descname">form_valid</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">form</span></em><span class="sig-paren">)</span><a class="headerlink" href="#user_profile_setting.views.UserProfileSettingConfigView.form_valid" title="Permalink to this definition">¶</a></dt>
@@ -195,11 +95,6 @@ object the first time, the query is executed.</p>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="user_profile_setting.views.export_csv">
-<code class="sig-prename descclassname">user_profile_setting.views.</code><code class="sig-name descname">export_csv</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em><span class="sig-paren">)</span><a class="headerlink" href="#user_profile_setting.views.export_csv" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
 <dt id="user_profile_setting.views.export_payment_csv">
 <code class="sig-prename descclassname">user_profile_setting.views.</code><code class="sig-name descname">export_payment_csv</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em><span class="sig-paren">)</span><a class="headerlink" href="#user_profile_setting.views.export_payment_csv" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -210,18 +105,8 @@ object the first time, the query is executed.</p>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="user_profile_setting.views.profile">
-<code class="sig-prename descclassname">user_profile_setting.views.</code><code class="sig-name descname">profile</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#user_profile_setting.views.profile" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
 <dt id="user_profile_setting.views.transaction_upload">
 <code class="sig-prename descclassname">user_profile_setting.views.</code><code class="sig-name descname">transaction_upload</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em><span class="sig-paren">)</span><a class="headerlink" href="#user_profile_setting.views.transaction_upload" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt id="user_profile_setting.views.user_details">
-<code class="sig-prename descclassname">user_profile_setting.views.</code><code class="sig-name descname">user_details</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">httprequest</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#user_profile_setting.views.user_details" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
@@ -247,11 +132,29 @@ object the first time, the query is executed.</p>
 
 
 <h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">Expense_Tracker</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="budget.html">budget package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="category.html">category package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dashboard.html">dashboard package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="expense_tracker.html">expense_tracker package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manage.html">manage module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="payment.html">payment package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="register.html">register package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transaction_expense.html">transaction_expense package</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">user_profile_setting package</a></li>
+</ul>
+</li>
+</ul>
 
 <div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">Expense_Tracker</a><ul>
+      <li>Previous: <a href="transaction_expense.html" title="previous chapter">transaction_expense package</a></li>
+  </ul></li>
   </ul></li>
 </ul>
 </div>

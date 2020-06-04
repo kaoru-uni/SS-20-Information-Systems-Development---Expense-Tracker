@@ -28,14 +28,6 @@ user\_profile\_setting.apps module
    :undoc-members:
    :show-inheritance:
 
-user\_profile\_setting.forms module
------------------------------------
-
-.. automodule:: user_profile_setting.forms
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
 user\_profile\_setting.models module
 ------------------------------------
 

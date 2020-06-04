@@ -14,13 +14,11 @@ class DateInput(forms.DateInput):
     input_type = "date"
 
 
-#
 class TransactionExpenseForm(forms.ModelForm):
     """
     | The following source has been used:
     | https://stackoverflow.com/questions/27321692/override-a-django-generic-class-based-view-widget
-    | The class TransactionExpenseForm is needed to be able to override the normal Django Form
-    to have the special widget with a Datepicker option.
+    | The class TransactionExpenseForm is needed to be able to override the normal Django Form to have the special widget with a Datepicker option.
     """
 
     class Meta:
@@ -111,9 +109,7 @@ class TransactionExpenseEditView(UpdateView):
         """
         | According to https://docs.djangoproject.com/en/3.0/ref/class-based-views/mixins-editing/#django.views.generic.edit.FormMixin.get_form
         | get_form is a mixin which is used to get the current user who is adding a transaction.
-
         | form.fields["category"]: this query is run before the form is shown that the user can choose from his categories the user has created before.
-
         | form.fields["payment"]: this query is run before the form is shown that the user can choose from his payment methods the user has created before.
         """
         form = super(TransactionExpenseEditView, self).get_form(*args, **kwargs)
@@ -136,7 +132,6 @@ class TransactionExpenseEditView(UpdateView):
         if not expense_found.user == self.request.user:
             raise Http404
         return expense_found
-
 
 
 class TransactionExpenseDeleteView(DeleteView):
@@ -167,7 +162,6 @@ class TransactionExpenseDeleteView(DeleteView):
         return self.post(request, *args, **kwargs)
 
 
-
 def transaction_expense_pie_chart(request):
     """
     | The following sources has been used:
@@ -179,7 +173,6 @@ def transaction_expense_pie_chart(request):
     | start_date: start date range
     | end_date: end date range
     | If no date is selected all transactions will be returned. otherwise the transactions will be sorted by date ascending.
-
     | Because the data which is queried has the wrong data format for the pie chart it has to be formatted and restructured.
     """
     labels = []

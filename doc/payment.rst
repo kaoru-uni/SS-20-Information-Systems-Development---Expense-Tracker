@@ -28,14 +28,6 @@ payment.apps module
    :undoc-members:
    :show-inheritance:
 
-payment.forms module
---------------------
-
-.. automodule:: payment.forms
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
 payment.models module
 ---------------------
 
@@ -48,6 +40,14 @@ payment.tests module
 --------------------
 
 .. automodule:: payment.tests
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+payment.urls module
+-------------------
+
+.. automodule:: payment.urls
    :members:
    :undoc-members:
    :show-inheritance:

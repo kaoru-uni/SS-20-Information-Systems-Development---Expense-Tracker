@@ -44,6 +44,14 @@ transaction\_expense.tests module
    :undoc-members:
    :show-inheritance:
 
+transaction\_expense.urls module
+--------------------------------
+
+.. automodule:: transaction_expense.urls
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 transaction\_expense.views module
 ---------------------------------
 

@@ -1,10 +1,11 @@
 from django.http import Http404
-from django.views.generic import ListView
+from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
-
+from django.views.generic import View, ListView
 from category.models import Category
 
 
+#https://docs.djangoproject.com/en/3.0/ref/class-based-views/generic-editing/
 class CategoryCreateView(CreateView):
     """
     | CategoryCreateView is used for creating new category by using the generic view for creation.
@@ -30,7 +31,6 @@ class CategoryListView(ListView):
 
     def get_queryset(self):
         return Category.objects.filter(user=self.request.user).order_by('name')
-
 
 class CategoryDeleteView(DeleteView):
     """

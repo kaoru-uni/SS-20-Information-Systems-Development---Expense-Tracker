@@ -2,14 +2,7 @@ from django.contrib import admin
 from django.contrib.auth import views as auth_view
 from django.urls import path, include
 
-import dashboard
-from user_profile_setting.views import user_details
-from user_profile_setting.views import UserProfileSettingConfigView
 from register import views as register_view
-from user_profile_setting.views import export_csv
-from . import views
-from dashboard import views
-
 from . import views
 
 urlpatterns = [

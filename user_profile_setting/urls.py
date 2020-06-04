@@ -1,14 +1,15 @@
 from django.urls import path
 
 from . import views
-from .views import export_csv, UserProfileSettingConfigView, transaction_upload
+from .views import UserProfileSettingConfigView
 from django.contrib.auth.decorators import login_required
 
-# https://stackoverflow.com/questions/28555260/django-login-required-for-class-views
-
-
+"""
+| The following source has been used:
+| https://stackoverflow.com/questions/28555260/django-login-required-for-class-views
+| login_required: Enforces that the user is logged in.
+"""
 urlpatterns = [
-    path("export/", views.export_csv, name="export_csv"),
     path(
         "",
         login_required(
