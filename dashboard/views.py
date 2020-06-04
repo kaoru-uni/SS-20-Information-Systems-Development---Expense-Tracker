@@ -1,16 +1,16 @@
-from django.shortcuts import render
-from django.views.generic import ListView
-from django.db.models import Count
-from budget.models import Budget
-from transaction_expense.models import Transaction_Expense
-from django.views.generic.edit import CreateView
-from budget.views import budget_pie_chart_data_dash
 import datetime
 from calendar import monthrange
+
+from django.shortcuts import render
+
+from budget.views import budget_pie_chart_data_dash
+from transaction_expense.models import Transaction_Expense
 
 """
 This view is used for the dashboard.
 """
+
+
 def dashboard_pie_chart(request):
     """
     | The following sources has been used:

@@ -1,14 +1,15 @@
-from django.shortcuts import render
 import csv
-from django.http import HttpResponse
-from django.contrib.auth.decorators import login_required
-from django.views.generic import TemplateView
-from transaction_expense.models import Transaction_Expense
-from category.models import Category
-from budget.models import Budget
-from payment.models import Payment
-from django.utils.dateparse import parse_datetime
+
 from django.contrib.auth.models import User
+from django.http import HttpResponse
+from django.shortcuts import render
+from django.utils.dateparse import parse_datetime
+from django.views.generic import TemplateView
+
+from budget.models import Budget
+from category.models import Category
+from payment.models import Payment
+from transaction_expense.models import Transaction_Expense
 
 
 # https://www.youtube.com/watch?v=z4lfVsb_7MA - for creating the login

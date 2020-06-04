@@ -154,7 +154,6 @@ class BudgetCreateView(CreateView):
         return super(BudgetCreateView, self).form_valid(form)
 
 
-
 class BudgetDeleteView(DeleteView):
     """
     | The following sources has been used:

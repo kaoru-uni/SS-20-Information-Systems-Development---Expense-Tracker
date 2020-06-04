@@ -6,10 +6,12 @@
     <ul class="list-group">
         <li class="list-group-item list-group-item-dark"><h4 class="pt-3">USER PROFILE</h4></li>
         <li class="list-group-item list-group-item-secondary"><b>Hello, {{ user }}!</b></li>
-        <li class="list-group-item list-group-item-secondary"><b>Your E-Mail address is: </b>{{ request.user.email }}</li>
+        <li class="list-group-item list-group-item-secondary"><b>Your E-Mail address is: </b>{{ request.user.email }}
+        </li>
         <li class="list-group-item list-group-item-secondary"><b>Your are an important user
             since:</b> {{ request.user.date_joined }}</li>
-        <li class="list-group-item list-group-item-secondary"><b>Your last login was on:</b> {{ request.user.last_login }}</li>
+        <li class="list-group-item list-group-item-secondary"><b>Your last login was
+            on:</b> {{ request.user.last_login }}</li>
     </ul>
     <br>
     <ul class="list-group">
@@ -22,7 +24,6 @@
                         <button type="submit" class="btn btn-success" id="sort-btn">Export transactions</button>
                     </form>
                 </div>
-
                 <div class="col-sm">
                     <form action="{% url 'export_budget_csv' %}" method="POST">
                         {% csrf_token %}
@@ -30,11 +31,9 @@
                         <button type="submit" class="btn btn-success" id="sort-btn">Export budget</button>
                     </form>
                 </div>
-
                 <div class="col-sm">
                     <form action="{% url 'export_payment_csv' %}" method="POST">
                         {% csrf_token %}
-
                         <button type="submit" class="btn btn-success" id="sort-btn">Export payment</button>
                     </form>
                 </div>
@@ -50,7 +49,6 @@
                     edit the file.
                 </div>
                 <div class="row pt-2">
-
                 </div>
                 <div class="row pt-2 pb-2">
                     <div class="table-responsive">
@@ -79,11 +77,13 @@
                         <ul class="list-group pt-3">
                             <li class="list-group-item"><b>Date:</b> has to look like a DateTimeField from Django</li>
                             <li class="list-group-item"><b>Amount:</b> this is the Transaction amount</li>
-                            <li class="list-group-item"><b>User:</b> this field will be ignored. Instead your currently logged
+                            <li class="list-group-item"><b>User:</b> this field will be ignored. Instead your currently
+                                logged
                                 in User will
                                 be used.
                             </li>
-                            <li class="list-group-item"><b>Payment:</b> has be be "Type: MASTERCARD, Description: text". You
+                            <li class="list-group-item"><b>Payment:</b> has be be "Type: MASTERCARD, Description: text".
+                                You
                                 can choose
                                 between the options which are available under Payment.
                             </li>
@@ -92,8 +92,6 @@
                         </ul>
                     </div>
                 </div>
-
-
                 <div class="row pt-2">
                     <form action="{% url 'transaction_upload' %}" method="POST" enctype="multipart/form-data">
                         {% csrf_token %}

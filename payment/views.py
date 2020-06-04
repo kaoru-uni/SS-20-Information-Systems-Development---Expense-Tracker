@@ -1,7 +1,8 @@
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView
-from .models import Payment
 from django import forms
 from django.shortcuts import Http404
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+
+from .models import Payment
 
 
 class PaymentListView(ListView):
@@ -34,6 +35,7 @@ class PaymentForm(forms.ModelForm):
     | https://stackoverflow.com/questions/27321692/override-a-django-generic-class-based-view-widget
     | The class PaymentForm is needed to be able to override the normal Django Form to have the special widget with a Datepicker option.
     """
+
     class Meta:
         """
         | According to https://docs.djangoproject.com/en/3.0/topics/db/models/#meta-options

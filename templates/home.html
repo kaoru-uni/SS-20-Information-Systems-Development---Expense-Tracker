@@ -3,36 +3,33 @@
 {% block title %}Welcome to our Expense Tracker!{% endblock %}
 
 {% block content %}
-  <div id="container" style="width: 75%;">
-    <canvas id="dashboard-pie-chart"></canvas>
-  </div>
+    <div id="container" style="width: 75%;">
+        <canvas id="dashboard-pie-chart"></canvas>
+    </div>
 
 
-  <script>
-
-    var config = {
-      type: 'bar',
-      data: {
-        datasets: [{
-          data: {{ data|safe }},
-          backgroundColor: [
-            '#696969', '#808080', '#A9A9A9', '#C0C0C0', '#D3D3D3'
-          ],
-          label: 'Name'
-        }],
-        labels: {{ labels|safe }}
-      },
-      options: {
-        responsive: true
-      }
-    };
-
-    window.onload = function() {
-     var chartdata = document.getElementById('dashboard-pie-chart').getContext('2d');
-      window.myPie = new Chart(chartdata, config);
-    };
-
-  </script>
+    <script>
+        var config = {
+            type: 'bar',
+            data: {
+                datasets: [{
+                    data: {{ data|safe }},
+                    backgroundColor: [
+                        '#696969', '#808080', '#A9A9A9', '#C0C0C0', '#D3D3D3'
+                    ],
+                    label: 'Name'
+                }],
+                labels: {{ labels|safe }}
+            },
+            options: {
+                responsive: true
+            }
+        };
+        window.onload = function () {
+            var chartdata = document.getElementById('dashboard-pie-chart').getContext('2d');
+            window.myPie = new Chart(chartdata, config);
+        };
+    </script>
 
 {% endblock %}
 

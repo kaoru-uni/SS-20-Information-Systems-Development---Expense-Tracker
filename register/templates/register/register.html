@@ -5,9 +5,9 @@
 
 {% block content %}
     <form method="POST" class="form-group">
-    {% csrf_token %}
-    {{ form|crispy }}
-    <button type="Sumbit" class="btn btn-success">Register</button>
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="Sumbit" class="btn btn-success">Register</button>
     </form>
 {% endblock %}
 

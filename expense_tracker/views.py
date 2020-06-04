@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render
 
 
 def index(request):
@@ -7,6 +7,7 @@ def index(request):
 
 def dashboard_pie_chart(request):
     return render(request, "pie_chart1.html", {})
+
 
 def welcome(request):
     return render(request, "welcome.html", {})

@@ -1,7 +1,7 @@
 from django.db import models
+
 from category.models import Category
 from payment.models import Payment
-
 
 
 class Transaction_Expense(models.Model):
