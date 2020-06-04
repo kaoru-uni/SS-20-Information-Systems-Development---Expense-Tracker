@@ -214,6 +214,7 @@ one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
 <dt id="payment.views.DateInput">
 <em class="property">class </em><code class="sig-prename descclassname">payment.views.</code><code class="sig-name descname">DateInput</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">attrs</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">format</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#payment.views.DateInput" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.forms.widgets.DateInput</span></code></p>
+<p>DateInput is needed for the forms to have a date picker.</p>
 <dl class="py attribute">
 <dt id="payment.views.DateInput.input_type">
 <code class="sig-name descname">input_type</code><em class="property"> = 'date'</em><a class="headerlink" href="#payment.views.DateInput.input_type" title="Permalink to this definition">¶</a></dt>
@@ -230,6 +231,13 @@ one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
 <dt id="payment.views.PaymentCreateView">
 <em class="property">class </em><code class="sig-prename descclassname">payment.views.</code><code class="sig-name descname">PaymentCreateView</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#payment.views.PaymentCreateView" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.views.generic.edit.CreateView</span></code></p>
+<div class="line-block">
+<div class="line">PaymentCreateView is used for creating new payments.</div>
+<div class="line">form_class: is the form which will be used for the user input.</div>
+<div class="line">model: is the Model which will be used.</div>
+<div class="line">success_url: if the input was successful the user will be redirected back to the form for further inputs.</div>
+<div class="line">template_name: is the templates which will be used for the user input.</div>
+</div>
 <dl class="py attribute">
 <dt id="payment.views.PaymentCreateView.form_class">
 <code class="sig-name descname">form_class</code><a class="headerlink" href="#payment.views.PaymentCreateView.form_class" title="Permalink to this definition">¶</a></dt>
@@ -264,17 +272,25 @@ one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
 <dt id="payment.views.PaymentDeleteView">
 <em class="property">class </em><code class="sig-prename descclassname">payment.views.</code><code class="sig-name descname">PaymentDeleteView</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#payment.views.PaymentDeleteView" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.views.generic.edit.DeleteView</span></code></p>
+<div class="line-block">
+<div class="line">PaymentDeleteView is used to delete payment.</div>
+<div class="line">model: is the Model which will be used.</div>
+<div class="line">success_url: if the input was successful the user will be redirected back to list of payments.</div>
+</div>
 <dl class="py method">
 <dt id="payment.views.PaymentDeleteView.get">
 <code class="sig-name descname">get</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#payment.views.PaymentDeleteView.get" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><div class="line-block">
+<div class="line">This function is used to skip a second delete validation page.</div>
+<div class="line">Post is send to delete the transaction.</div>
+</div>
+</dd></dl>
 
 <dl class="py method">
 <dt id="payment.views.PaymentDeleteView.get_queryset">
 <code class="sig-name descname">get_queryset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#payment.views.PaymentDeleteView.get_queryset" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the <cite>QuerySet</cite> that will be used to look up the object.</p>
-<p>This method is called by the default implementation of get_object() and
-may not be called if get_object() is overridden.</p>
+<dd><p>get_queryset: is used to define the queryset which will be returned
+:return: data which is owned by the user will be returned.</p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -294,6 +310,15 @@ may not be called if get_object() is overridden.</p>
 <dt id="payment.views.PaymentEditView">
 <em class="property">class </em><code class="sig-prename descclassname">payment.views.</code><code class="sig-name descname">PaymentEditView</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#payment.views.PaymentEditView" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.views.generic.edit.UpdateView</span></code></p>
+<div class="line-block">
+<div class="line">The following source has been used:</div>
+<div class="line"><a class="reference external" href="https://stackoverflow.com/questions/25324948/django-generic-updateview-how-to-check-credential">https://stackoverflow.com/questions/25324948/django-generic-updateview-how-to-check-credential</a></div>
+<div class="line">PaymentEditView is used to edit the data which was selected.</div>
+<div class="line">form_class: is the form which will be used for the user input.</div>
+<div class="line">model: is the Model which will be used.</div>
+<div class="line">success_url: if the input was successful the user will be redirected back to the form for further inputs.</div>
+<div class="line">template_name: is the templates which will be used for the user input.</div>
+</div>
 <dl class="py attribute">
 <dt id="payment.views.PaymentEditView.form_class">
 <code class="sig-name descname">form_class</code><a class="headerlink" href="#payment.views.PaymentEditView.form_class" title="Permalink to this definition">¶</a></dt>
@@ -303,9 +328,12 @@ may not be called if get_object() is overridden.</p>
 <dl class="py method">
 <dt id="payment.views.PaymentEditView.get_object">
 <code class="sig-name descname">get_object</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#payment.views.PaymentEditView.get_object" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the object the view is displaying.</p>
-<p>Require <cite>self.queryset</cite> and a <cite>pk</cite> or <cite>slug</cite> argument in the URLconf.
-Subclasses can override this to return any object.</p>
+<dd><div class="line-block">
+<div class="line">According to: <a class="reference external" href="https://docs.djangoproject.com/en/3.0/ref/class-based-views/mixins-single-object/#django.views.generic.detail.SingleObjectMixin.get_object">https://docs.djangoproject.com/en/3.0/ref/class-based-views/mixins-single-object/#django.views.generic.detail.SingleObjectMixin.get_object</a></div>
+<div class="line">get_object: returns the object which is currently being viewed.</div>
+<div class="line">It’s used to validate that the payment which was requested is really made by the user.</div>
+<div class="line">If it’s not return an error</div>
+</div>
 </dd></dl>
 
 <dl class="py attribute">
@@ -330,10 +358,23 @@ Subclasses can override this to return any object.</p>
 <dt id="payment.views.PaymentForm">
 <em class="property">class </em><code class="sig-prename descclassname">payment.views.</code><code class="sig-name descname">PaymentForm</code><span class="sig-paren">(</span><em class="sig-param">data=None</em>, <em class="sig-param">files=None</em>, <em class="sig-param">auto_id='id_%s'</em>, <em class="sig-param">prefix=None</em>, <em class="sig-param">initial=None</em>, <em class="sig-param">error_class=&lt;class 'django.forms.utils.ErrorList'&gt;</em>, <em class="sig-param">label_suffix=None</em>, <em class="sig-param">empty_permitted=False</em>, <em class="sig-param">instance=None</em>, <em class="sig-param">use_required_attribute=None</em>, <em class="sig-param">renderer=None</em><span class="sig-paren">)</span><a class="headerlink" href="#payment.views.PaymentForm" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.forms.models.ModelForm</span></code></p>
+<div class="line-block">
+<div class="line">The following source has been used:</div>
+<div class="line"><a class="reference external" href="https://stackoverflow.com/questions/27321692/override-a-django-generic-class-based-view-widget">https://stackoverflow.com/questions/27321692/override-a-django-generic-class-based-view-widget</a></div>
+<div class="line">The class PaymentForm is needed to be able to override the normal Django Form to have the special widget with a Datepicker option.</div>
+</div>
 <dl class="py class">
 <dt id="payment.views.PaymentForm.Meta">
 <em class="property">class </em><code class="sig-name descname">Meta</code><a class="headerlink" href="#payment.views.PaymentForm.Meta" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<div class="line-block">
+<div class="line">According to <a class="reference external" href="https://docs.djangoproject.com/en/3.0/topics/db/models/#meta-options">https://docs.djangoproject.com/en/3.0/topics/db/models/#meta-options</a></div>
+<div class="line">and <a class="reference external" href="https://docs.djangoproject.com/en/3.0/ref/forms/widgets/">https://docs.djangoproject.com/en/3.0/ref/forms/widgets/</a></div>
+<div class="line">Meta data can be set to add additional information to a class.</div>
+<div class="line">model: is the Model which will be used.</div>
+<div class="line">fields: are the chosen fields which will be shown.</div>
+<div class="line">widgets: are used to show customized html elements.</div>
+</div>
 <dl class="py attribute">
 <dt id="payment.views.PaymentForm.Meta.fields">
 <code class="sig-name descname">fields</code><em class="property"> = ('type', 'description', 'date')</em><a class="headerlink" href="#payment.views.PaymentForm.Meta.fields" title="Permalink to this definition">¶</a></dt>
@@ -373,12 +414,16 @@ Subclasses can override this to return any object.</p>
 <dt id="payment.views.PaymentListView">
 <em class="property">class </em><code class="sig-prename descclassname">payment.views.</code><code class="sig-name descname">PaymentListView</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#payment.views.PaymentListView" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.views.generic.list.ListView</span></code></p>
+<div class="line-block">
+<div class="line">PaymentListView is used to show all payments</div>
+<div class="line">model: is the Model which will be used.</div>
+<div class="line">template_name: is the templates where the data will be mapped to.</div>
+</div>
 <dl class="py method">
 <dt id="payment.views.PaymentListView.get_queryset">
 <code class="sig-name descname">get_queryset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#payment.views.PaymentListView.get_queryset" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the list of items for this view.</p>
-<p>The return value must be an iterable and may be an instance of
-<cite>QuerySet</cite> in which case <cite>QuerySet</cite> specific behavior will be enabled.</p>
+<dd><p>get_queryset is used to return a filtered data result.
+:return: return all payments which are created by the user.</p>
 </dd></dl>
 
 <dl class="py attribute">
