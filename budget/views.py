@@ -41,7 +41,7 @@ def budget_pie_chart_data(request):
             or 0.00
     )
     if total_budget is not None:
-        budget_left = decimal.Decimal(total_budget) - total_transactions
+        budget_left = decimal.Decimal(total_budget) - decimal.Decimal(total_transactions)
     else:
         budget_left = 0
     queryset = Budget.objects.filter(user=request.user).values(
